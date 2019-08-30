@@ -1,11 +1,6 @@
 <!--index.wxml-->
 <view class="container">
 
-  
-  <view bindtap='onCreateData'>
-        <image class="createData" src="../../images/addButton.png"></image>
-  </view>
-
   <loading hidden="{{finish}}">loading...</loading>
   <view class="itemTemplate" wx:for="{{carlist}}">
     <Text>{{item.date}} </Text>
@@ -27,5 +22,9 @@
       <text class="questiontext">{{item.question}}</text>
       <text>\n*******</text>
   </scroll-view>
+
+  <view bindtap='onCreateData'>
+        <image class="createData" src="../../images/addButton.png"></image>
+  </view>
 
 </view>
