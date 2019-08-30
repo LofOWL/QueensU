@@ -1,0 +1,53 @@
+
+
+.carpool{
+  background-color: white;
+  color: blue;
+  border-color: blue;
+  
+  width: 50%;
+
+  border-radius: 50rpx;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  
+
+}
+
+
+.goodsexchange{
+  
+  background-color: white;
+  color: red;
+  border: 2;
+  border-color: red;
+
+  width: 50%;
+
+  border-radius: 50rpx;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.question{
+  background-color: white;
+  color: yellow;
+  border: 2;
+  border-color: yellow;
+
+  width: 50%;
+
+  border-radius: 50rpx;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+Page{
+  background-color: white;
+}

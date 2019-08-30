@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+
+  
+  <view bindtap='onCreateData'>
+        <image class="createData" src="../../images/addButton.png"></image>
+  </view>
+
+  <loading hidden="{{finish}}">loading...</loading>
+  <view class="itemTemplate" wx:for="{{carlist}}">
+    <Text>{{item.date}} </Text>
+    <Text>{{item.from}} -> </Text>
+    <Text>{{item.to}} </Text>
+    <Text>{{item.carType}}</Text>
+  </view>
+
+  <Text class="itemTemplate"> ---------------出行-------------- </Text>
+
+  <view class="itemTemplate" wx:for="{{exclist}}">
+    <Text>{{item.goods}} : </Text>
+    <Text>{{item.excType}}</Text>
+  </view>
+
+  <Text class="itemTemplate"> ---------------交易-------------- </Text>
+
+
+</view>

@@ -55,13 +55,13 @@
   </view>
 
   <view class="uploader">
-    <navigator url="../createData/createData" open-type="navigate" class="uploader-text">
+    <navigator url="/mainpages/createData/createData" open-type="navigate" class="uploader-text">
       <text>添加数据</text>
     </navigator>
   </view>
 
   <view class="uploader">
-    <navigator url="../createData/createData" open-type="navigate" class="uploader-text">
+    <navigator url="/mainpages/createData/createData" open-type="navigate" class="uploader-text">
       <text>???</text>
     </navigator>
   </view>

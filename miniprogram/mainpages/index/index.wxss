@@ -1,0 +1,19 @@
+/* mainpages/index/index.wxss */
+
+.createData{
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  bottom: 30px;
+  right: 20px;
+  background-color: red;
+}
+
+.itemTemplate{
+  flex-direction: column;
+  color: white;
+}
+
+Page{
+  background-color: black;
+}

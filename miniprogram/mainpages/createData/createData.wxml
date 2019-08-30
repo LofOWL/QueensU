@@ -1,0 +1,68 @@
+<view>
+
+    <view class="container">
+        <button type="primary" plain="flase" bindtap="carData" wx:if="{{type == 0}}">出行</button>
+        <button type="primary" plain="false" bindtap="excData" wx:if="{{type == 0}}">交换</button>
+        <button type="primary" plain="false" bindtap="queData" wx:if="{{type == 0}}">问题</button>
+    </view>
+
+
+    <view wx:if="{{type == 1 && carPage == 1}}">
+
+        <picker mode="date" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
+          <Text>选择日期: </Text>
+          <view class="pikcer">
+              {{date}}
+          </view>
+        </picker>
+
+        <picker mode="multiSelector" bindchange="carselectLocation" bindcolumnchange="To do later" value="{{mulloc}}" range="{{mulloc}}">
+          <Text>{{cfrom}} - {{cto}}</Text>
+        </picker>
+
+        <radio-group name="radio-group" bindchange="carselectType">
+          <label><radio value="找车" checked="true"/>找车</label>
+          <label><radio value="找人"/>找人</label>
+        </radio-group>
+    </view>
+
+    <view class="container" wx:if="{{type == 1}}">
+        <Text > 出现 page {{carPage}}</Text>
+        <button type="primary" plain="false" bindtap="carNext">Next</button>
+        <button type="primary" plain="false" bindtap="carSubmit">Submit</button>
+    </view>
+
+
+    <view wx:if="{{type == 2 && excPage == 1}}"> 
+      <text>{{itemListText}}</text>
+      <Text>物品:</Text>
+      <input class="input" bindinput="inputGoods" placeholder="输入..." value="{{goods}}"/>
+      <button bindtap="excaddItem">add Item</button>
+      <button bindtap="excremoveItem">remove Item</button>
+
+      <radio-group name="radio-group" bindchange="excselectType">
+        <label><radio value="出售" checked="true"/>出售</label>
+        <label><radio value="寻找"/>寻找</label>
+      </radio-group>
+
+      <text>{{excType}}</text>
+    </view>
+
+    <view class="container" wx:if="{{type == 2}}">
+        <Text > 交换 page {{excPage}}</Text>
+        <button type="primary" plain="false" bindtap="excNext">Next</button>
+        <button type="primary" plain="false" bindtap="excSubmit">Submit</button>
+    </view>
+
+
+
+    <Text wx:if="{{type == 3}}"> 问题page </Text>
+
+    <view class="container" wx:if="{{type == 3}}">
+        <Text > 问题 page {{quePage}}</Text>
+        <button type="primary" plain="false" bindtap="queNext">Next</button>
+        <button type="primary" plain="false" bindtap="submit">Submit</button>
+    </view>
+    
+
+</view>
