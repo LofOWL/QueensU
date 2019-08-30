@@ -42,11 +42,31 @@ function getExcInfo(athis){
   })
 }
 
+function getQueInfo(athis){
+  const db = wx.cloud.database()
+  db.collection('QueData').get({
+    success: res => {
+      athis.setData({
+        quelist: res.data
+      })
+      wx.stopPullDownRefresh()
+    },
+    fail: err => {
+      wx.showToast({
+        icon: 'none',
+        title: '查询记录失败'
+      })
+      wx.stopPullDownRefresh()
+    }
+  })
+}
+
 Page({
   data: {
     finish: false,
     carlist: [],
     exclist: [],
+    quelist: [],
     result: ''
   },
   onPullDownRefresh: function(){
@@ -55,6 +75,7 @@ Page({
   onLoad: function(){
     getCarInfo(this)
     getExcInfo(this)
+    getQueInfo(this)
   },
   // add Button used to navigate to createData Page
   onCreateData:function(){

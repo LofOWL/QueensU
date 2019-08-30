@@ -12,8 +12,15 @@
 .itemTemplate{
   flex-direction: column;
   color: white;
+  word-break: keep-all;
+  word-wrap: break-word;
 }
 
 Page{
   background-color: black;
+}
+
+.questiontext{
+  word-break: keep-all;
+  word-wrap: break-word;
 }

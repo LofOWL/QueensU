@@ -56,12 +56,14 @@
 
 
 
-    <Text wx:if="{{type == 3}}"> 问题page </Text>
+    <view wx:if="{{type == 3 && quePage == 1}}"> 
+      <input class="input" bindinput="inputQuestion" value="{{question}}"/>
+    </view>
 
     <view class="container" wx:if="{{type == 3}}">
         <Text > 问题 page {{quePage}}</Text>
         <button type="primary" plain="false" bindtap="queNext">Next</button>
-        <button type="primary" plain="false" bindtap="submit">Submit</button>
+        <button type="primary" plain="false" bindtap="queSubmit">Submit</button>
     </view>
     
 

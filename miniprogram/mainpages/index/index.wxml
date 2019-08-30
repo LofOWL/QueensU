@@ -23,5 +23,9 @@
 
   <Text class="itemTemplate"> ---------------交易-------------- </Text>
 
+  <scroll-view class="itemTemplate" wx:for="{{quelist}}">
+      <text class="questiontext">{{item.question}}</text>
+      <text>\n*******</text>
+  </scroll-view>
 
 </view>

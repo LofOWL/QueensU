@@ -51,6 +51,27 @@ function excDataToDatabase(data, goods){
   })
 }
 
+function queDataToDatabase(data){
+  const db = wx.cloud.database()
+  db.collection('QueData').add({
+    data: {
+      question: data.question,
+    },
+    success: res => {
+      wx.showToast({
+        icon: "none",
+        title: '上传成功'
+      })
+    },
+    fail: err => {
+      wx.showToast({
+        icon: 'none',
+        title: '长传失败'
+      })
+    }
+  })
+}
+
 Page({
   data:{
     type: 0,
@@ -71,6 +92,7 @@ Page({
     itemList: [],
     excType: "出售",
     // que data
+    question: "",
     quePage: 1
     
   },
@@ -152,6 +174,12 @@ Page({
         goods: e.detail.value
       })
   },
+  // que function
+  inputQuestion: function(e){
+    this.setData({
+      question: e.detail.value
+    })
+  },
   queData: function(){
     this.setData({
       type: 3
@@ -162,6 +190,7 @@ Page({
       quePage: this.data.quePage + 1
     })
   },
+  // submit
   carSubmit: function () {
     carDataToDatabase(this.data)
     wx.navigateBack()
@@ -173,9 +202,9 @@ Page({
     }
     wx.navigateBack()
   },
-  submit: function () {
-    
+  queSubmit: function(){
+    queDataToDatabase(this.data)
     wx.navigateBack()
-  },
+  }
 })
 
