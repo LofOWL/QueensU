@@ -29,6 +29,56 @@ function carDataToDatabase(data){
   })
 }
 
+function carDataCollection(athis){
+  var isExist = true;
+  const db = wx.cloud.database()
+  db.collection('CarDataCollect').where({
+    date: athis.data.date,
+    from: athis.data.cfrom,
+    to: athis.data.cto,
+    carType: athis.data.carType
+  }).get({
+    success: res => {
+      isExist = res.data.length != 0;
+      console.log(isExist)
+
+      // update or create database
+      if (isExist) {
+        wx.cloud.callFunction({
+          name: 'CarDataCollect',
+          data: {
+            date: athis.data.date,
+            from: athis.data.cfrom,
+            to: athis.data.cto,
+            carType: athis.data.carType,
+            count: res.data[0].count + 1
+          },
+          success: res =>{
+            console.log("cloud result")
+            console.log(res)
+          },
+          fail: err => {
+            console.log("err")
+            console.log(err)
+          }
+        })
+        console.log("finish the cloud function")
+      } else {
+        db.collection('CarDataCollect').add({
+          data: {
+            date: athis.data.date,
+            from: athis.data.cfrom,
+            to: athis.data.cto,
+            carType: athis.data.carType,
+            count: 1
+          }
+        })
+      }
+    }
+  })
+
+}
+
 function excDataToDatabase(data, goods){
   const db = wx.cloud.database()
   db.collection('GoodsData').add({
@@ -80,7 +130,7 @@ Page({
     cfrom: "Kingston",
     cto: "Kingston",
     carType: "找车",
-    nowDate: "",
+    nowDate: "2019-01-01",
     endDate: "",
     date: "",
     mulloc: [loc,loc],
@@ -103,7 +153,6 @@ Page({
       var month = date.getMonth() + 1
       var day = date.getDate()
       this.setData({
-        nowDate : [year,month,day].map(formatNumber).join('-'),
         endDate: [endyear,month,day].map(formatNumber).join('-'),
       })
   },
@@ -193,6 +242,7 @@ Page({
   // submit
   carSubmit: function () {
     carDataToDatabase(this.data)
+    carDataCollection(this)
     wx.navigateBack()
   },
   excSubmit: function() {

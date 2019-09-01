@@ -2,38 +2,38 @@
 
 .createData{
   position: fixed;
-  width: 30px;
-  height: 30px;
-  top: 90vh;
-  right: 5px;
+  width: 35px;
+  height: 35px;
+  bottom: 0vh;
+  right: 10px;
   background-color: red;
 }
 
 .toRight{
   position: fixed;
   background-color: blue;
-  width: 30px;
-  height: 30px;
-  top: 85vh;
-  right: 5px;
+  width: 35px;
+  height: 35px;
+  bottom: 0vh;
+  right: 65px;
 }
 
 .toPrePage{
   position:fixed;
   background-color: yellow;
-  width: 30px;
-  height: 30px;
-  top:85vh;
-  right: 35px;
+  width: 35px;
+  height: 35px;
+  bottom:0vh;
+  right: 115px;
 }
 
 .toNextPage{
   position:fixed;
   background-color: green;
-  width: 30px;
-  height: 30px;
-  top:90vh;
-  right: 35px;
+  width: 35px;
+  height: 35px;
+  bottom:0vh;
+  right: 165px;
 }
 
 .itemTemplate{

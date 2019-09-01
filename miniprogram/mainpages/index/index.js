@@ -2,7 +2,7 @@
 
 function getCarInfo(athis){
   const db = wx.cloud.database()
-  db.collection('CarData').get({
+  db.collection('CarDataCollect').orderBy("date","asc").get({
     success: res => {
       athis.setData({
         finish: true,
@@ -63,25 +63,28 @@ function getQueInfo(athis){
 
 function getNextInfor(athis,name,index){
   const db = wx.cloud.database()
-  db.collection(name).skip(index).limit(20).get({
+  db.collection(name).skip(index).limit(20).orderBy("date","asc").get({
     success: res =>{
       console.log("success")
       console.log(res.data)
       switch(name){
-        case "CarData":
+        case "CarDataCollect":
         console.log("car data")
         athis.setData({
           carlist: res.data,
+          finish: true
         })
         break
         case "GoodsData":
         athis.setData({
           exclist: res.data,
+          finish: true
         })
         break
         case "QueData":
         athis.setData({
-          quelist: res.data
+          quelist: res.data,
+          finish: true
         })
         break
       }
@@ -120,12 +123,14 @@ Page({
   },
   // add Button used to navigate to createData Page
   onCreateData:function(){
+    wx.vibrateShort()
     wx.navigateTo({
       url: '../createData/createData',
     })
   },
 
   toRightPage: function(){
+    wx.vibrateShort()
     if (this.data.page < 3){
       this.setData({
         page: this.data.page + 1
@@ -137,6 +142,7 @@ Page({
     }
   },
   toChangePage: function(e){
+    wx.vibrateShort()
     var type = e["currentTarget"]["id"]
     switch(this.data.page){
       case 1:
@@ -144,17 +150,20 @@ Page({
         console.log(this.data.carlist.length)
         if (type == "toNext"){
           if (this.data.carlist.length == 20) {
+
             this.setData({
-              carIndex: this.data.carIndex + 20
+              carIndex: this.data.carIndex + 20,
+              finish: false
             })
-            getNextInfor(this, "CarData", this.data.carIndex)
+            getNextInfor(this, "CarDataCollect", this.data.carIndex)
           }
         }else if (type == "toPre"){
           if (this.data.carIndex != 0){
             this.setData({
-              carIndex: this.data.carIndex - 20
+              carIndex: this.data.carIndex - 20,
+              finish: false
             })
-            getNextInfor(this, "CarData", this.data.carIndex)
+            getNextInfor(this, "CarDataCollect", this.data.carIndex)
           }
         }
         break
@@ -163,14 +172,16 @@ Page({
         if (type == "toNext"){
           if (this.data.exclist.length == 20) {
             this.setData({
-              excIndex: this.data.excIndex + 20
+              excIndex: this.data.excIndex + 20,
+              finish: false
             })
             getNextInfor(this, "GoodsData", this.data.excIndex)
           }
         }else if(type == "toPre"){
           if (this.data.excIndex != 0){
             this.setData({
-              excIndex : this.data.excIndex - 20
+              excIndex : this.data.excIndex - 20,
+              finish: false
             })
             getNextInfor(this, "GoodsData", this.data.excIndex)
           }
@@ -181,14 +192,16 @@ Page({
         if (type == "toNext"){
           if (this.data.quelist.length == 20) {
             this.setData({
-              queIndex: this.data.queIndex + 20
+              queIndex: this.data.queIndex + 20,
+              finish: false
             })
             getNextInfor(this, "QueData", this.data.queIndex)
           }
         }else if (type =="toPre"){
           if (this.data.queIndex != 0){
             this.setData({
-              queIndex: this.data.queIndex - 20
+              queIndex: this.data.queIndex - 20,
+              finish: false
             })
             getNextInfor(this,"QueData",this.data.queIndex)
           }

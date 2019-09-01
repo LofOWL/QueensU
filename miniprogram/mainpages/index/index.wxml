@@ -2,22 +2,27 @@
 <view class="container">
 
   <loading hidden="{{finish}}">loading...</loading>
+
   <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
     <Text>{{item.date}} </Text>
     <Text>{{item.from}} -> </Text>
     <Text>{{item.to}} </Text>
     <Text>{{item.carType}}</Text>
+    <Text>{{item.count}}</Text>
   </view>
+  <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text>
 
   <view class="itemTemplate" wx:for="{{exclist}}" wx:if="{{page == 2}}">
     <Text>{{item.goods}} : </Text>
     <Text>{{item.excType}}</Text>
   </view>
-
+  <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text>
+  
   <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}">
       <text class="questiontext">{{item.question}}</text>
       <text>\n*******</text>
   </scroll-view>
+  <text class="itemTemplate" wx:if="{{page == 3 && quelist.length == 20}}">max quelist</text>
 
   <view bindtap = "toRightPage">
       <image class = "toRight" mode="aspectFit" scr="../images/addButton.png">toRight</image>
