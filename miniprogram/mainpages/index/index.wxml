@@ -23,8 +23,17 @@
       <text>\n*******</text>
   </scroll-view>
 
-  <view bindtap='onCreateData'>
-        <image class="createData" src="../../images/addButton.png"></image>
+  <view bindtap="toLeftPage" class="toLeft" >
+      <image class="toIcon" scr="/images/addButton.png">toLeft</image>
   </view>
 
+  <view bindtap = "toRightPage" class="toRight">
+      <image class = "toIcon" scr="/images/addButton.png">toRight</image>
+  </view>
+
+  <view bindtap='onCreateData'>
+        <image class="createData" src="/images/addButton.png"></image>
+  </view>
+
+  <image scr="../../images/toRight.png"/>
 </view>

@@ -9,6 +9,27 @@
   background-color: red;
 }
 
+.toLeft{
+  position: fixed;
+  color: red;
+  top: 50vh;
+  left: 1vw;
+}
+
+.toIcon{
+  background-color: red;
+  width: 30px;
+  height: 30px;
+  
+}
+
+.toRight{
+  position: fixed;
+  color: red;
+  top: 50vh;
+  right: 1vw;
+}
+
 .itemTemplate{
   flex-direction: column;
   color: white;
