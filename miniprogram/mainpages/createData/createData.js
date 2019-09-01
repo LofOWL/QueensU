@@ -44,6 +44,11 @@ function carDataCollection(athis){
 
       // update or create database
       if (isExist) {
+        console.log(res.data[0].count + 1)
+        console.log(athis.data.date)
+        console.log(athis.data.cfrom)
+        console.log(athis.data.cto)
+        console.log(athis.data.carType)
         wx.cloud.callFunction({
           name: 'CarDataCollect',
           data: {
