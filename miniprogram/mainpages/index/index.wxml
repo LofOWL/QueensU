@@ -2,38 +2,38 @@
 <view class="container">
 
   <loading hidden="{{finish}}">loading...</loading>
-  <view class="itemTemplate" wx:for="{{carlist}}">
+  <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
     <Text>{{item.date}} </Text>
     <Text>{{item.from}} -> </Text>
     <Text>{{item.to}} </Text>
     <Text>{{item.carType}}</Text>
   </view>
 
-  <Text class="itemTemplate"> ---------------出行-------------- </Text>
-
-  <view class="itemTemplate" wx:for="{{exclist}}">
+  <view class="itemTemplate" wx:for="{{exclist}}" wx:if="{{page == 2}}">
     <Text>{{item.goods}} : </Text>
     <Text>{{item.excType}}</Text>
   </view>
 
-  <Text class="itemTemplate"> ---------------交易-------------- </Text>
-
-  <scroll-view class="itemTemplate" wx:for="{{quelist}}">
+  <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}">
       <text class="questiontext">{{item.question}}</text>
       <text>\n*******</text>
   </scroll-view>
 
-  <view bindtap="toLeftPage" class="toLeft" >
-      <image class="toIcon" scr="/images/addButton.png">toLeft</image>
+  <view bindtap = "toRightPage">
+      <image class = "toRight" mode="aspectFit" scr="../images/addButton.png">toRight</image>
   </view>
 
-  <view bindtap = "toRightPage" class="toRight">
-      <image class = "toIcon" scr="/images/addButton.png">toRight</image>
+  <view bindtap="toChangePage" id="toPre">
+      <image class="toPrePage" scr="../images/addButton.png"></image>
+  </view>
+
+  <view bindtap = "toChangePage" id="toNext">
+      <image class="toNextPage" scr="../images/addButton.png"></image>
   </view>
 
   <view bindtap='onCreateData'>
         <image class="createData" src="/images/addButton.png"></image>
   </view>
 
-  <image scr="../../images/toRight.png"/>
+
 </view>

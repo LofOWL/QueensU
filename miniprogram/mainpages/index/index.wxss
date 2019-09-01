@@ -4,30 +4,36 @@
   position: fixed;
   width: 30px;
   height: 30px;
-  bottom: 30px;
-  right: 20px;
+  top: 90vh;
+  right: 5px;
   background-color: red;
-}
-
-.toLeft{
-  position: fixed;
-  color: red;
-  top: 50vh;
-  left: 1vw;
-}
-
-.toIcon{
-  background-color: red;
-  width: 30px;
-  height: 30px;
-  
 }
 
 .toRight{
   position: fixed;
-  color: red;
-  top: 50vh;
-  right: 1vw;
+  background-color: blue;
+  width: 30px;
+  height: 30px;
+  top: 85vh;
+  right: 5px;
+}
+
+.toPrePage{
+  position:fixed;
+  background-color: yellow;
+  width: 30px;
+  height: 30px;
+  top:85vh;
+  right: 35px;
+}
+
+.toNextPage{
+  position:fixed;
+  background-color: green;
+  width: 30px;
+  height: 30px;
+  top:90vh;
+  right: 35px;
 }
 
 .itemTemplate{
