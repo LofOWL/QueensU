@@ -11,7 +11,7 @@ Page({
     this.setData({
       templateMessageResult: '',
     })
-
+    console.log(e.detail.fromId)
     wx.cloud.callFunction({
       name: 'openapi',
       data: {

@@ -24,6 +24,12 @@
           <label><radio value="找车" checked="true"/>找车</label>
           <label><radio value="找人"/>找人</label>
         </radio-group>
+
+        <input class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}"/>
+
+        <input class="input" bindinput="inputContact" placeholder="联系方式" value="{{contact}}"/>
+    
+
     </view>
 
     <view class="container" wx:if="{{type == 1}}">
@@ -65,6 +71,5 @@
         <button type="primary" plain="false" bindtap="queNext">Next</button>
         <button type="primary" plain="false" bindtap="queSubmit">Submit</button>
     </view>
-    
 
 </view>

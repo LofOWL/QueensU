@@ -34,6 +34,8 @@ Page({
   },
 
   onGetUserInfo(e) {
+    console.log("get into ongetuserinfo")
+    console.log(e.detail.cloudID)
     console.log(e)
     wx.cloud.callFunction({
       name: 'openapi',
@@ -47,7 +49,7 @@ Page({
       }
     }).then(res => {
       console.log('[onGetUserInfo] 调用成功：', res)
-
+      console.log(res.result)
       this.setData({
         userInfoResult: JSON.stringify(res.result),
       })

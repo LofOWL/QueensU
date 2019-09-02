@@ -33,7 +33,6 @@ async function sendTemplateMessage(event) {
   })
 
   const templateId = addResult.templateId
-
   const sendResult = await cloud.openapi.templateMessage.send({
     touser: OPENID,
     templateId,

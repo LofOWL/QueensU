@@ -6,13 +6,17 @@ function formatNumber(n){
 }
 
 function carDataToDatabase(data){
+  console.log("submit ")
+  console.log(data.details)
   const db = wx.cloud.database()
   db.collection('CarData').add({
     data: {
       date: data.date,
       from: data.cfrom,
       to: data.cto,
-      carType: data.carType
+      carType: data.carType,
+      details: data.details,
+      contact: data.contact
     },
     success: res => {
       wx.showToast({
@@ -194,8 +198,10 @@ Page({
     excType: "出售",
     // que data
     question: "",
-    quePage: 1
-    
+    quePage: 1,
+    // details
+    details: "",
+    contact: ""
   },
   onLoad: function(){
       var date = new Date()
@@ -288,6 +294,17 @@ Page({
   queNext: function(){
     this.setData({
       quePage: this.data.quePage + 1
+    })
+  },
+  // general deatils
+  inputDetails: function(e){
+      this.setData({
+        details: e.detail.value
+      })
+  },
+  inputContact: function(e){
+    this.setData({
+      contact: e.detail.value
     })
   },
   // submit

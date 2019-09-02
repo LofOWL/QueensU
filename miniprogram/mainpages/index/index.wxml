@@ -2,20 +2,29 @@
 <view class="container">
 
   <loading hidden="{{finish}}">loading...</loading>
+    <navigator url="../../pages/openapi/openapi" 
+      class="userinfo-avatar"
+
+      style="background-image: url({{avatarUrl}})"
+    />
 
   <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
-    <Text>{{item.date}} </Text>
-    <Text>{{item.from}} -> </Text>
-    <Text>{{item.to}} </Text>
-    <Text>{{item.carType}}</Text>
-    <Text>{{item.count}}</Text>
+      <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
+          <Text>{{item.date}} </Text>
+          <Text>{{item.from}} -> </Text>
+          <Text>{{item.to}} </Text>
+          <Text>{{item.carType}}</Text>
+          <Text>{{item.count}}</Text>
+      </navigator>
   </view>
   <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text>
 
   <view class="itemTemplate" wx:for="{{exclist}}" wx:if="{{page == 2}}">
-    <Text>{{item.goods}} : </Text>
-    <Text>{{item.excType}}</Text>
-    <Text>{{item.count}}</Text>
+    <navigator url="../detailsPage/detailsPage?goods={{item.goods}}&excType={{item.excType}}&type={{2}}">
+        <Text>{{item.goods}} : </Text>
+        <Text>{{item.excType}}</Text>
+        <Text>{{item.count}}</Text>
+    </navigator>
   </view>
   <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text>
   
