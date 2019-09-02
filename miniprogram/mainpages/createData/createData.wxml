@@ -52,6 +52,11 @@
       </radio-group>
 
       <text>{{excType}}</text>
+
+      <input class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}"/>
+
+      <input class="input" bindinput="inputContact" placeholder="联系方式" value="{{contact}}"/>
+    
     </view>
 
     <view class="container" wx:if="{{type == 2}}">

@@ -16,7 +16,8 @@ function carDataToDatabase(data){
       to: data.cto,
       carType: data.carType,
       details: data.details,
-      contact: data.contact
+      contact: data.contact,
+      createDate: data.createDate
     },
     success: res => {
       wx.showToast({
@@ -139,7 +140,10 @@ function excDataToDatabase(data, goods){
   db.collection('GoodsData').add({
     data: {
       goods: goods,
-      excType: data.excType
+      excType: data.excType,
+      details: data.details,
+      contact: data.contact,
+      createDate: data.createDate
     },
     success: res => {
       wx.showToast({
@@ -201,7 +205,8 @@ Page({
     quePage: 1,
     // details
     details: "",
-    contact: ""
+    contact: "",
+    createDate: "",
   },
   onLoad: function(){
       var date = new Date()
@@ -210,6 +215,7 @@ Page({
       var month = date.getMonth() + 1
       var day = date.getDate()
       this.setData({
+        createDate: [year,month,day].map(formatNumber).join('-'),
         endDate: [endyear,month,day].map(formatNumber).join('-'),
       })
   },
