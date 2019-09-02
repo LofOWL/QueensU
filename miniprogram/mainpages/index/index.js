@@ -23,7 +23,7 @@ function getCarInfo(athis){
 
 function getExcInfo(athis){
   const db = wx.cloud.database()
-  db.collection('GoodsData').get({
+  db.collection('GoodsDataCollect').get({
     success: res => {
       athis.setData({
         finish: true,

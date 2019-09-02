@@ -15,6 +15,7 @@
   <view class="itemTemplate" wx:for="{{exclist}}" wx:if="{{page == 2}}">
     <Text>{{item.goods}} : </Text>
     <Text>{{item.excType}}</Text>
+    <Text>{{item.count}}</Text>
   </view>
   <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text>
   

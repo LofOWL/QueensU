@@ -81,7 +81,53 @@ function carDataCollection(athis){
       }
     }
   })
+}
 
+function goodsDataCollection(athis, goods){
+  var isExist = true;
+  const db = wx.cloud.database()
+  db.collection('GoodsDataCollect').where({
+    goods: goods,
+    excType: athis.data.excType,
+  }).get({
+    success: res => {
+      isExist = res.data.length != 0;
+      console.log(isExist)
+
+      // update or create database
+      if (isExist) {
+        console.log("in goods")
+        console.log(goods)
+        console.log(athis.data.excType)
+        console.log(res.data[0].count + 1)
+        wx.cloud.callFunction({
+          name: 'GoodsDataCollect',
+          data: {
+            goods: goods,
+            excType: athis.data.excType,
+            count: res.data[0].count + 1
+          },
+          success: res => {
+            console.log("cloud result")
+            console.log(res)
+          },
+          fail: err => {
+            console.log("err")
+            console.log(err)
+          }
+        })
+        console.log("finish the cloud function")
+      } else {
+        db.collection('GoodsDataCollect').add({
+          data: {
+            goods: goods,
+            excType: athis.data.excType,
+            count: 1
+          }
+        })
+      }
+    }
+  })
 }
 
 function excDataToDatabase(data, goods){
@@ -254,6 +300,7 @@ Page({
     var unique = [...new Set(this.data.itemList)];
     for (var i in unique) {
       excDataToDatabase(this.data, unique[i])
+      goodsDataCollection(this, unique[i])
     }
     wx.navigateBack()
   },
