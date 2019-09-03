@@ -1,4 +1,5 @@
 // mainpages/index/index.js
+const app = getApp()
 
 function getCarInfo(athis){
   const db = wx.cloud.database()
@@ -130,6 +131,7 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              console.log(res)
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo: res.userInfo
@@ -140,6 +142,25 @@ Page({
       }
     })
   },
+
+  onGetOpenid: function () {
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        wx.navigateTo({
+          url: '../PersonalPage/PersonalPage',
+        })
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })
+  },
+
   // add Button used to navigate to createData Page
   onCreateData:function(){
     wx.vibrateShort()

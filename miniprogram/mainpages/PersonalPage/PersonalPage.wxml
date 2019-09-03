@@ -1,0 +1,28 @@
+<view class="container">
+
+  <Text> PersonalPage </Text>
+  <Text> {{openid}}</Text>
+
+  <text> ******** </text>
+
+  <view wx:for="{{personalcarList}}">
+    <view data-name="CarData" data-id="{{item._id}}" data-date="{{item.date}}" data-from="{{item.from}}" data-to="{{item.to}}" data-carType="{{item.carType}}" bindtap="onRemove">
+        <text>{{item._id}}</text>
+        <text>{{item.createDate}}</text>
+        <text>{{item.from}}</text>
+        <text>{{item.to}}</text>
+        <text>{{item.details}}</text>
+    </view>
+  </view>
+
+  <text> ********** </text>
+
+  <view wx:for="{{personalexcList}}">
+    <text>{{item._id}}</text>
+    <text>{{item.createDate}}</text>
+    <text>{{item.goods}}</text>
+    <text>{{item.excType}}</text>
+  </view>
+
+
+</view>

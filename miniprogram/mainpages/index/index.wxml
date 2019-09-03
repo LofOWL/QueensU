@@ -2,11 +2,10 @@
 <view class="container">
 
   <loading hidden="{{finish}}">loading...</loading>
-    <navigator url="../../pages/openapi/openapi" 
-      class="userinfo-avatar"
 
-      style="background-image: url({{avatarUrl}})"
-    />
+
+
+  <button class="userinfo-avatar" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}})"/>
 
   <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
       <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
