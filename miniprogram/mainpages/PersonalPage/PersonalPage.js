@@ -79,6 +79,50 @@ function carDataCollection(date,from,to,carType) {
   })
 }
 
+function goodsDataCollection(goods,excType) {
+  var isExist = true;
+  const db = wx.cloud.database()
+  db.collection('GoodsDataCollect').where({
+    goods: goods,
+    excType: excType,
+  }).get({
+    success: res => {
+      isExist = res.data.length != 0;
+      console.log(isExist)
+
+      // update or create database
+      if (isExist) {
+        wx.cloud.callFunction({
+          name: 'GoodsDataCollect',
+          data: {
+            goods: goods,
+            excType: excType,
+            count: res.data[0].count - 1
+          },
+          success: res => {
+            console.log("cloud result")
+            console.log(res)
+          },
+          fail: err => {
+            console.log("err")
+            console.log(err)
+          }
+        })
+        console.log("finish the cloud function")
+      } else {
+        db.collection('GoodsDataCollect').add({
+          data: {
+            goods: goods,
+            excType: athis.data.excType,
+            count: 1
+          }
+        })
+      }
+    }
+  })
+}
+
+
 Page({
 
   data: {
@@ -99,14 +143,16 @@ Page({
     console.log(e.currentTarget.dataset.id)
     console.log(e.currentTarget.dataset.name)
     console.log(this.data.openid)
+    var name = e.currentTarget.dataset.name
+
     var date = e.currentTarget.dataset.date
     var from = e.currentTarget.dataset.from
     var to = e.currentTarget.dataset.to
     var carType = e.currentTarget.dataset.carType
-    console.log(e.currentTarget.dataset.date)
-    console.log(e.currentTarget.dataset.from)
-    console.log(e.currentTarget.dataset.to)
-    console.log(e.currentTarget.dataset.carType)
+    
+    var excType = e.currentTarget.dataset.excType
+    var goods = e.currentTarget.dataset.goods
+
     const db = wx.cloud.database()
     db.collection(e.currentTarget.dataset.name).doc(e.currentTarget.dataset.id).remove({
       success: res => {
@@ -114,7 +160,11 @@ Page({
           title: '删除成功',
         })
         // date from to carType
-        carDataCollection(date,from,to,carType)
+        if (name == "CarData"){
+          carDataCollection(date, from, to, carType)
+        }else if (name == "GoodsData"){
+          goodsDataCollection(goods, carType)
+        }
       },
       fail: err => {
         wx.showToast({

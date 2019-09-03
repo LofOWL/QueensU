@@ -3,7 +3,7 @@
 
   <loading hidden="{{finish}}">loading...</loading>
 
-
+  <loading hidden="{{personal}}">P loading...</loading>
 
   <button class="userinfo-avatar" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}})"/>
 
@@ -27,7 +27,7 @@
   </view>
   <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text>
   
-  <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}">
+  <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" bindtap="onRemove">
       <text class="questiontext">{{item.question}}</text>
       <text>\n*******</text>
   </scroll-view>

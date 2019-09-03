@@ -3,7 +3,7 @@ const app = getApp()
 
 function getCarInfo(athis){
   const db = wx.cloud.database()
-  db.collection('CarDataCollect').orderBy("date","asc").get({
+  db.collection('CarDataCollect').orderBy("count", "desc").orderBy("date", "acs").get({
     success: res => {
       athis.setData({
         finish: true,
@@ -24,7 +24,7 @@ function getCarInfo(athis){
 
 function getExcInfo(athis){
   const db = wx.cloud.database()
-  db.collection('GoodsDataCollect').get({
+  db.collection('GoodsDataCollect').orderBy("count", "desc").get({
     success: res => {
       athis.setData({
         finish: true,
@@ -105,6 +105,7 @@ function getNextInfor(athis,name,index){
 Page({
   data: {
     finish: false,
+    personal: true,
     carlist: [],
     carIndex: 0,
     exclist: [],
@@ -145,14 +146,21 @@ Page({
 
   onGetOpenid: function () {
     // 调用云函数
+    this.setData({
+      personal: false
+    })
     wx.cloud.callFunction({
       name: 'login',
       data: {},
       success: res => {
         console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
+        
         wx.navigateTo({
           url: '../PersonalPage/PersonalPage',
+        })
+        this.setData({
+          personal: true
         })
       },
       fail: err => {
@@ -180,6 +188,24 @@ Page({
         page: 1
       })
     }
+  },
+  onRemove: function(e){
+    console.log(e.currentTarget.dataset.id)
+    const db = wx.cloud.database()
+    db.collection("QueData").doc(e.currentTarget.dataset.id).remove({
+      success: res => {
+        wx.showToast({
+          title: '删除成功',
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '删除失败',
+        })
+        console.error('[数据库] [删除记录] 失败：', err)
+      }
+    })
   },
   toChangePage: function(e){
     wx.vibrateShort()

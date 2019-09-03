@@ -18,10 +18,13 @@
   <text> ********** </text>
 
   <view wx:for="{{personalexcList}}">
-    <text>{{item._id}}</text>
-    <text>{{item.createDate}}</text>
-    <text>{{item.goods}}</text>
-    <text>{{item.excType}}</text>
+      <view data-name="GoodsData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove">
+        <text>{{item._id}}</text>
+        <text>{{item.createDate}}</text>
+        <text>{{item.goods}}</text>
+        <text>{{item.excType}}</text>
+      </view>
+
   </view>
 
 
