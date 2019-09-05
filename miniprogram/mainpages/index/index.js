@@ -149,34 +149,37 @@ Page({
     this.setData({
       personal: false
     })
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        
-        wx.navigateTo({
-          url: '../PersonalPage/PersonalPage',
-        })
-        this.setData({
-          personal: true
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-      }
-    })
-  },
+    if (app.globalData.openid){
+      console.log("in")
+      wx.navigateTo({
+        url: '../PersonalPage/PersonalPage',
+      })
+      this.setData({
+        personal: true
+      })
+    }else{
+      console.log("not in")
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: res => {
+          console.log('[云函数] [login] user openid: ', res.result.openid)
+          app.globalData.openid = res.result.openid
 
-  // add Button used to navigate to createData Page
-  onCreateData:function(){
-    wx.vibrateShort()
-    wx.navigateTo({
-      url: '../createData/createData',
-    })
-  },
+          wx.navigateTo({
+            url: '../PersonalPage/PersonalPage',
+          })
+          this.setData({
+            personal: true
+          })
+        },
+        fail: err => {
+          console.error('[云函数] [login] 调用失败', err)
+        }
+      })
+    }
 
+  },
   toRightPage: function(){
     wx.vibrateShort()
     if (this.data.page < 3){

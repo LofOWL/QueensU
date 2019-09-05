@@ -7,6 +7,7 @@
 
   <button class="userinfo-avatar" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}})"/>
 
+  <!-- Car Page -->
   <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
       <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
           <Text>{{item.date}} </Text>
@@ -18,6 +19,7 @@
   </view>
   <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text>
 
+  <!-- Goods Page -->
   <view class="itemTemplate" wx:for="{{exclist}}" wx:if="{{page == 2}}">
     <navigator url="../detailsPage/detailsPage?goods={{item.goods}}&excType={{item.excType}}&type={{2}}">
         <Text>{{item.goods}} : </Text>
@@ -27,17 +29,23 @@
   </view>
   <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text>
   
-  <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" bindtap="onRemove">
+  <!-- Que Page -->
+  <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" bindtap="onRemove" lower-threshold="200">
       <text class="questiontext">{{item.question}}</text>
       <text>\n*******</text>
   </scroll-view>
+
   <text class="itemTemplate" wx:if="{{page == 3 && quelist.length == 20}}">max quelist</text>
 
-  <view bindtap = "toRightPage">
-      <image class = "toRight" mode="aspectFit" scr="../images/addButton.png">toRight</image>
+  <!-- Gap -->
+  <view class="buttomGap">
+  </view>
+  <!-- Lower buttons page -->
+  <view class="guide">
+      <image bindtap = "toRightPage" class = "toRight" mode="aspectFit" scr="../../images/addButton.png"></image>
   </view>
 
-  <view bindtap="toChangePage" id="toPre">
+  <view bindtap="toChangePage" id="toPre" class="toPrePage">
       <image class="toPrePage" scr="../images/addButton.png"></image>
   </view>
 
@@ -45,9 +53,9 @@
       <image class="toNextPage" scr="../images/addButton.png"></image>
   </view>
 
-  <view bindtap='onCreateData'>
+  <navigator url='../createData/createData?type={{page}}'>
         <image class="createData" src="/images/addButton.png"></image>
-  </view>
+  </navigator>
 
 
 </view>

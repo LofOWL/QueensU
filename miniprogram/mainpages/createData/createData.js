@@ -208,7 +208,10 @@ Page({
     contact: "",
     createDate: "",
   },
-  onLoad: function(){
+  onLoad: function(options){
+      this.setData({
+        type : options.type
+      })
       var date = new Date()
       var year = date.getFullYear()
       var endyear = date.getFullYear() + 3

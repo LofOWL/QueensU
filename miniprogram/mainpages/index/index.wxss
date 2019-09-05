@@ -36,12 +36,18 @@
   right: 165px;
 }
 
+.buttomGap{
+  height: 36px;
+  background-color: balck;
+}
+
 .itemTemplate{
   flex-direction: column;
   color: white;
   word-break: keep-all;
   word-wrap: break-word;
 }
+
 
 Page{
   background-color: black;

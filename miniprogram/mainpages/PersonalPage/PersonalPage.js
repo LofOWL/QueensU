@@ -130,7 +130,9 @@ Page({
     personalexcList: [],
     openid: ""
   },
-
+  onPullDownRefresh: function(){
+    this.onLoad()
+  },
   onLoad: function(){
     console.log(app.globalData.openid);
     this.setData({
