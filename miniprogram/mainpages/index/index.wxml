@@ -5,8 +5,8 @@
 
   <loading hidden="{{personal}}">P loading...</loading>
 
-  <button class="userinfo-avatar" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}})"/>
-
+  <button class="userinfo-avatar" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}})"/>
+  
   <!-- Car Page -->
   <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
       <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
