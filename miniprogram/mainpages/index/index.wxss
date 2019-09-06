@@ -41,14 +41,6 @@
   background-color: balck;
 }
 
-.itemTemplate{
-  flex-direction: column;
-  color: white;
-  word-break: keep-all;
-  word-wrap: break-word;
-}
-
-
 Page{
   background-color: black;
 }
@@ -56,4 +48,39 @@ Page{
 .questiontext{
   word-break: keep-all;
   word-wrap: break-word;
+}
+
+/* itemTemplate */
+.itemTemplate {
+  width: 95vw;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+}
+
+.item{
+  font-size: 70rpx;
+  font-weight: bold;
+  margin: 20rpx auto 0;
+}
+
+
+.carBottom {
+  display: flex;
+  flex-direction: row;
+}
+ 
+ 
+.item-left {
+   flex: 1; 
+   align-items:center;
+   font-size: 60rpx;
+   font-weight: bold;
+}
+ 
+.item-right {
+  position: relative;
+  align-items:center;
+  font-size: 60rpx;
+  font-weight: bold;
 }

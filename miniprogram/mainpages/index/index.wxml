@@ -10,11 +10,18 @@
   <!-- Car Page -->
   <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
       <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
-          <Text>{{item.date}} </Text>
-          <Text>{{item.from}} -> </Text>
-          <Text>{{item.to}} </Text>
-          <Text>{{item.carType}}</Text>
-          <Text>{{item.count}}</Text>
+          <view class='card  b-shadow'>
+            <view>
+              <text class='item'>{{item.date}}</text>
+            </view>
+            <view>
+              <text class="item">{{item.from}} - {{item.to}}</text>
+            </view>
+            <view class="carBottom">
+              <text class='item-left'>{{item.carType}}</text>
+              <text class="item-right">{{item.count}}</text>
+            </view>
+        </view>
       </navigator>
   </view>
   <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text>
@@ -22,9 +29,17 @@
   <!-- Goods Page -->
   <view class="itemTemplate" wx:for="{{exclist}}" wx:if="{{page == 2}}">
     <navigator url="../detailsPage/detailsPage?goods={{item.goods}}&excType={{item.excType}}&type={{2}}">
-        <Text>{{item.goods}} : </Text>
-        <Text>{{item.excType}}</Text>
-        <Text>{{item.count}}</Text>
+      <view class='card  b-shadow'>
+            <view>
+              <text class='item'>{{item.goods}}</text>
+            </view>
+            <view>
+              <text class='item'>{{item.excType}}</text>
+            </view>
+            <view>
+              <text class='item'>{{item.count}}</text>
+            </view>
+      </view>
     </navigator>
   </view>
   <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text>
