@@ -10,7 +10,7 @@
   <!-- Car Page -->
   <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
       <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
-          <view class='card  b-shadow'>
+
             <view class="row">
               <image class="icon-car" src="../../images/calendar.png"/>
               <text class='item-car'>{{item.date}}</text>
@@ -31,7 +31,6 @@
                     <text class="usr-count">{{item.count}}</text>
                 </view>
             </view>
-        </view>
       </navigator>
   </view>
   <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text>

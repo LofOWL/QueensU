@@ -8,12 +8,17 @@
 
       <view class="row">
         <image class="icon" src="../../images/mess.png"/>
-        <text class="item-text">{{item.details}}</text>
+        <view class="con-page-section">
+          <text class="item-car-text">{{item.details}}</text>
+        </view>
+        
       </view>
 
       <view class="row">
         <image class="icon" src="../../images/con.png"/>
-        <Text class="item-text">{{item.contact}}</Text>
+        <view class="con-page-section">
+          <Text class="item-car-text">{{item.contact}}</Text>
+        </view>
       </view>
       <view class="divLine"></view>
   </scroll-view>

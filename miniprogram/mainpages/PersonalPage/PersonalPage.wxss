@@ -1,1 +1,53 @@
-/* mainpages/PersonalPage/PersonalPage.wxss */
+.row{
+  flex-direction: row;
+}
+
+.buttom{
+  width: 200rpx;
+  height: 100rpx;
+  margin-bottom: 40rpx;
+  margin-top: 20rpx;
+}
+
+
+/* itemTemplate */
+.itemTemplate {
+  width: 95vw;
+  height: fit-content;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+
+.icon-car{
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.item-car{
+  font-size: 50rpx;
+  font-weight: bold;
+  margin: 20rpx auto 0;
+}
+
+
+.con-page-section{
+  background-color: gainsboro;
+  height: fit-content;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+}
+
+.item-car-text{
+  font-size: 50rpx;
+  font-weight: bold;
+  word-break: keep-all;
+  word-wrap: break-word;
+}

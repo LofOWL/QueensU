@@ -36,3 +36,20 @@
 Page{
   background: white;
 }
+
+.con-page-section{
+  background-color: gainsboro;
+  height: fit-content;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+}
+
+.item-car-text{
+  font-size: 50rpx;
+  font-weight: bold;
+  word-break: keep-all;
+  word-wrap: break-word;
+}

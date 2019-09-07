@@ -23,6 +23,7 @@ Page{
 
 .page-section{
   background-color: gainsboro;
+  height: fit-content;
   margin-left: 20rpx;
   margin-right: 20rpx;
   border-radius: 20rpx;
@@ -32,6 +33,7 @@ Page{
 
 .con-page-section{
   background-color: gainsboro;
+  height: 90rpx;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
   margin-left: 20rpx;
@@ -40,7 +42,8 @@ Page{
 }
 
 .input{
-  margin: 20rpx 20rpx 20rpx 20rpx;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
 }
 
 .text{

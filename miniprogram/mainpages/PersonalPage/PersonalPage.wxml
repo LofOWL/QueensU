@@ -1,21 +1,40 @@
 <view class="container">
 
-  <Text> PersonalPage </Text>
-  <Text> {{openid}}</Text>
-
-  <text> ******** </text>
-
   <view wx:for="{{personalcarList}}">
-    <view data-name="CarData" data-id="{{item._id}}" data-date="{{item.date}}" data-from="{{item.from}}" data-to="{{item.to}}" data-carType="{{item.carType}}" bindtap="onRemove">
-        <text>{{item._id}}</text>
-        <text>{{item.createDate}}</text>
-        <text>{{item.from}}</text>
-        <text>{{item.to}}</text>
-        <text>{{item.details}}</text>
+    <view class="itemTemplate">
+
+        <view class="row">
+          <image class="icon-car" src="../../images/calendar.png"/>
+          <text class='item-car'>{{item.createDate}}</text>
+        </view>
+
+        <view class="row">
+              <image class="icon-car" src="../../images/location.png"/>
+              <text class="item-car">{{item.from}} - {{item.to}}</text>
+        </view>
+
+        <view class="row">
+              <image class="icon-car" src="../../images/mess.png"/>
+              <view class="con-page-section">
+                <text class="item-car-text">{{item.details}}</text>
+              </view>
+              
+        </view>
+
+         <view class="row">
+              <image class="icon-car" src="../../images/con.png"/>
+              <view class="con-page-section">
+                <text class="item-car-text">{{item.contact}}</text>
+              </view>
+              
+        </view>
+
+        
+        <button class="buttom" data-name="CarData" data-id="{{item._id}}" data-date="{{item.date}}" data-from="{{item.from}}" data-to="{{item.to}}" data-carType="{{item.carType}}" bindtap="onRemove" type="primary" plain="false">删除</button>
+
     </view>
   </view>
 
-  <text> ********** </text>
 
   <view wx:for="{{personalexcList}}">
       <view data-name="GoodsData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove">
