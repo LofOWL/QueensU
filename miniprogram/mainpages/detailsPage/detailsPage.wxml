@@ -1,10 +1,21 @@
 <view class="container">
 
   <scroll-view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{type == 1}}">
-      <text class="text">{{item.createDate}}</text>
-      <text class="text">\n{{item.details}}</text>
-      <text class="text">\n{{item.contact}}</text>
-      <text>\n*******</text>
+      <view class="row">
+        <image class="icon" src="../../images/calendar.png"/>
+        <text class="item" >{{item.createDate}}</text>
+      </view>
+
+      <view class="row">
+        <image class="icon" src="../../images/mess.png"/>
+        <text class="item-text">{{item.details}}</text>
+      </view>
+
+      <view class="row">
+        <image class="icon" src="../../images/con.png"/>
+        <Text class="item-text">{{item.contact}}</Text>
+      </view>
+      <view class="divLine"></view>
   </scroll-view>
 
   <scroll-view class="itemTemplate" wx:for="{{exclist}}" wx:if="{{type == 2}}">

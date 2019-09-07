@@ -1,41 +1,34 @@
 <view>
 
-    <view class="container">
-        <button type="primary" plain="flase" bindtap="carData" wx:if="{{type == 0}}">出行</button>
-        <button type="primary" plain="false" bindtap="excData" wx:if="{{type == 0}}">交换</button>
-        <button type="primary" plain="false" bindtap="queData" wx:if="{{type == 0}}">问题</button>
-    </view>
+    <view wx:if="{{type == 1 }}">
 
-
-    <view wx:if="{{type == 1 && carPage == 1}}">
-
-        <picker mode="date" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
-          <Text>选择日期: </Text>
-          <view class="pikcer">
-              {{date}}
-          </view>
+        <picker class="row" mode="date" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
+          <image class="icon" src="../../images/calendar.png"/>
+          <Text class="text">{{date}}</Text>
         </picker>
 
-        <picker mode="multiSelector" bindchange="carselectLocation" bindcolumnchange="To do later" value="{{mulloc}}" range="{{mulloc}}">
-          <Text>{{cfrom}} - {{cto}}</Text>
+        <picker class="row" mode="multiSelector" bindchange="carselectLocation" bindcolumnchange="To do later" value="{{mulloc}}" range="{{mulloc}}">
+          <image class="icon" src="../../images/location.png"/>
+          <Text class="text">{{cfrom}} - {{cto}}</Text>
         </picker>
 
         <radio-group name="radio-group" bindchange="carselectType">
-          <label><radio value="找车" checked="true"/>找车</label>
-          <label><radio value="找人"/>找人</label>
+          <image class="icon" src="../../images/project.png"/>
+          <label><radio class="text" value="找车" checked="true"/>找车</label>
+          <label><radio class="text" value="找人"/>找人</label>
         </radio-group>
 
-        <input class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}"/>
-
-        <input class="input" bindinput="inputContact" placeholder="联系方式" value="{{contact}}"/>
-    
-
-    </view>
-
-    <view class="container" wx:if="{{type == 1}}">
-        <Text > 出现 page {{carPage}}</Text>
-        <button type="primary" plain="false" bindtap="carNext">Next</button>
-        <button type="primary" plain="false" bindtap="carSubmit">Submit</button>
+          <view class="page-section">
+            <view class="textarea-wrp">
+              <textarea class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}" auto-focus="true" style="height: 7em" />
+            </view>
+          </view>
+        
+        <view class="con-page-section">
+          <input class="input" bindinput="inputContact" placeholder="联系方式" value="{{contact}}"/>
+        </view>
+        
+        <button class="submit" type="primary" plain="false" bindtap="carSubmit">Submit</button>
     </view>
 
 

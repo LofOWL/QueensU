@@ -1,9 +1,38 @@
-.text{
+.row{
+  flex-direction: row;
+}
+
+.column{
+  flex-direction: column;
+}
+
+.icon{
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.item{
+  font-size: 50rpx;
+  font-weight: bold;
+  margin: 20rpx auto 0;
+}
+
+.item-text{
   word-break: keep-all;
   word-wrap: break-word;
-  color: white;
+  font-size: 40rpx;
+  color: black;
+}
+
+.divLine{
+ background: gainsboro;
+ width: 100%;
+ height: 5rpx;
 }
 
 Page{
-  background: black;
+  background: white;
 }

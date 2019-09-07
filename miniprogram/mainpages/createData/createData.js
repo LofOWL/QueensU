@@ -218,6 +218,7 @@ Page({
       var month = date.getMonth() + 1
       var day = date.getDate()
       this.setData({
+        date: [year,month,day].map(formatNumber).join('-'),
         createDate: [year,month,day].map(formatNumber).join('-'),
         endDate: [endyear,month,day].map(formatNumber).join('-'),
       })

@@ -1,51 +1,53 @@
-
-
-.carpool{
-  background-color: white;
-  color: blue;
-  border-color: blue;
-  
-  width: 50%;
-
-  border-radius: 50rpx;
-
-  display: flex;
-  justify-content: center;
-  align-content: center;
+.row{
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
 
-
-.goodsexchange{
-  
-  background-color: white;
-  color: red;
-  border: 2;
-  border-color: red;
-
-  width: 50%;
-
-  border-radius: 50rpx;
-
-  display: flex;
-  justify-content: center;
-  align-content: center;
+.radio-group{
+  margin: 20rpx 20rpx 20rpx 20rpx;
 }
 
-.question{
-  background-color: white;
-  color: yellow;
-  border: 2;
-  border-color: yellow;
-
-  width: 50%;
-
-  border-radius: 50rpx;
-
-  display: flex;
-  justify-content: center;
-  align-content: center;
+.icon{
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
 }
+
 
 Page{
   background-color: white;
+}
+
+.page-section{
+  background-color: gainsboro;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.con-page-section{
+  background-color: gainsboro;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+}
+
+.input{
+  margin: 20rpx 20rpx 20rpx 20rpx;
+}
+
+.text{
+  font-weight: bold;
+}
+
+.submit{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
 }

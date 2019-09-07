@@ -6,12 +6,12 @@
   height: 35px;
   bottom: 0vh;
   right: 10px;
-  background-color: red;
+  background-color: transparent;
 }
 
 .toRight{
   position: fixed;
-  background-color: blue;
+  background-color: transparent;
   width: 35px;
   height: 35px;
   bottom: 0vh;
@@ -20,29 +20,45 @@
 
 .toPrePage{
   position:fixed;
-  background-color: yellow;
-  width: 35px;
-  height: 35px;
-  bottom:0vh;
-  right: 115px;
-}
-
-.toNextPage{
-  position:fixed;
-  background-color: green;
+  background-color: transparent;
   width: 35px;
   height: 35px;
   bottom:0vh;
   right: 165px;
 }
 
+.toNextPage{
+  position:fixed;
+  display: inline-block;
+  background-color: transparent;
+  width: 35px;
+  height: 35px;
+  bottom:0vh;
+  right: 115px;
+}
+
+.icon-car{
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.usr-count{
+  margin-top: 10rpx;
+  margin-right: 20rpx;
+  font-size: 45rpx;
+  font-weight: bold;
+}
+
 .buttomGap{
-  height: 36px;
-  background-color: balck;
+  height: 40px;
+  backgrouncolor: balck;
 }
 
 Page{
-  background-color: black;
+  background-color: white;
 }
 
 .questiontext{
@@ -56,10 +72,12 @@ Page{
   background-color: #fff;
   margin: 20rpx auto 0;
   border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
 }
 
-.item{
-  font-size: 70rpx;
+
+.item-car{
+  font-size: 50rpx;
   font-weight: bold;
   margin: 20rpx auto 0;
 }
@@ -74,13 +92,17 @@ Page{
 .item-left {
    flex: 1; 
    align-items:center;
-   font-size: 60rpx;
+   font-size: 45rpx;
    font-weight: bold;
+   flex-direction: row;
 }
  
 .item-right {
   position: relative;
-  align-items:center;
-  font-size: 60rpx;
-  font-weight: bold;
+  align-items: center;
+  flex-direction: row;
+}
+
+.row{
+  flex-direction:row;
 }
