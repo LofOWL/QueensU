@@ -43,7 +43,10 @@ function getCarInfo(athis){
 
 function getExcInfo(athis){
   const db = wx.cloud.database()
-  db.collection('GoodsDataCollect').orderBy("count", "desc").get({
+  const _ = db.command
+  db.collection('GoodsDataCollect').where({
+    count: _.gt(0)
+  }).orderBy("count", "desc").get({
     success: res => {
       athis.setData({
         finish: true,
