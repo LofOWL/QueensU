@@ -65,7 +65,6 @@
   <!-- Que Page -->
   <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" lower-threshold="200">
       <text class="questiontext">{{item.question}}</text>
-      <text>\nend.</text>
   </scroll-view>
 
   <!-- <text class="itemTemplate" wx:if="{{page == 3 && quelist.length == 20}}">max quelist</text> -->

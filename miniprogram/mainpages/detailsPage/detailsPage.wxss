@@ -50,6 +50,8 @@ Page{
 .item-car-text{
   font-size: 50rpx;
   font-weight: bold;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
   word-break: keep-all;
   word-wrap: break-word;
 }

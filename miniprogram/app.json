@@ -1,8 +1,7 @@
 {
   "pages": [
     "mainpages/index/index",
-    "mainpages/createData/createData",
-    "pages/openapi/openapi"
+    "mainpages/createData/createData"
   ],
   "window": {
     "backgroundColor": "#9999999",

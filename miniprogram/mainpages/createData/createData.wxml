@@ -40,16 +40,16 @@
       
       
       <view class="good-row">
-          <view class="page-section">
+          <view class="con-page-section">
             <input class="item-left" bindinput="inputGoods" placeholder="物品" value="{{goods}}"/>
           </view>
 
-          <view class="page-section">
+          <view class="con-page-section">
             <input class="item-right" bindinput="inputPrices" type="number" placeholder="价格" value="{{prices}}"/>
           </view> 
         </view>
 
-      <view class="page-section">
+      <view class="con-page-section">
         <input class="input" bindinput="inputGoodsDetails" placeholder="介绍" value="{{goodsDetails}}"/>
       </view>
       
@@ -68,14 +68,16 @@
 
 
       <view class="page-section">
-        <input class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}"/>
+            <view class="textarea-wrp">
+              <textarea class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}" auto-focus="true" style="height: 7em" />
+            </view>
       </view>
       
-      <view class="page-section">
+      <view class="con-page-section">
         <input class="input" bindinput="inputContact" placeholder="联系方式" value="{{contact}}"/>
       </view>
      
-      <button type="primary" plain="false" bindtap="excSubmit">Submit</button>
+      <button class="submit" type="primary" plain="false" bindtap="excSubmit">Submit</button>
 
     </view>
 
@@ -86,7 +88,7 @@
               <textarea class="input" bindinput="inputQuestion" placeholder="信息备注" value="{{question}}" auto-focus="true" style="height: 6em" />
             </view>
           </view>
-       <button type="primary" plain="false" bindtap="queSubmit">Submit</button>
+       <button class="submit" type="primary" plain="false" bindtap="queSubmit">Submit</button>
     </view>
 
 </view>

@@ -54,7 +54,7 @@
 
 .buttomGap{
   height: 40px;
-  backgrouncolor: balck;
+  background-color: balck;
 }
 
 Page{

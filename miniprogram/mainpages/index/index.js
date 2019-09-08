@@ -1,9 +1,28 @@
 // mainpages/index/index.js
 const app = getApp()
 
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+function getToday(){
+  var date = new Date()
+  var year = date.getFullYear()
+  var endyear = date.getFullYear() + 3
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  return [year, month, day].map(formatNumber).join('-')
+}
+
 function getCarInfo(athis){
   const db = wx.cloud.database()
-  db.collection('CarDataCollect').orderBy("count", "desc").orderBy("date", "acs").get({
+  const _ = db.command
+  var today = getToday()
+  db.collection('CarDataCollect').where({
+    count: _.gt(0),
+    date: _.gte(today)
+  }).orderBy("count", "desc").orderBy("date", "acs").get({
     success: res => {
       athis.setData({
         finish: true,
@@ -151,12 +170,12 @@ Page({
       success: res => {
         console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
-        
       },
       fail: err => {
         console.error('[云函数] [login] 调用失败', err)
       }
     })
+    
   },
   onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
