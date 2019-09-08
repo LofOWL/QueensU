@@ -191,6 +191,19 @@ function queDataToDatabase(data){
   })
 }
 
+function getConInfo(athis){
+  const db = wx.cloud.database()
+  db.collection("UserContact").where({
+    _openid: getApp().globalData.openid
+  }).get({
+    success: res =>{
+      athis.setData({
+        contact: res.data[0].con
+      })
+    }
+  })
+}
+
 Page({
   data:{
     type: 0,
@@ -221,6 +234,7 @@ Page({
     createDate: "",
   },
   onLoad: function(options){
+      getConInfo(this)
       this.setData({
         type : options.type
       })
@@ -234,6 +248,7 @@ Page({
         createDate: [year,month,day].map(formatNumber).join('-'),
         endDate: [endyear,month,day].map(formatNumber).join('-'),
       })
+
   },
   // car function
   carselectDate: function(e){

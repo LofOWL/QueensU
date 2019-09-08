@@ -1,5 +1,28 @@
 <view class="container">
 
+  <!-- user information -->
+
+  <view class="itemTemplate">
+    <view class="row" data-statu="start" bindtap="editUserInformation">
+      <image class="icon-car" src="../../images/con.png"/>
+      <text class="item-car">{{userCon}}</text>
+    </view>
+  </view>
+
+  <!-- change user information -->
+
+  <view class="drawer_screen" bindtap="editUserInformation" data-statu="close" wx:if="{{showModalStatus}}"></view>
+
+  <view class="drawer_box" wx:if="{{showModalStatus}}">
+       <view class="page-section">
+              <input class="input" bindinput="changeCon" placeholder="信息备注" value="{{userCon}}" auto-focus="true" style="height: 2em" />
+          </view>
+       <button class="submitButton" type="primary" plain="false" data-statu="submit" bindtap="editUserInformation">Submit</button>
+  </view>
+
+
+  <!-- car information car template -->
+
   <view wx:for="{{personalcarList}}">
     <view class="itemTemplate">
 

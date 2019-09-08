@@ -58,6 +58,17 @@ function getAll(athis){
       wx.stopPullDownRefresh()
     }
   })
+
+  db.collection("UserContact").where({
+    _openid: app.globalData.openid
+  }).get({
+    success: res => {
+      athis.setData({
+        userConid: res.data[0]._id,
+        userCon: res.data[0].con
+      })
+    }
+  })
 }
 
 function carDataCollection(date,from,to,carType) {
@@ -143,6 +154,39 @@ function goodsDataCollection(goods,excType) {
   })
 }
 
+function userConDatabase(athis){
+  const db = wx.cloud.database()
+  db.collection("UserContact").where({
+    _openid: app.globalData.openid
+  }).get({
+    success: res =>{
+      if (res.data.length == 0){
+        db.collection("UserContact").add({
+          data: {
+            con: athis.data.userCon
+          },
+          success: res => {
+            wx.showToast({
+              title: '创建成功',
+            })
+          }
+        })
+      }else{
+        db.collection("UserContact").doc(athis.data.userConid).update({
+          data: {
+            con: athis.data.userCon
+          },
+          success: res => {
+            wx.showToast({
+              title: '更新成功',
+            })
+          }
+        })
+      }
+    }
+  })
+}
+
 
 Page({
 
@@ -150,6 +194,9 @@ Page({
     personalcarList: [],
     personalexcList: [],
     peronsalqueList: [],
+    showModalStatus: false,
+    userCon: "",
+    userConid: "",
     openid: ""
   },
   onPullDownRefresh: function(){
@@ -162,7 +209,29 @@ Page({
     })
     getAll(this)
   },
-
+  editUserInformation: function(e){
+    var check = e.currentTarget.dataset.statu;
+    console.log(check)
+    if (check == "start"){
+      this.setData({
+        showModalStatus: true
+      })
+    }else if(check == "close"){
+      this.setData({
+        showModalStatus: false
+      })
+    }else{
+      userConDatabase(this)
+      this.setData({
+        showModalStatus: false
+      })
+    }
+  },
+  changeCon: function(e){
+      this.setData({
+        userCon: e.detail.value
+      })
+  },
   onRemove: function(e){
     console.log(e.currentTarget.dataset.id)
     console.log(e.currentTarget.dataset.name)
