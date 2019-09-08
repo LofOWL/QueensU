@@ -2,6 +2,7 @@
   flex-direction: row;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
+  justify-content: center;
 }
 
 .radio-group{
@@ -20,6 +21,7 @@
 Page{
   background-color: white;
 }
+
 
 .page-section{
   background-color: gainsboro;
@@ -54,3 +56,47 @@ Page{
   margin-left: 20rpx;
   margin-right: 20rpx;
 }
+
+
+/* goods page */
+
+.center{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.good-icon{
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.good-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.item-left {
+   flex: 1; 
+   align-items:center;
+   flex-direction: row;
+   margin-left: 20rpx;
+   padding-top: 20rpx;
+}
+ 
+.item-right {
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+}
+
+.good-padding{
+  padding-left: 20rpx;
+}
+
+

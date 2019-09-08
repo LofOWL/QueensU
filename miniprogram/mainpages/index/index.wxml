@@ -1,9 +1,9 @@
 <!--index.wxml-->
 <view class="container">
 
-  <loading hidden="{{finish}}">loading...</loading>
+  <loading hidden="{{finish}}">加载数据</loading>
 
-  <loading hidden="{{personal}}">P loading...</loading>
+  <loading hidden="{{personal}}">进入个人主页</loading>
 
   <button class="userinfo-avatar" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}})"/>
   
@@ -19,8 +19,8 @@
               <image class="icon-car" src="../../images/location.png"/>
               <text class="item-car">{{item.from}} - {{item.to}}</text>
             </view>
-            <view class="carBottom">
 
+            <view class="carBottom">
                 <view class='item-left'>
                   <image class="icon-car" src="../../images/project.png"/>
                   <text>{{item.carType}}</text>
@@ -31,35 +31,44 @@
                     <text class="usr-count">{{item.count}}</text>
                 </view>
             </view>
+
       </navigator>
   </view>
-  <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text>
+  <!-- <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text> -->
 
   <!-- Goods Page -->
   <view wx:for="{{exclist}}" wx:if="{{page == 2}}">
     <navigator url="../detailsPage/detailsPage?goods={{item.goods}}&excType={{item.excType}}&type={{2}}">
       <view class='itemTemplate'>
-            <view>
-              <text class='item'>{{item.goods}}</text>
+
+            <view class="row">
+              <image class="icon-car" src="../../images/goods.png"/>
+              <text class='item-car'>{{item.goods}}</text>
             </view>
-            <view>
-              <text class='item'>{{item.excType}}</text>
-            </view>
-            <view>
-              <text class='item'>{{item.count}}</text>
+
+            <view class="carBottom">
+                <view class='item-left'>
+                  <image class="icon-car" src="../../images/project.png"/>
+                  <text>{{item.excType}}</text>
+                </view>
+
+                <view class="item-right">
+                    <image class="icon-car" src="../../images/user.png"/>
+                    <text class="usr-count">{{item.count}}</text>
+                </view>
             </view>
       </view>
     </navigator>
   </view>
-  <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text>
+  <!-- <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text> -->
   
   <!-- Que Page -->
-  <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" bindtap="onRemove" lower-threshold="200">
+  <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" lower-threshold="200">
       <text class="questiontext">{{item.question}}</text>
-      <text>\n*******</text>
+      <text>\nend.</text>
   </scroll-view>
 
-  <text class="itemTemplate" wx:if="{{page == 3 && quelist.length == 20}}">max quelist</text>
+  <!-- <text class="itemTemplate" wx:if="{{page == 3 && quelist.length == 20}}">max quelist</text> -->
 
   <!-- Gap -->
   <view class="buttomGap">

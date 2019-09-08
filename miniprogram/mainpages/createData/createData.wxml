@@ -32,42 +32,61 @@
     </view>
 
 
-    <view wx:if="{{type == 2 && excPage == 1}}"> 
-      <text>{{itemListText}}</text>
-      <Text>物品:</Text>
-      <input class="input" bindinput="inputGoods" placeholder="输入..." value="{{goods}}"/>
-      <button bindtap="excaddItem">add Item</button>
-      <button bindtap="excremoveItem">remove Item</button>
+      <view wx:if="{{type == 2}}">
+      
+      <view class="good-padding">
+        <text>{{itemListText}}</text>
+      </view>
+      
+      
+      <view class="good-row">
+          <view class="page-section">
+            <input class="item-left" bindinput="inputGoods" placeholder="物品" value="{{goods}}"/>
+          </view>
 
-      <radio-group name="radio-group" bindchange="excselectType">
-        <label><radio value="出售" checked="true"/>出售</label>
-        <label><radio value="寻找"/>寻找</label>
-      </radio-group>
+          <view class="page-section">
+            <input class="item-right" bindinput="inputPrices" type="number" placeholder="价格" value="{{prices}}"/>
+          </view> 
+        </view>
 
-      <text>{{excType}}</text>
+      <view class="page-section">
+        <input class="input" bindinput="inputGoodsDetails" placeholder="介绍" value="{{goodsDetails}}"/>
+      </view>
+      
+      <view class="good-padding">
+        <radio-group name="radio-group" bindchange="excselectType">
+            <label><radio value="出售" checked="true"/>出售</label>
+            <label><radio value="寻找"/>寻找</label>
+        </radio-group>
+      </view>
+      
 
-      <input class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}"/>
+      <view class="center">
+        <image class="good-icon" bindtap="excaddItem" src="../../images/add_red.png"/>
+        <image class="good-icon" bindtap="excremoveItem" src="../../images/remove_blue.png"/>
+      </view>
 
-      <input class="input" bindinput="inputContact" placeholder="联系方式" value="{{contact}}"/>
-    
+
+      <view class="page-section">
+        <input class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}"/>
+      </view>
+      
+      <view class="page-section">
+        <input class="input" bindinput="inputContact" placeholder="联系方式" value="{{contact}}"/>
+      </view>
+     
+      <button type="primary" plain="false" bindtap="excSubmit">Submit</button>
+
     </view>
 
-    <view class="container" wx:if="{{type == 2}}">
-        <Text > 交换 page {{excPage}}</Text>
-        <button type="primary" plain="false" bindtap="excNext">Next</button>
-        <button type="primary" plain="false" bindtap="excSubmit">Submit</button>
-    </view>
 
-
-
-    <view wx:if="{{type == 3 && quePage == 1}}"> 
-      <input class="input" bindinput="inputQuestion" value="{{question}}"/>
-    </view>
-
-    <view class="container" wx:if="{{type == 3}}">
-        <Text > 问题 page {{quePage}}</Text>
-        <button type="primary" plain="false" bindtap="queNext">Next</button>
-        <button type="primary" plain="false" bindtap="queSubmit">Submit</button>
+    <view wx:if="{{type == 3 }}"> 
+          <view class="page-section">
+            <view class="textarea-wrp">
+              <textarea class="input" bindinput="inputQuestion" placeholder="信息备注" value="{{question}}" auto-focus="true" style="height: 6em" />
+            </view>
+          </view>
+       <button type="primary" plain="false" bindtap="queSubmit">Submit</button>
     </view>
 
 </view>

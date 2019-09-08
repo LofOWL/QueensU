@@ -13,7 +13,7 @@
               <text class="item-car">{{item.from}} - {{item.to}}</text>
         </view>
 
-        <view class="row">
+        <!-- <view class="row">
               <image class="icon-car" src="../../images/mess.png"/>
               <view class="con-page-section">
                 <text class="item-car-text">{{item.details}}</text>
@@ -27,7 +27,7 @@
                 <text class="item-car-text">{{item.contact}}</text>
               </view>
               
-        </view>
+        </view> -->
 
         
         <button class="buttom" data-name="CarData" data-id="{{item._id}}" data-date="{{item.date}}" data-from="{{item.from}}" data-to="{{item.to}}" data-carType="{{item.carType}}" bindtap="onRemove" type="primary" plain="false">删除</button>
@@ -37,13 +37,45 @@
 
 
   <view wx:for="{{personalexcList}}">
-      <view data-name="GoodsData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove">
-        <text>{{item._id}}</text>
-        <text>{{item.createDate}}</text>
-        <text>{{item.goods}}</text>
-        <text>{{item.excType}}</text>
-      </view>
+        <view class="itemTemplate">
 
+              <view class="row">
+                <image class="icon-car" src="../../images/calendar.png"/>
+                <text class='item-car'>{{item.createDate}}</text>
+              </view>
+
+              <view class="row">
+                <image class="icon-car" src="../../images/goods.png"/>
+                <text class='item-car'>{{item.goods}}</text>
+               </view>
+
+               <view class="row">
+                      <image class="icon-car" src="../../images/mess.png"/>
+                      <view class="con-page-section">
+                        <text class="item-car-text">{{item.gooddetails}}</text>
+                      </view>
+                      
+                </view>
+
+
+              <button class="buttom" data-name="GoodsData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" type="primary" plain="false">删除</button>
+
+        </view>
+  </view>
+
+  <view wx:for="{{peronsalqueList}}">
+    <view class="itemTemplate">
+               <view class="row">
+                      <image class="icon-car" src="../../images/mess.png"/>
+                      <view class="con-page-section">
+                        <text class="item-car-text">{{item.question}}</text>
+                      </view>
+                      
+                </view>
+
+
+              <button class="buttom" data-name="QueData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" type="primary" plain="false">删除</button>
+    </view>
   </view>
 
 

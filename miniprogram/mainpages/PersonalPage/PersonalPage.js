@@ -37,6 +37,27 @@ function getAll(athis){
       wx.stopPullDownRefresh()
     }
   })
+
+  db.collection('QueData').where({
+    _openid: app.globalData.openid
+  }).get({
+    success: res => {
+    
+      athis.setData({
+        peronsalqueList: res.data
+      })
+      console.log("get into QueData")
+      console.log(res.data)
+      wx.stopPullDownRefresh()
+    },
+    fail: err => {
+      wx.showToast({
+        icon: 'none',
+        title: '查询记录失败'
+      })
+      wx.stopPullDownRefresh()
+    }
+  })
 }
 
 function carDataCollection(date,from,to,carType) {
@@ -128,6 +149,7 @@ Page({
   data: {
     personalcarList: [],
     personalexcList: [],
+    peronsalqueList: [],
     openid: ""
   },
   onPullDownRefresh: function(){

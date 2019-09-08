@@ -90,10 +90,12 @@ function carDataCollection(athis){
 
 function goodsDataCollection(athis, goods){
   var isExist = true;
+
+  var alist = goods.split(" ")
   const db = wx.cloud.database()
   db.collection('GoodsDataCollect').where({
-    goods: goods,
-    excType: athis.data.excType,
+    goods: alist[0],
+    excType: alist[3],
   }).get({
     success: res => {
       isExist = res.data.length != 0;
@@ -108,8 +110,8 @@ function goodsDataCollection(athis, goods){
         wx.cloud.callFunction({
           name: 'GoodsDataCollect',
           data: {
-            goods: goods,
-            excType: athis.data.excType,
+            goods: alist[0],
+            excType: alist[3],
             count: res.data[0].count + 1
           },
           success: res => {
@@ -125,8 +127,8 @@ function goodsDataCollection(athis, goods){
       } else {
         db.collection('GoodsDataCollect').add({
           data: {
-            goods: goods,
-            excType: athis.data.excType,
+            goods: alist[0],
+            excType: alist[3],
             count: 1
           }
         })
@@ -136,11 +138,19 @@ function goodsDataCollection(athis, goods){
 }
 
 function excDataToDatabase(data, goods){
+  var alist = goods.split(" ")
+  console.log(alist)
+  console.log(alist[0])
+  console.log(alist[1])
+  console.log(alist[2])
+  console.log(alist[3])
   const db = wx.cloud.database()
   db.collection('GoodsData').add({
     data: {
-      goods: goods,
-      excType: data.excType,
+      goods: alist[0],
+      prices: alist[1],
+      gooddetails: alist[2],
+      excType: alist[3],
       details: data.details,
       contact: data.contact,
       createDate: data.createDate
@@ -197,6 +207,8 @@ Page({
     // exc data
     excPage: 1,
     goods: "",
+    prices: "",
+    goodsDetails: "",
     itemListText: "",
     itemList: [],
     excType: "出售",
@@ -254,10 +266,18 @@ Page({
   // exc function
   excaddItem: function(){
     if(this.data.goods.length != 0){
-      this.data.itemList.push(this.data.goods)
+      console.log(this.data.goods)
+      console.log(this.data.prices)
+      console.log(this.data.goodsDetails)
+      console.log(this.data.excType)
+      var input = this.data.goods + " " + this.data.prices + " " + this.data.goodsDetails + " " + this.data.excType
+      console.log(input)
+      this.data.itemList.push(input)
       this.setData({
         itemListText: this.data.itemList.join("\n") + "\n",
-        goods: ""
+        goods: "",
+        prices: "",
+        goodsDetails: ""
       })
     }
   },
@@ -286,9 +306,22 @@ Page({
     })
   },
   inputGoods: function(e){
+    console.log(e.detail.value)
       this.setData({
         goods: e.detail.value
       })
+  },
+  inputPrices: function(e){
+      console.log(e.detail.value)
+      this.setData({
+        prices: e.detail.value
+      })
+  },
+  inputGoodsDetails: function(e){
+    console.log(e.detail.value)
+     this.setData({
+       goodsDetails: e.detail.value
+     })
   },
   // que function
   inputQuestion: function(e){

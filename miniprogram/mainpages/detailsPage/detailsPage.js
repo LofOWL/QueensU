@@ -51,6 +51,9 @@ Page({
     carlist: [],
     exclist: [],
   },
+  onPullDownRefresh: function(){
+    wx.stopPullDownRefresh()
+  },
   onLoad: function(options){
     this.setData({
       type: options.type
