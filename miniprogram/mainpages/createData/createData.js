@@ -217,6 +217,8 @@ Page({
     date: "",
     mulloc: [loc,loc],
     mulInex: [0,0],
+    cheCheck: false,
+    renCheck: false,
     // exc data
     excPage: 1,
     goods: "",
@@ -234,7 +236,17 @@ Page({
     createDate: "",
   },
   onLoad: function(options){
+      if (options.carType == "找车"){
+        this.setData({
+          cheCheck: true
+        })
+      }else{
+        this.setData({
+          renCheck: true
+        })
+      }
       getConInfo(this)
+
       this.setData({
         type : options.type
       })
@@ -244,7 +256,11 @@ Page({
       var month = date.getMonth() + 1
       var day = date.getDate()
       this.setData({
-        date: [year,month,day].map(formatNumber).join('-'),
+
+        cfrom: options.from,
+        cto: options.to,
+        carType: options.carType,
+        date: options.date,
         createDate: [year,month,day].map(formatNumber).join('-'),
         endDate: [endyear,month,day].map(formatNumber).join('-'),
       })

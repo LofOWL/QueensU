@@ -3,11 +3,48 @@
 
   <loading hidden="{{finish}}">加载数据</loading>
 
+  <loading hidden="{{finding}}">寻找数据</loading>
+
   <loading hidden="{{personal}}">进入个人主页</loading>
 
   <button class="userinfo-avatar" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}})"/>
+
+  <!-- top naviagtor page -->
+    <scroll-view class="scroll_w" scroll-x >
+      <view class="topContainer" wx:for="{{topNavi}}">
+          <view class="top-item" bindtap="topOntap" data-item="{{item}}">
+            <text class="top-text">{{item}}</text>
+          </view>
+      </view>
+    </scroll-view> 
   
   <!-- Car Page -->
+  <view class="itemTemplate" wx:if="{{page == 1}}">
+    <picker class="row" mode="date" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
+          <image class="icon" src="../../images/calendar.png"/>
+          <Text class="text">{{date}}</Text>
+        </picker>
+
+        <picker class="row" mode="multiSelector" bindchange="carselectLocation" bindcolumnchange="To do later" value="{{mulloc}}" range="{{mulloc}}">
+          <image class="icon" src="../../images/location.png"/>
+          <Text class="text">{{cfrom}} - {{cto}}</Text>
+        </picker>
+
+        <radio-group name="radio-group" bindchange="carselectType">
+          <image class="icon" src="../../images/project.png"/>
+          <label><radio class="text" value="找车" checked="true"/>找车</label>
+          <label><radio class="text" value="找人"/>找人</label>
+        </radio-group>
+
+        <view class="carBottom">
+            <button class="item-left-find" type="primary" plain="false" bindtap="onFind">Find</button>
+            <navigator url="../createData/createData?date={{date}}&from={{cfrom}}&to={{cto}}&carType={{carType}}&type={{1}}" hover-class="none">
+              <button class="item-right-add" type="primary" plain="false">Add</button>
+            </navigator>
+            
+        </view>
+  </view>
+
   <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
       <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
 
@@ -37,6 +74,11 @@
   <!-- <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text> -->
 
   <!-- Goods Page -->
+  <view wx:if="{{page == 2}}">
+
+
+  </view>
+
   <view wx:for="{{exclist}}" wx:if="{{page == 2}}">
     <navigator url="../detailsPage/detailsPage?goods={{item.goods}}&excType={{item.excType}}&type={{2}}">
       <view class='itemTemplate'>

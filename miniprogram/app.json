@@ -4,9 +4,9 @@
     "mainpages/createData/createData"
   ],
   "window": {
-    "backgroundColor": "#9999999",
+    "backgroundColor": "#ffffff",
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#9999999",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "QueensU",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true

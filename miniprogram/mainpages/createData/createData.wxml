@@ -14,8 +14,8 @@
 
         <radio-group name="radio-group" bindchange="carselectType">
           <image class="icon" src="../../images/project.png"/>
-          <label><radio class="text" value="找车" checked="true"/>找车</label>
-          <label><radio class="text" value="找人"/>找人</label>
+          <label><radio class="text" value="找车" checked="{{cheCheck}}"/>找车</label>
+          <label><radio class="text" value="找人" checked="{{renCheck}}" />找人</label>
         </radio-group>
 
           <view class="page-section">

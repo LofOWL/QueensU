@@ -1,6 +1,8 @@
 // mainpages/index/index.js
 const app = getApp()
 
+var loc = ["Kingston", "Toronto", "Montreal", "Waterloo", "Ottawa"]
+
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -13,6 +15,34 @@ function getToday(){
   var month = date.getMonth() + 1
   var day = date.getDate()
   return [year, month, day].map(formatNumber).join('-')
+}
+
+function getCarSearch(athis){
+  const db = wx.cloud.database()
+  const _ = db.command
+  db.collection('CarDataCollect').where({
+    carType: athis.data.carType,
+    from: athis.data.cfrom,
+    to: athis.data.cto,
+    date: athis.data.date,
+    count: _.gt(0)
+  }).orderBy("count", "desc").orderBy("date", "acs").get({
+    success: res => {
+      athis.setData({
+        finding: true,
+        carlist: res.data,
+        result: JSON.stringify(res.data, null, 2)
+      })
+      wx.stopPullDownRefresh()
+    },
+    fail: err => {
+      wx.showToast({
+        icon: 'none',
+        title: '查询记录失败'
+      })
+      wx.stopPullDownRefresh()
+    }
+  })
 }
 
 function getCarInfo(athis){
@@ -38,6 +68,21 @@ function getCarInfo(athis){
       })
       wx.stopPullDownRefresh()
     }
+  })
+}
+
+function getCarTime(athis){
+  var date = new Date()
+  var year = date.getFullYear()
+  var endyear = date.getFullYear() + 3
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  console.log("get into getCarTime")
+  console.log([year,month,day].map(formatNumber).join('-'))
+  athis.setData({
+    date: [year, month, day].map(formatNumber).join('-'),
+    createDate: [year, month, day].map(formatNumber).join('-'),
+    endDate: [endyear, month, day].map(formatNumber).join('-'),
   })
 }
 
@@ -127,10 +172,22 @@ function getNextInfor(athis,name,index){
 
 Page({
   data: {
+    topNavi: ["拼车","二手","讨论","??","??"],
     finish: false,
     personal: true,
+    //car data
     carlist: [],
     carIndex: 0,
+    nowDate: "2019-01-01",
+    endDate: "",
+    date: "",
+    mulloc: [loc, loc],
+    mulInex: [0, 0],
+    cfrom: "Kingston",
+    cto: "Kingston",
+    carType: "找车",
+    finding: true,
+    //good data
     exclist: [],
     excIndex: 0,
     quelist: [],
@@ -145,6 +202,7 @@ Page({
   },
   onLoad: function(){
     getCarInfo(this)
+    getCarTime(this)
     getExcInfo(this)
     getQueInfo(this)
 
@@ -179,6 +237,42 @@ Page({
       }
     })
     
+  },
+  // search for the car date
+  carselectDate: function (e) {
+    this.setData({
+      date: e.detail.value
+    })
+  },
+  // search for the car location
+  carselectLocation: function (e) {
+    this.setData({
+      mulIndex: e.detail.value,
+      cfrom: loc[e.detail.value[0]],
+      cto: loc[e.detail.value[1]]
+    })
+  },
+  // car select type
+  carselectType: function (e) {
+    this.setData({
+      carType: e.detail.value
+    })
+  },
+  // find the car
+  onFind: function(){
+    console.log(this.data.date)
+    console.log(this.data.cfrom)
+    console.log(this.data.cto)
+    console.log(this.data.carType)
+    this.setData({
+      finding: false
+    })
+    getCarSearch(this)
+  },
+  onAdd: function(){
+    wx.navigateTo({
+      url: '../createData/createData?date={{this.data.date}}&cfrom={{this.data.cfrom}}&cto={{this.data.cto}}&carType={{this.data.carType}}&type={{1}}',
+    })
   },
   onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
@@ -235,6 +329,28 @@ Page({
         page: 1
       })
     }
+  },
+  //top buttom
+  topOntap: function (e) {
+    console.log(e.currentTarget.dataset.item)
+    switch(e.currentTarget.dataset.item){
+      case "拼车":
+        this.setData({
+          page: 1
+        })
+        break
+      case "二手":
+        this.setData({
+          page: 2
+        })
+        break
+      case "讨论":
+        this.setData({
+          page: 3
+        })
+        break
+    }
+
   },
   onRemove: function(e){
     console.log(e.currentTarget.dataset.id)
