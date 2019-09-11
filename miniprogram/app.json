@@ -1,4 +1,4 @@
-{
+ {
   "pages": [
     "mainpages/index/index",
     "mainpages/createData/createData"
@@ -6,7 +6,7 @@
   "window": {
     "backgroundColor": "#ffffff",
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#faf391",
     "navigationBarTitleText": "QueensU",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
