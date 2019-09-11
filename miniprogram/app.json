@@ -6,7 +6,7 @@
   "window": {
     "backgroundColor": "#ffffff",
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#faf391",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "QueensU",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
