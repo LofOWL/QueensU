@@ -74,6 +74,32 @@ function getCarSearch(athis){
   })
 }
 
+function getQueSearch(athis){
+  console.log("get into que")
+  console.log(athis.data.question)
+  const db = wx.cloud.database()
+  const _ = db.command
+  db.collection('QueData').where({
+    question: _.in([athis.data.question])
+  }).orderBy("count", "desc").orderBy("date", "acs").get({
+    success: res => {
+      athis.setData({
+        finding: true,
+        quelist: res.data,
+        result: JSON.stringify(res.data, null, 2)
+      })
+      wx.stopPullDownRefresh()
+    },
+    fail: err => {
+      wx.showToast({
+        icon: 'none',
+        title: '查询记录失败'
+      })
+      wx.stopPullDownRefresh()
+    }
+  })
+}
+
 function getCarInfo(athis){
   const db = wx.cloud.database()
   const _ = db.command
@@ -158,6 +184,27 @@ function getQueInfo(athis){
   })
 }
 
+function queDataToDatabase(data) {
+  const db = wx.cloud.database()
+  db.collection('QueData').add({
+    data: {
+      question: data.question,
+    },
+    success: res => {
+      wx.showToast({
+        icon: "none",
+        title: '上传成功'
+      })
+    },
+    fail: err => {
+      wx.showToast({
+        icon: 'none',
+        title: '长传失败'
+      })
+    }
+  })
+}
+
 function getNextInfor(athis,name,index){
   const db = wx.cloud.database()
   db.collection(name).skip(index).limit(20).orderBy("date","asc").get({
@@ -201,7 +248,7 @@ function getNextInfor(athis,name,index){
 
 Page({
   data: {
-    topNavi: ["拼车","二手","讨论","??","??"],
+    topNavi: ["拼车","二手","讨论"],
     finish: false,
     personal: true,
     //car data
@@ -219,11 +266,15 @@ Page({
     //good data
     exclist: [],
     excIndex: 0,
-    quelist: [],
-    queIndex: 0,
     goods: "",
     excType: "出售",
+    // que data
+    quelist: [],
+    queIndex: 0,
+    showModalStatus: false,
+    queId: "",
     // others
+    question: "",
     page: 1,
     result: '',
     avatarUrl: "",
@@ -305,6 +356,13 @@ Page({
     })
     console.log(this.data.excType)
   },
+  // que enter 
+  inputQuestion: function (e){
+    console.log(e.detail.value)
+    this.setData({
+      question: e.detail.value
+    })
+  },
   // find the car
   onFind: function(e){
     this.setData({
@@ -314,6 +372,8 @@ Page({
       getCarSearch(this)
     }else if (e.currentTarget.dataset.type == 2){
       getGoodSearch(this)
+    }else if (e.currentTarget.dataset.type == 3){
+      getQueSearch(this)
     }
   },
   onAdd: function(){
@@ -399,21 +459,42 @@ Page({
     }
 
   },
+  editInformation: function(e){
+    console.log(e.currentTarget.dataset.id)
+    switch(e.currentTarget.dataset.type){
+      case "start":
+        this.setData({
+          queId: e.currentTarget.dataset.id,
+          showModalStatus: true
+        })
+        break
+      case "close":
+        this.setData({
+          queId: "",
+          showModalStatus: false
+        })
+        break
+    }
+  },
+  queEdit: function(e){
+    console.log(this.data.queId)
+    console.log(e.currentTarget.dataset.type)
+  },
   onRemove: function(e){
     console.log(e.currentTarget.dataset.id)
-    const db = wx.cloud.database()
-    db.collection("QueData").doc(e.currentTarget.dataset.id).remove({
+    wx.cloud.callFunction({
+      name: 'editQuestion',
+      data: {
+        id: e.currentTarget.dataset.id,
+        question:"change "
+      },
       success: res => {
-        wx.showToast({
-          title: '删除成功',
-        })
+        console.log("cloud result")
+        console.log(res)
       },
       fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '删除失败',
-        })
-        console.error('[数据库] [删除记录] 失败：', err)
+        console.log("err")
+        console.log(err)
       }
     })
   },
@@ -484,5 +565,9 @@ Page({
         }
         break
     }
+  },
+  queSubmit: function () {
+    queDataToDatabase(this.data)
+    wx.navigateBack()
   }
 })

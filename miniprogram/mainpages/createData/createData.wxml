@@ -20,7 +20,7 @@
 
           <view class="page-section">
             <view class="textarea-wrp">
-              <textarea class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}" auto-focus="true" style="height: 7em" />
+              <textarea class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}" style="height: 7em" />
             </view>
           </view>
         
@@ -69,7 +69,7 @@
 
       <view class="page-section">
             <view class="textarea-wrp">
-              <textarea class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}" auto-focus="true" style="height: 7em" />
+              <textarea class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}" style="height: 7em" />
             </view>
       </view>
       
@@ -85,7 +85,7 @@
     <view wx:if="{{type == 3 }}"> 
           <view class="page-section">
             <view class="textarea-wrp">
-              <textarea class="input" bindinput="inputQuestion" placeholder="信息备注" value="{{question}}" auto-focus="true" style="height: 6em" />
+              <textarea class="input" bindinput="inputQuestion" placeholder="信息备注" value="{{question}}" style="height: 6em" />
             </view>
           </view>
        <button class="submit" type="primary" plain="false" bindtap="queSubmit">Submit</button>

@@ -37,11 +37,10 @@
         </radio-group>
 
         <view class="carBottom">
-            <button class="item-left-find" type="primary" plain="false" bindtap="onFind">Find</button>
+            <button class="item-left-find" type="primary" plain="false" bindtap="onFind" data-type="1">Find</button>
             <navigator url="../createData/createData?date={{date}}&from={{cfrom}}&to={{cto}}&carType={{carType}}&type={{1}}" hover-class="none">
               <button class="item-right-add" type="primary" plain="false">Add</button>
             </navigator>
-            
         </view>
   </view>
 
@@ -121,9 +120,37 @@
   <!-- <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text> -->
   
   <!-- Que Page -->
+
+  <view class="itemTemplate" wx:if="{{page == 3}}">
+
+      <view class="que-page-section">
+            <view class="textarea-wrp">
+              <textarea class="que-input" bindinput="inputQuestion" placeholder="信息" value="{{question}}" style="height: 6em" />
+            </view>
+      </view>
+
+      <button class="item-right-add" type="primary" plain="false" bindtap="queSubmit">Add</button>
+     
+  </view>
+
   <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" lower-threshold="200">
-      <text class="questiontext">{{item.question}}</text>
+      <text class="que-text" bindtap="editInformation" data-type="start" data-id="{{item._id}}">{{item.question}}</text>
+
   </scroll-view>
+
+  <view class="drawer_screen" bindtap="editInformation" data-type="close" wx:if="{{showModalStatus}}"></view>
+
+  <view class="answer_box" wx:if="{{showModalStatus}}">
+          <view class="row-container">
+            <button type="primary" plain="false" class="answer-button" data-id="{{item._id}}" data-type="up" bindtap="queEdit">Up</button>
+            <button type="primary" plain="false" class="answer-button" data-id="{{item._id}}" data-type="down" bindtap="queEdit">Down</button>
+          </view>
+  </view>
+
+
+
+
+
 
   <!-- <text class="itemTemplate" wx:if="{{page == 3 && quelist.length == 20}}">max quelist</text> -->
 
@@ -133,7 +160,7 @@
   
   <!-- Lower buttons page -->
 
-  <view >
+  <!-- <view >
       <image bindtap = "toRightPage" class = "toRight" mode="aspectFit" src="../../images/toRight.png"></image>
   </view>
 
@@ -147,7 +174,7 @@
 
   <navigator url='../createData/createData?type={{page}}'>
         <image class="createData" src="/images/addButton.png"></image>
-  </navigator>
+  </navigator> -->
 
 
 </view>
