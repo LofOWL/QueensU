@@ -226,6 +226,7 @@ Page({
     goodsDetails: "",
     itemListText: "",
     itemList: [],
+    itemcount: 0,
     excType: "出售",
     chuCheck: false,
     xunCheck: false,
@@ -323,6 +324,7 @@ Page({
       console.log(input)
       this.data.itemList.push(input)
       this.setData({
+        itemcount: this.data.itemcount + 1,
         itemListText: this.data.itemList.join("\n") + "\n",
         goods: "",
         prices: "",
@@ -334,6 +336,7 @@ Page({
     if (this.data.itemList.length > 0){
       this.data.itemList.pop()
       this.setData({
+        itemcount: this.data.itemcount - 1,
         itemListText: this.data.itemList.join("\n") + "\n",
         goods: ""
       })
@@ -406,12 +409,19 @@ Page({
     wx.navigateBack()
   },
   excSubmit: function() {
-    var unique = [...new Set(this.data.itemList)];
-    for (var i in unique) {
-      excDataToDatabase(this.data, unique[i])
-      goodsDataCollection(this, unique[i])
+    if (this.data.itemList.length != 0){
+      var unique = [...new Set(this.data.itemList)];
+      for (var i in unique) {
+        excDataToDatabase(this.data, unique[i])
+        goodsDataCollection(this, unique[i])
+      }
+      wx.navigateBack()
+    }else{
+      wx.showToast({
+        icon: 'none',
+        title: '物品不可为空'
+      })
     }
-    wx.navigateBack()
   },
   queSubmit: function(){
     queDataToDatabase(this.data)

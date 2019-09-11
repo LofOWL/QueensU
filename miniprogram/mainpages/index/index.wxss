@@ -77,7 +77,6 @@ Page{
 
 
 .item-car{
-  font-size: 50rpx;
   font-weight: bold;
   margin: 20rpx auto 0;
 }
@@ -92,7 +91,6 @@ Page{
 .item-left {
    flex: 1; 
    align-items:center;
-   font-size: 45rpx;
    font-weight: bold;
    flex-direction: row;
 }

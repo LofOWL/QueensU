@@ -60,7 +60,7 @@
             <view class="carBottom">
                 <view class='item-left'>
                   <image class="icon-car" src="../../images/project.png"/>
-                  <text>{{item.carType}}</text>
+                  <text class="item-car">{{item.carType}}</text>
                 </view>
 
                 <view class="item-right">

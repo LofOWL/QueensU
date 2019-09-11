@@ -32,8 +32,8 @@
     </view>
 
 
-      <view wx:if="{{type == 2}}">
-      
+    <view wx:if="{{type == 2}}">
+      <text style="margin-left:20rpx">物品({{itemcount}}):</text>
       <view class="good-padding">
         <text>{{itemListText}}</text>
       </view>
