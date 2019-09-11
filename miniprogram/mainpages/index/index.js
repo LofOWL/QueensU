@@ -17,6 +17,35 @@ function getToday(){
   return [year, month, day].map(formatNumber).join('-')
 }
 
+function getGoodSearch(athis){
+  console.log("get into goods")
+  console.log(athis.data.goods)
+  console.log(athis.data.excType)
+  const db = wx.cloud.database()
+  const _ = db.command
+  db.collection('GoodsDataCollect').where({
+    goods: athis.data.goods,
+    excType: athis.data.excType,
+    count: _.gt(0)
+  }).orderBy("count", "desc").orderBy("date", "acs").get({
+    success: res => {
+      athis.setData({
+        finding: true,
+        exclist: res.data,
+        result: JSON.stringify(res.data, null, 2)
+      })
+      wx.stopPullDownRefresh()
+    },
+    fail: err => {
+      wx.showToast({
+        icon: 'none',
+        title: '查询记录失败'
+      })
+      wx.stopPullDownRefresh()
+    }
+  })
+}
+
 function getCarSearch(athis){
   const db = wx.cloud.database()
   const _ = db.command
@@ -192,6 +221,9 @@ Page({
     excIndex: 0,
     quelist: [],
     queIndex: 0,
+    goods: "",
+    excType: "出售",
+    // others
     page: 1,
     result: '',
     avatarUrl: "",
@@ -258,16 +290,31 @@ Page({
       carType: e.detail.value
     })
   },
+  // enter goods
+  inputGoods: function(e){
+    console.log(e.detail.value)
+    this.setData({
+      goods: e.detail.value
+    })
+  },
+  // good select type
+  excselectType: function (e){
+    console.log(e.detail.value)
+    this.setData({
+      excType: e.detail.value
+    })
+    console.log(this.data.excType)
+  },
   // find the car
-  onFind: function(){
-    console.log(this.data.date)
-    console.log(this.data.cfrom)
-    console.log(this.data.cto)
-    console.log(this.data.carType)
+  onFind: function(e){
     this.setData({
       finding: false
     })
-    getCarSearch(this)
+    if (e.currentTarget.dataset.type == 1){
+      getCarSearch(this)
+    }else if (e.currentTarget.dataset.type == 2){
+      getGoodSearch(this)
+    }
   },
   onAdd: function(){
     wx.navigateTo({

@@ -55,8 +55,8 @@
       
       <view class="good-padding">
         <radio-group name="radio-group" bindchange="excselectType">
-            <label><radio value="出售" checked="true"/>出售</label>
-            <label><radio value="寻找"/>寻找</label>
+            <label><radio value="出售" checked="{{chuCheck}}"/>出售</label>
+            <label><radio value="寻找" checked="{{xunCheck}}"/>寻找</label>
         </radio-group>
       </view>
       

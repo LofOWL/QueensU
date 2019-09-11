@@ -123,6 +123,7 @@ Page{
 
 .item-left-find {
    flex: 1; 
+   height: 120rpx;
    align-items:center;
    font-size: 45rpx;
    font-weight: bold;
@@ -132,8 +133,10 @@ Page{
  
 .item-right-add {
   position: relative;
+  height: 120rpx;
   align-items: center;
   font-weight: bold;
+  font-size: 45rpx;
   flex-direction: row;
   margin: 20rpx 20rpx 20rpx 20rpx;
 }
@@ -169,4 +172,33 @@ Page{
   margin-top: 13rpx;
   font-size: 50rpx;
   color: black;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/* good top search item */
+.good-padding{
+  margin-left: 20rpx;
+}
+
+.good-con-page-section{
+  background-color: gainsboro;
+  height: 90rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+  justify-content: center;
+}
+
+.good-text{
+  align-items:center;
+  flex-direction: row;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
 }

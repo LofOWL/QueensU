@@ -227,6 +227,8 @@ Page({
     itemListText: "",
     itemList: [],
     excType: "出售",
+    chuCheck: false,
+    xunCheck: false,
     // que data
     question: "",
     quePage: 1,
@@ -236,6 +238,9 @@ Page({
     createDate: "",
   },
   onLoad: function(options){
+      console.log(options.goods)
+      console.log(options.excType)
+      // change car type
       if (options.carType == "找车"){
         this.setData({
           cheCheck: true
@@ -245,6 +250,18 @@ Page({
           renCheck: true
         })
       }
+
+      //change good type
+      if (options.excType == "出售"){
+        this.setData({
+          chuCheck: true
+        })
+      }else{
+        this.setData({
+          xunCheck: true
+        })
+      }
+
       getConInfo(this)
 
       this.setData({
@@ -256,7 +273,8 @@ Page({
       var month = date.getMonth() + 1
       var day = date.getDate()
       this.setData({
-
+        goods: options.goods,
+        excType: options.excType,
         cfrom: options.from,
         cto: options.to,
         carType: options.carType,

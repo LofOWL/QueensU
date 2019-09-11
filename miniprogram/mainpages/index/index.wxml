@@ -74,9 +74,25 @@
   <!-- <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text> -->
 
   <!-- Goods Page -->
-  <view wx:if="{{page == 2}}">
+  <view class="itemTemplate" wx:if="{{page == 2}}">
+      
+      <view class="good-con-page-section">
+            <input class="good-text" bindinput="inputGoods" placeholder="物品" value="{{goods}}"/>
+      </view>
 
-
+      <view class="good-padding">
+        <radio-group name="radio-group" bindchange="excselectType">
+            <label><radio value="出售" checked="true"/>出售</label>
+            <label><radio value="寻找"/>寻找</label>
+        </radio-group>
+      </view>
+      
+      <view class="carBottom">
+            <button class="item-left-find" type="primary" plain="false" bindtap="onFind" data-type="2">Find</button>
+            <navigator url="../createData/createData?goods={{goods}}&excType={{excType}}&type={{2}}" hover-class="none">
+              <button class="item-right-add" type="primary" plain="false">Add</button>
+            </navigator>  
+      </view>
   </view>
 
   <view wx:for="{{exclist}}" wx:if="{{page == 2}}">
