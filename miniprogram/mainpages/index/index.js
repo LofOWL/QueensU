@@ -167,7 +167,7 @@ function getExcInfo(athis){
 
 function getQueInfo(athis){
   const db = wx.cloud.database()
-  db.collection('QueData').get({
+  db.collection('QueData').orderBy("total", "desc").get({
     success: res => {
       athis.setData({
         quelist: res.data
@@ -189,6 +189,9 @@ function queDataToDatabase(data) {
   db.collection('QueData').add({
     data: {
       question: data.question,
+      up: 0,
+      down: 0,
+      total: 0
     },
     success: res => {
       wx.showToast({
@@ -273,6 +276,10 @@ Page({
     queIndex: 0,
     showModalStatus: false,
     queId: "",
+    queUp: 0,
+    queDown: 0,
+    queTotal: 0,
+    queUpdate:true,
     // others
     question: "",
     page: 1,
@@ -464,6 +471,9 @@ Page({
     switch(e.currentTarget.dataset.type){
       case "start":
         this.setData({
+          queUp: e.currentTarget.dataset.up,
+          queDown: e.currentTarget.dataset.down,
+          queTotal: e.currentTarget.dataset.total,
           queId: e.currentTarget.dataset.id,
           showModalStatus: true
         })
@@ -476,9 +486,95 @@ Page({
         break
     }
   },
+  // change information
   queEdit: function(e){
-    console.log(this.data.queId)
-    console.log(e.currentTarget.dataset.type)
+    this.setData({
+      queUpdate: false
+    })
+    const db = wx.cloud.database()
+    const _ = db.command
+    db.collection('QueData').where({
+      _id: this.data.queId
+    }).get({
+      success: res => {
+        var down = res.data[0]["down"]
+        var up = res.data[0]["up"]
+        var total = res.data[0]["total"]
+        switch (e.currentTarget.dataset.type) {
+          case "up":
+            console.log(this.data.queUp)
+            console.log(this.data.queUp - this.data.queDown)
+            wx.cloud.callFunction({
+              name: 'editQuestion',
+              data: {
+                id: this.data.queId,
+                up: up + 1,
+                total: up + 1 - down
+              },
+              success: res => {
+                console.log("cloud result")
+                console.log(res)
+                this.setData({
+                  showModalStatus: false,
+                  queUpdate: true
+                })
+                wx.showToast({
+                  icon: 'none',
+                  title: '上传成功'
+                })
+              },
+              fail: err => {
+                console.log("err")
+                console.log(err)
+                this.setData({
+                  showModalStatus: false,
+                  queUpdate: true
+                })
+              }
+            })
+            break
+          case "down":
+            wx.cloud.callFunction({
+              name: 'editQuestion',
+              data: {
+                id: this.data.queId,
+                down: down + 1,
+                total: up - down - 1
+              },
+              success: res => {
+                console.log("cloud result")
+                console.log(res)
+                this.setData({
+                  showModalStatus: false,
+                  queUpdate: true
+                })
+                wx.showToast({
+                  icon: 'none',
+                  title: '上传成功'
+                })
+              },
+              fail: err => {
+                console.log("err")
+                console.log(err)
+                this.setData({
+                  showModalStatus: false,
+                  queUpdate: true
+                })
+              }
+            })
+            
+            break
+        }
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '查询记录失败'
+        })
+        wx.stopPullDownRefresh()
+      }
+    })
+
   },
   onRemove: function(e){
     console.log(e.currentTarget.dataset.id)
@@ -568,6 +664,5 @@ Page({
   },
   queSubmit: function () {
     queDataToDatabase(this.data)
-    wx.navigateBack()
   }
 })

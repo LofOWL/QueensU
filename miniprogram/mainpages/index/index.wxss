@@ -77,7 +77,7 @@ Page{
   box-shadow: 10rpx 10rpx 20rpx #999;
 }
 
-
+/* car item and good item */
 .item-car{
   font-weight: bold;
   margin: 20rpx auto 0;
@@ -106,6 +106,25 @@ Page{
 .row{
   flex-direction:row;
 }
+
+/* que item */
+.que-text{
+  justify-content: center;
+  align-content: center;
+}
+
+.que-bottom-container{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-que{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
 
 /* car search */
 .icon{
@@ -153,7 +172,6 @@ Page{
 .topContainer{
   width:200rpx;
   height:90rpx;
-  margin-right:20rpx;
   display: inline-block;
 }
 
@@ -257,6 +275,6 @@ Page{
 }
 
 .answer-button{
-  width: 250rpx;
-  height:100rpx;
+  display: inline-flex;
+  justify-content: center;
 }

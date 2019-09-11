@@ -8,7 +8,9 @@ exports.main = async (event, context) => {
     _id: event.id
   }).update({
     data: {
-      question: event.question
+      up: event.up,
+      down: event.down,
+      total: event.total
     }
   })
 }

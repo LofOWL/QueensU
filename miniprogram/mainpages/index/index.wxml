@@ -134,16 +134,39 @@
   </view>
 
   <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" lower-threshold="200">
-      <text class="que-text" bindtap="editInformation" data-type="start" data-id="{{item._id}}">{{item.question}}</text>
+    <view class="container" bindtap="editInformation" data-type="start" data-id="{{item._id}}" data-up="{{item.up}}" data-down="{{item.down}}" data-total="{{item.total}}">
+      <text class="que-text" bindtap="editInformation" data-type="start" data-id="{{item._id}}" data-up="{{item.up}}" data-down="{{item.down}}" data-total="{{item.total}}">{{item.question}}</text>
+      <view class="row" style="display:flex;width:90vw;margin-bottom:20rpx">
+        <view class="que-bottom-container" style="flex:1">
+          <image class="icon-que" src="../../images/up.png"/>
+          <text>{{item.up}}</text>
+        </view>
+        <view class="que-bottom-container" style="flex:3">
+          <image class="icon-que" src="../../images/total.png"/>
+          <text>{{item.total}}</text>
+        </view>
+        <view class="que-bottom-container" style="flex:1">
+          <image class="icon-que" src="../../images/down.png"/>
+          <text>{{item.down}}</text>
+        </view>
+      </view>
+      
+    </view>
+      
 
   </scroll-view>
 
   <view class="drawer_screen" bindtap="editInformation" data-type="close" wx:if="{{showModalStatus}}"></view>
-
+  <loading hidden="{{queUpdate}}">上传数据</loading>
   <view class="answer_box" wx:if="{{showModalStatus}}">
           <view class="row-container">
-            <button type="primary" plain="false" class="answer-button" data-id="{{item._id}}" data-type="up" bindtap="queEdit">Up</button>
-            <button type="primary" plain="false" class="answer-button" data-id="{{item._id}}" data-type="down" bindtap="queEdit">Down</button>
+            <view class="answer-button" style="flex:1;">
+              <image style="width: 100rpx;height:100rpx;" src="../../images/up.png" data-id="{{item._id}}" data-type="up" bindtap="queEdit"/>
+            </view>
+            <view class="answer-button" style="flex:1;">
+              <image style="width: 100rpx;height:100rpx;" src="../../images/down.png" data-id="{{item._id}}" data-type="down" bindtap="queEdit"/>
+            </view>
+            
           </view>
   </view>
 
