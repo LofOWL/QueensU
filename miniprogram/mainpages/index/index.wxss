@@ -87,6 +87,8 @@ Page{
 .carBottom {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
  
  
@@ -142,21 +144,17 @@ Page{
 
 .item-left-find {
    flex: 1; 
-   height: 120rpx;
+   height: fit-content;
    align-items:center;
-   font-size: 45rpx;
    font-weight: bold;
-   flex-direction: row;
-   margin: 20rpx 20rpx 20rpx 20rpx;
+   margin: 20rpx 20rpx 20rpx 20rpx
 }
  
 .item-right-add {
   position: relative;
-  height: 120rpx;
+  height: fit-content;
   align-items: center;
   font-weight: bold;
-  font-size: 45rpx;
-  flex-direction: row;
   margin: 20rpx 20rpx 20rpx 20rpx;
 }
 

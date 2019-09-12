@@ -23,8 +23,12 @@ function getGoodSearch(athis){
   console.log(athis.data.excType)
   const db = wx.cloud.database()
   const _ = db.command
+  // athis.data.goods
   db.collection('GoodsDataCollect').where({
-    goods: athis.data.goods,
+    goods: db.RegExp({
+        regexp: athis.data.goods,
+        options: 'i'
+    }),
     excType: athis.data.excType,
     count: _.gt(0)
   }).orderBy("count", "desc").orderBy("date", "acs").get({
@@ -184,16 +188,19 @@ function getQueInfo(athis){
   })
 }
 
-function queDataToDatabase(data) {
+function queDataToDatabase(athis) {
   const db = wx.cloud.database()
   db.collection('QueData').add({
     data: {
-      question: data.question,
+      question: athis.data.question,
       up: 0,
       down: 0,
       total: 0
     },
     success: res => {
+      athis.setData({
+        queUpdate: true
+      })
       wx.showToast({
         icon: "none",
         title: '上传成功'
@@ -251,7 +258,7 @@ function getNextInfor(athis,name,index){
 
 Page({
   data: {
-    topNavi: ["拼车","二手","讨论"],
+    topNavi: ["拼车","二手","公告栏"],
     finish: false,
     personal: true,
     //car data
@@ -458,7 +465,7 @@ Page({
           page: 2
         })
         break
-      case "讨论":
+      case "公告栏":
         this.setData({
           page: 3
         })
@@ -663,6 +670,9 @@ Page({
     }
   },
   queSubmit: function () {
-    queDataToDatabase(this.data)
+    this.setData({
+      queUpdate: false
+    })
+    queDataToDatabase(this)
   }
 })
