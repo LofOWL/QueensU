@@ -1,0 +1,33 @@
+<view class="container">
+      <view style="width:100%;height:30%">
+        <scroll-view class="itemTemplate" scroll-y style="width:96%;height:90%">
+         
+          <view class="row" wx:if="{{types==2}}">
+              <image class="icon" src="../../images/Dollar.png"/>
+              <text class="item">{{prices}}</text>
+          </view>
+
+          <view class="con-page-section">
+              <text class="item-car-text">{{details}}</text>
+          </view>
+
+          <view class="row">
+              <image class="icon" src="../../images/con.png"/>
+              <view class="con-page-section">
+                <Text class="item-car-text">{{contact}}</Text>
+              </view>
+            </view>
+         </scroll-view>
+      </view>
+    
+      <newChatroom
+        style="width: 100%; height: 70%;"
+        envId="{{chatRoomEnvId}}"
+        collection="{{chatRoomCollection}}"
+        groupId="{{chatRoomGroupId}}"
+        groupName="{{chatRoomGroupName}}"
+        userInfo="{{userInfo}}"
+        onGetUserInfo="{{onGetUserInfo}}"
+        getOpenID="{{getOpenID}}"
+      ></newChatroom>
+</view>

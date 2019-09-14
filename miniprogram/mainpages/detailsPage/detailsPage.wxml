@@ -1,6 +1,7 @@
 <view class="container">
 
   <scroll-view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{type == 1}}">
+    <navigator url="../contactPage/contactPage?id={{item._id}}&prices={{item.prices}}&details={{item.details}}&contact={{item.contact}}&types={{1}}" hover-class="none">
       <view class="row">
         <image class="icon" src="../../images/calendar.png"/>
         <text class="item" >{{item.createDate}}</text>
@@ -20,41 +21,44 @@
           <Text class="item-car-text">{{item.contact}}</Text>
         </view>
       </view>
-      <view class="divLine"></view>
+    </navigator>
   </scroll-view>
 
   <scroll-view class="itemTemplate" wx:for="{{exclist}}" wx:if="{{type == 2}}">
-      <view class="row">
-        <image class="icon" src="../../images/calendar.png"/>
-        <text class="item" >{{item.createDate}}</text>
-      </view>
-      <view class="row">
-        <image class="icon" src="../../images/Dollar.png"/>
-        <text class="item">{{item.prices}}</text>
-      </view>
-      <view class="row">
+      <navigator url="../contactPage/contactPage?id={{item._id}}&prices={{item.prices}}&details={{item.details}}&contact={{item.contact}}&types={{2}}" hover-class="none">
+            <view class="row">
+              <image class="icon" src="../../images/calendar.png"/>
+              <text class="item" >{{item.createDate}}</text>
+            </view>
 
-      </view>
-    
+            <view class="row">
+              <image class="icon" src="../../images/Dollar.png"/>
+              <text class="item">{{item.prices}}</text>
+            </view>
+            
+            <view class="info-container">
+              <text class="item-car-text" style="width: 85vw;padding-bottom:20rpx;">{{item.gooddetails}}</text>
+            </view>
+            
+            <!-- <view class="row">
+                <image class="icon" src="../../images/mess.png"/>
+                    <view class="con-page-section">
+                      <text class="item-car-text">{{item.gooddetails}}</text>
+                    </view>
 
-    <view class="row">
-        <image class="icon" src="../../images/mess.png"/>
-        <view class="con-page-section">
-          <text class="item-car-text">{{item.gooddetails}}</text>
-        </view>
-        <view class="con-page-section">
-          <text class="item-car-text">{{item.details}}</text>
-        </view>
-        
-      </view>
+                    <view class="con-page-section">
+                      <text class="item-car-text">{{item.details}}</text>
+                    </view>
+            </view>
 
-      <view class="row">
-        <image class="icon" src="../../images/con.png"/>
-        <view class="con-page-section">
-          <Text class="item-car-text">{{item.contact}}</Text>
-        </view>
-      </view>
-      <view class="divLine"></view>
+            <view class="row">
+              <image class="icon" src="../../images/con.png"/>
+              <view class="con-page-section">
+                <Text class="item-car-text">{{item.contact}}</Text>
+              </view>
+            </view> -->
+
+      </navigator>
 
   </scroll-view>
 

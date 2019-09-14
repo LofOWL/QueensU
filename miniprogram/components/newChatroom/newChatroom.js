@@ -33,8 +33,8 @@ Component({
       this.properties.onGetUserInfo(e)
     },
 
-    getOpenID() { 
-      return this.properties.getOpenID() 
+    getOpenID() {
+      return this.properties.getOpenID()
     },
 
     mergeCommonCriteria(criteria) {
@@ -183,7 +183,7 @@ Component({
           ],
         })
         this.scrollToBottom(true)
-        
+
         console.log("get into")
         console.log(collection)
         await db.collection(collection).add({

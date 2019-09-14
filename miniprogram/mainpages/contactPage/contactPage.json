@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "newChatroom": "/components/newChatroom/newChatroom"
+  }
+}

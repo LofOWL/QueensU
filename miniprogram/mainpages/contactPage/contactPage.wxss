@@ -1,9 +1,12 @@
-.row{
-  flex-direction: row;
-}
-
-.column{
-  flex-direction: column;
+.container {
+  background-color: white;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .icon{
@@ -20,23 +23,6 @@
   margin: 20rpx auto 0;
 }
 
-.item-text{
-  word-break: keep-all;
-  word-wrap: break-word;
-  font-size: 40rpx;
-  color: black;
-}
-
-.divLine{
- background: gainsboro;
- width: 100%;
- height: 5rpx;
-}
-
-Page{
-  background: white;
-}
-
 .con-page-section{
   background-color: gainsboro;
   height: fit-content;
@@ -48,7 +34,6 @@ Page{
 }
 
 .item-car-text{
-  width: 80vw;
   font-size: 50rpx;
   font-weight: bold;
   margin-left: 20rpx;
@@ -58,16 +43,9 @@ Page{
 }
 
 .itemTemplate {
-  width: 95vw;
   background-color: #fff;
   margin: 20rpx auto 0;
   border-radius: 20rpx;
   box-shadow: 10rpx 10rpx 20rpx #999;
 }
 
-/* information card */
-.info-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

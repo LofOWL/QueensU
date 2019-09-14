@@ -1,5 +1,9 @@
 function getCarInfo(athis,options) {
   const db = wx.cloud.database()
+  console.log(options.date)
+  console.log(options.from)
+  console.log(options.to)
+  console.log(options.carType)
   db.collection('CarData').orderBy("date", "asc").where({
     date: options.date,
     from: options.from,
@@ -7,6 +11,7 @@ function getCarInfo(athis,options) {
     carType: options.carType
   }).get({
     success: res => {
+      console.log("done ")
       athis.setData({
         carlist: res.data,
       })
