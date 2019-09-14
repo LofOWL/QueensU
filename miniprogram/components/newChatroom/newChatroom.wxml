@@ -1,4 +1,5 @@
 <view class="chatroom">
+  <loading hidden="{{loading}}">加载数据</loading>
 
   <!-- chats -->
   <!-- scroll-with-animation="{{scrollWithAnimation}}"

@@ -62,7 +62,6 @@
 
 .body .message.message__self .text-content {
   color: black;
-  font-size: 40rpx;
   background-color: white;
   border-radius: 20rpx;
 }

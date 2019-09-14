@@ -45,6 +45,9 @@ Component({
     },
 
     async initRoom() {
+      this.setData({
+        loading: false
+      })
       this.try(async () => {
         await this.initOpenID()
 
@@ -56,10 +59,9 @@ Component({
 
         const { data: initList } = await db.collection(collection).where(this.mergeCommonCriteria()).orderBy('sendTimeTS', 'desc').get()
 
-        console.log('init query chats', initList)
-
         this.setData({
           chats: initList.reverse(),
+          loading: true,
           scrollTop: 10000,
         })
 
