@@ -66,10 +66,12 @@ function carDataCollection(athis){
           success: res =>{
             console.log("cloud result")
             console.log(res)
+            wx.navigateBack()
           },
           fail: err => {
             console.log("err")
             console.log(err)
+            wx.navigateBack()
           }
         })
         console.log("finish the cloud function")
@@ -81,6 +83,9 @@ function carDataCollection(athis){
             to: athis.data.cto,
             carType: athis.data.carType,
             count: 1
+          },
+          success: res =>{
+            wx.navigateBack()
           }
         })
       }
@@ -88,7 +93,7 @@ function carDataCollection(athis){
   })
 }
 
-function goodsDataCollection(athis, goods){
+function goodsDataCollection(athis, goods, length, index){
   var isExist = true;
 
   var alist = goods.split(" ")
@@ -117,10 +122,16 @@ function goodsDataCollection(athis, goods){
           success: res => {
             console.log("cloud result")
             console.log(res)
+            if (length-1 == index){
+              wx.navigateBack()
+            }
           },
           fail: err => {
             console.log("err")
             console.log(err)
+            if (lenght-1 == index){
+              wx.navigateBack()
+            }
           }
         })
         console.log("finish the cloud function")
@@ -130,6 +141,11 @@ function goodsDataCollection(athis, goods){
             goods: alist[0],
             excType: alist[3],
             count: 1
+          },
+          success: res =>{
+            if (length-1 == index){
+              wx.navigateBack()
+            }
           }
         })
       }
@@ -181,12 +197,14 @@ function queDataToDatabase(data){
         icon: "none",
         title: '上传成功'
       })
+      wx.navigateBack()
     },
     fail: err => {
       wx.showToast({
         icon: 'none',
         title: '长传失败'
       })
+      wx.navigateBack()
     }
   })
 }
@@ -406,16 +424,17 @@ Page({
   carSubmit: function () {
     carDataToDatabase(this.data)
     carDataCollection(this)
-    wx.navigateBack()
+  
   },
   excSubmit: function() {
     if (this.data.itemList.length != 0){
       var unique = [...new Set(this.data.itemList)];
+      console.log(unique.length)
       for (var i in unique) {
+        console.log(i)
         excDataToDatabase(this.data, unique[i])
-        goodsDataCollection(this, unique[i])
+        goodsDataCollection(this, unique[i], unique.length,i)
       }
-      wx.navigateBack()
     }else{
       wx.showToast({
         icon: 'none',
@@ -425,7 +444,6 @@ Page({
   },
   queSubmit: function(){
     queDataToDatabase(this.data)
-    wx.navigateBack()
   }
 })
 

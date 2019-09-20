@@ -205,6 +205,7 @@ function queDataToDatabase(athis) {
         icon: "none",
         title: '上传成功'
       })
+      athis.onLoad()
     },
     fail: err => {
       wx.showToast({
@@ -296,6 +297,11 @@ Page({
   },
   onPullDownRefresh: function(){
     this.onLoad()
+  },
+  onShow: function(){
+    console.log("get into onshow")
+    this.onLoad()
+    console.log("finish on show")
   },
   onLoad: function(){
     getCarInfo(this)
