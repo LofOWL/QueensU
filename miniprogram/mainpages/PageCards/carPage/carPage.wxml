@@ -1,0 +1,26 @@
+  <view class="itemTemplate" wx:for="{{carlist}}">
+      <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
+
+            <view class="row">
+              <image class="icon-car" src="../../../images/calendar.png"/>
+              <text class='item-car'>{{item.date}}</text>
+            </view>
+            <view class="row">
+              <image class="icon-car" src="../../../images/location.png"/>
+              <text class="item-car">{{item.from}} - {{item.to}}</text>
+            </view>
+
+            <view class="carBottom">
+                <view class='item-left'>
+                  <image class="icon-car" src="../../../images/project.png"/>
+                  <text class="item-car">{{item.carType}}</text>
+                </view>
+
+                <view class="item-right">
+                    <image class="icon-car" src="../../../images/user.png"/>
+                    <text class="usr-count">{{item.count}}</text>
+                </view>
+            </view>
+
+      </navigator>
+  </view>

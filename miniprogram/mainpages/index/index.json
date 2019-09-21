@@ -1,7 +1,15 @@
 {
   "component": true,
-  "usingComponents": {},
+  "usingComponents": {
+    "queSearch": "../TopSearch/quePage/quePage",
+    "queCard": "../PageCards/quePage/quePage",
+    "excSearch": "../TopSearch/excPage/excPage",
+    "excCard" : "../PageCards/excPage/excPage",
+    "carSearch": "../TopSearch/carPage/carPage",
+    "carCard": "../PageCards/carPage/carPage"
+  },
   "window":{
     "enablePullDownRefresh": true
   }
 }
+

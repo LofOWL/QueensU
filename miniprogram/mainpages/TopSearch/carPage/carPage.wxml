@@ -1,0 +1,24 @@
+  <view class="itemTemplate">
+    <picker class="row" mode="date" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
+          <image class="icon" src="../../../images/calendar.png"/>
+          <Text class="text">{{date}}</Text>
+        </picker>
+
+        <picker class="row" mode="multiSelector" bindchange="carselectLocation" bindcolumnchange="To do later" value="{{mulloc}}" range="{{mulloc}}">
+          <image class="icon" src="../../../images/location.png"/>
+          <Text class="text">{{cfrom}} - {{cto}}</Text>
+        </picker>
+
+        <radio-group name="radio-group" bindchange="carselectType">
+          <image class="icon" src="../../../images/project.png"/>
+          <label><radio class="text" value="找车" checked="true"/>找车</label>
+          <label><radio class="text" value="找人"/>找人</label>
+        </radio-group>
+
+        <view class="carBottom">
+            <button class="item-left-find" type="primary" plain="false" bindtap="onFind" data-type="1">Find</button>
+            <navigator url="../createData/createData?date={{date}}&from={{cfrom}}&to={{cto}}&carType={{carType}}&type={{1}}" hover-class="none">
+              <button class="item-right-add" type="primary" plain="false">Add</button>
+            </navigator>
+        </view>
+  </view>

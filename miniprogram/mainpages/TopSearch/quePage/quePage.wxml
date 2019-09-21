@@ -1,0 +1,12 @@
+
+<view class="itemTemplate">
+  <loading hidden="{{queUpdate}}">上传数据</loading>
+  <view class="que-page-section">
+        <view class="textarea-wrp">
+          <textarea class="que-input" bindinput="inputQuestion" placeholder="信息" value="{{question}}" style="height: 6em" />
+        </view>
+  </view>
+
+  <button class="item-right-add" type="primary" plain="false" bindtap="queSubmit">Add</button>
+</view>
+

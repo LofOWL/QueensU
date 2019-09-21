@@ -1,0 +1,54 @@
+/* mainpages/PageCards/carPage/carPage.wxss */
+.itemTemplate {
+  width: 95vw;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+
+.item-car{
+  font-weight: bold;
+  margin: 20rpx auto 0;
+}
+
+
+.carBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+ 
+ 
+.item-left {
+   flex: 1; 
+   align-items:center;
+   font-weight: bold;
+   flex-direction: row;
+}
+ 
+.item-right {
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+}
+
+.row{
+  flex-direction:row;
+}
+
+.usr-count{
+  margin-top: 10rpx;
+  margin-right: 20rpx;
+  font-size: 45rpx;
+  font-weight: bold;
+}
+
+.icon-car{
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
+}

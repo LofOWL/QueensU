@@ -19,7 +19,21 @@
     </scroll-view> 
   
   <!-- Car Page -->
-  <view class="itemTemplate" wx:if="{{page == 1}}">
+  <carSearch
+  style="display:flex;"
+  wx:if="{{page==1}}"
+  bindcompclick="onCompClick"
+  >
+  </carSearch>
+
+  <carCard
+   style="flex-direction:column;display:flex;"
+   wx:if="{{page==1}}"
+   carlist="{{carlist}}">
+
+   </carCard>
+
+  <!-- <view class="itemTemplate" wx:if="{{page == 1}}">
     <picker class="row" mode="date" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
           <image class="icon" src="../../images/calendar.png"/>
           <Text class="text">{{date}}</Text>
@@ -42,9 +56,9 @@
               <button class="item-right-add" type="primary" plain="false">Add</button>
             </navigator>
         </view>
-  </view>
+  </view> -->
 
-  <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
+  <!-- <view class="itemTemplate" wx:for="{{carlist}}" wx:if="{{page == 1}}">
       <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
 
             <view class="row">
@@ -69,11 +83,25 @@
             </view>
 
       </navigator>
-  </view>
+  </view> -->
   <!-- <text class="itemTemplate" wx:if="{{page == 1 && carlist.length == 20}}">max carlist</text> -->
 
   <!-- Goods Page -->
-  <view class="itemTemplate" wx:if="{{page == 2}}">
+  <excSearch
+  style="display:flex;"
+  wx:if="{{page == 2}}"
+  bindcompclick="onCompClick"
+  >
+  </excSearch>
+
+  <excCard
+    style="flex-direction:column;display:flex;"
+    wx:if="{{page == 2}}"
+    exclist="{{exclist}}">
+
+  </excCard>
+
+  <!-- <view class="itemTemplate" wx:if="{{page == 2}}">
       
       <view class="good-con-page-section">
             <input class="good-text" bindinput="inputGoods" placeholder="物品" value="{{goods}}"/>
@@ -92,9 +120,9 @@
               <button class="item-right-add" type="primary" plain="false">Add</button>
             </navigator>  
       </view>
-  </view>
+  </view> -->
 
-  <view wx:for="{{exclist}}" wx:if="{{page == 2}}">
+  <!-- <view wx:for="{{exclist}}" wx:if="{{page == 2}}">
     <navigator url="../detailsPage/detailsPage?goods={{item.goods}}&excType={{item.excType}}&type={{2}}">
       <view class='itemTemplate'>
 
@@ -116,13 +144,27 @@
             </view>
       </view>
     </navigator>
-  </view>
+  </view> -->
   <!-- <text class="itemTemplate" wx:if="{{page==2 && exclist.length == 20}}">max exclist</text> -->
   
   <!-- Que Page -->
+  <queSearch 
+  style="display:flex;"
+  wx:if="{{page == 3}}"
+  quelist="{{quelist}}"
+  bindcompclick="onCompClick">
+  
+  </queSearch>
 
-  <view class="itemTemplate" wx:if="{{page == 3}}">
+  <queCard
+    style="flex-direction:column;display:flex;"
+    wx:if="{{page == 3}}"
+    quelist="{{quelist}}"
+    bindcompclick="onCompClick">
 
+  </queCard>
+
+  <!-- <view class="itemTemplate" wx:if="{{page == 3}}">
       <view class="que-page-section">
             <view class="textarea-wrp">
               <textarea class="que-input" bindinput="inputQuestion" placeholder="信息" value="{{question}}" style="height: 6em" />
@@ -131,10 +173,10 @@
 
       <button class="item-right-add" type="primary" plain="false" bindtap="queSubmit">Add</button>
      
-  </view>
+  </view> -->
 
-  <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" lower-threshold="200">
-    <view class="container" bindtap="editInformation" data-type="start" data-id="{{item._id}}" data-up="{{item.up}}" data-down="{{item.down}}" data-total="{{item.total}}">
+  <!-- <scroll-view class="itemTemplate" wx:for="{{quelist}}" wx:if="{{page == 3}}" data-id="{{item._id}}" lower-threshold="200">
+    <view class="container" style="background-color: green;" bindtap="editInformation" data-type="start" data-id="{{item._id}}" data-up="{{item.up}}" data-down="{{item.down}}" data-total="{{item.total}}">
       <text class="que-text" bindtap="editInformation" data-type="start" data-id="{{item._id}}" data-up="{{item.up}}" data-down="{{item.down}}" data-total="{{item.total}}">{{item.question}}</text>
       <view class="row" style="display:flex;width:90vw;margin-bottom:20rpx">
         <view class="que-bottom-container" style="flex:1">
@@ -152,11 +194,10 @@
       </view>
       
     </view>
-      
+    
+  </scroll-view> -->
 
-  </scroll-view>
-
-  <view class="drawer_screen" bindtap="editInformation" data-type="close" wx:if="{{showModalStatus}}"></view>
+  <!-- <view class="drawer_screen" bindtap="editInformation" data-type="close" wx:if="{{showModalStatus}}"></view>
   <loading hidden="{{queUpdate}}">上传数据</loading>
   <view class="answer_box" wx:if="{{showModalStatus}}">
           <view class="row-container">
@@ -168,7 +209,7 @@
             </view>
             
           </view>
-  </view>
+  </view> -->
 
 
 

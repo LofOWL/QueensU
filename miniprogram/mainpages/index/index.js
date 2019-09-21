@@ -17,19 +17,17 @@ function getToday(){
   return [year, month, day].map(formatNumber).join('-')
 }
 
-function getGoodSearch(athis){
-  console.log("get into goods")
-  console.log(athis.data.goods)
-  console.log(athis.data.excType)
+function getGoodSearch(athis,agoods,aexcType){
+  
   const db = wx.cloud.database()
   const _ = db.command
   // athis.data.goods
   db.collection('GoodsDataCollect').where({
     goods: db.RegExp({
-        regexp: athis.data.goods,
+        regexp: agoods,
         options: 'i'
     }),
-    excType: athis.data.excType,
+    excType: aexcType,
     count: _.gt(0)
   }).orderBy("count", "desc").orderBy("date", "acs").get({
     success: res => {
@@ -50,14 +48,14 @@ function getGoodSearch(athis){
   })
 }
 
-function getCarSearch(athis){
+function getCarSearch(athis,carType,cfrom,cto,date){
   const db = wx.cloud.database()
   const _ = db.command
   db.collection('CarDataCollect').where({
-    carType: athis.data.carType,
-    from: athis.data.cfrom,
-    to: athis.data.cto,
-    date: athis.data.date,
+    carType: carType,
+    from: cfrom,
+    to: cto,
+    date: date,
     count: _.gt(0)
   }).orderBy("count", "desc").orderBy("date", "acs").get({
     success: res => {
@@ -170,15 +168,24 @@ function getExcInfo(athis){
 }
 
 function getQueInfo(athis){
+  console.log("get into getqueinfo")
+  console.log(athis.data.quelist.length)
   const db = wx.cloud.database()
   db.collection('QueData').orderBy("total", "desc").get({
     success: res => {
+      console.log("get into success")
+      console.log(res.data.length)
       athis.setData({
-        quelist: res.data
+        quelist: res.data,
+        finish: true
       })
       wx.stopPullDownRefresh()
     },
     fail: err => {
+      console.log("get into fail")
+      athis.setData({
+        finish: true
+      })
       wx.showToast({
         icon: 'none',
         title: '查询记录失败'
@@ -258,6 +265,30 @@ function getNextInfor(athis,name,index){
 
 
 Page({
+  onCompClick(e) {
+    switch(e.detail.type){
+      case "queSearch":
+        this.setData({
+          finish: false
+        })
+        getQueInfo(this)
+        break
+      case "excSearch":
+        this.setData({
+          finding: false
+        })
+        getGoodSearch(this,e.detail.goods,e.detail.excType)
+        break
+      case "carSearch":
+        console.log(e.detail)
+        this.setData({
+          finding: false
+        })
+        getCarSearch(this,e.detail.carType,e.detail.from,e.detail.to,e.detail.date)
+        break
+
+    }
+  },
   data: {
     topNavi: ["拼车","二手","公告栏"],
     finish: false,
@@ -299,11 +330,12 @@ Page({
     this.onLoad()
   },
   onShow: function(){
-    console.log("get into onshow")
     this.onLoad()
-    console.log("finish on show")
   },
   onLoad: function(){
+    this.setData({
+      finish: false
+    })
     getCarInfo(this)
     getCarTime(this)
     getExcInfo(this)
@@ -587,7 +619,6 @@ Page({
         wx.stopPullDownRefresh()
       }
     })
-
   },
   onRemove: function(e){
     console.log(e.currentTarget.dataset.id)
@@ -680,5 +711,6 @@ Page({
       queUpdate: false
     })
     queDataToDatabase(this)
-  }
+  },
+
 })

@@ -1,0 +1,53 @@
+/* mainpages/TopSearch/excPage/excPage.wxss */
+.itemTemplate {
+  width: 95vw;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+
+.good-con-page-section{
+  background-color: gainsboro;
+  height: 90rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+  justify-content: center;
+}
+
+.good-text{
+  align-items:center;
+  flex-direction: row;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+}
+
+.carBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-left-find {
+   flex: 1; 
+   height: fit-content;
+   align-items:center;
+   font-weight: bold;
+   margin: 20rpx 20rpx 20rpx 20rpx
+}
+ 
+.item-right-add {
+  position: relative;
+  height: fit-content;
+  align-items: center;
+  font-weight: bold;
+  margin: 20rpx 20rpx 20rpx 20rpx;
+}
+
+.good-padding{
+  margin-left: 20rpx;
+}

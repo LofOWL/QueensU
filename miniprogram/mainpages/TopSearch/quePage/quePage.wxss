@@ -1,0 +1,34 @@
+/* mainpages/mainpagesComponents/quePage/quePage.wxss */
+
+.que-page-section{
+  background-color: gainsboro;
+  height: fit-content;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.que-input{
+  width: 80vw;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+}
+
+.item-right-add {
+  position: relative;
+  height: fit-content;
+  align-items: center;
+  font-weight: bold;
+  margin: 20rpx 20rpx 20rpx 20rpx;
+}
+
+.itemTemplate {
+  width: 95vw;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+
