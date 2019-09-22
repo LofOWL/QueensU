@@ -13,11 +13,7 @@
     "backgroundColor": "#ffffff",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffffff",
-<<<<<<< HEAD
     "navigationBarTitleText": "????",
-=======
-    "navigationBarTitleText": "*****",
->>>>>>> sunny
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
