@@ -1,0 +1,48 @@
+.row{
+  flex-direction: row;
+  margin: 20rpx;
+  border-radius: 20rpx;
+  align-items: center;
+  display: flex;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+
+.icon{
+  margin: 20rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.text{
+  font-weight: bold;
+}
+
+.page-section{
+  box-shadow: 10rpx 10rpx 20rpx #999;
+  height: fit-content;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.con-page-section{
+  background-color: gainsboro;
+  height: 90rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+}
+
+.submit{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+
+Page{
+  background-color: white;
+}

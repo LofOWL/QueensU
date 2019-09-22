@@ -1,0 +1,87 @@
+
+        <!-- <picker class="row" mode="date" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
+          <image class="icon" src="../../../images/calendar.png"/>
+          <Text class="text">{{date}}</Text>
+        </picker> -->
+
+        <view class="row" >
+          <view style="flex:1;align-items:center;display:flex;">
+            <image class="icon" src="../../../images/calendar.png"/>
+            <Text class="text">出发时间: </Text>
+          </view>
+          
+          <picker mode="date" style="margin-right:20rpx;" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
+            <Text class="text">{{date}}</Text>
+          </picker>
+
+        </view>
+
+        <view class="row" >
+          <view style="flex:1;align-items:center;display:flex;">
+            <image class="icon" src="../../../images/location.png"/>
+            <Text class="text">方向: </Text>
+          </view>
+
+ <picker mode="multiSelector" style="margin-right:20rpx;" bindchange="carselectLocation" bindcolumnchange="To do later" value="{{mulloc}}" range="{{mulloc}}">
+          <Text class="text">{{cfrom}} -> {{cto}}</Text>
+          
+        </picker>
+
+        </view>
+
+        <!-- <picker class="row" mode="multiSelector" bindchange="carselectLocation" bindcolumnchange="To do later" value="{{mulloc}}" range="{{mulloc}}">
+          <image class="icon" src="../../../images/location.png"/>
+          <Text class="text">{{cfrom}} -> {{cto}}</Text>
+          
+        </picker> -->
+
+        <view class="row" >
+          <view style="flex:1;align-items:center;display:flex;">
+            <image class="icon" src="../../../images/user.png"/>
+             <Text class="text">人数: </Text>
+          </view> 
+          <picker style="margin-right:20rpx;" model="selector" bindchange="peroplenumberselect" value="{{peopelnumberlist}}" range="{{peoplenumberlist}}">
+            <Text class="text">{{peoplenumber}}</Text>
+          </picker>
+        </view>
+
+
+        <view class="row" >
+          <view style="flex:1;align-items:center;display:flex;">
+            <image class="icon" src="../../../images/luggage.png"/>
+            <Text class="text">行李数: </Text>
+          </view>
+          <picker style="margin-right:20rpx;" model="selector" bindchange="luggagenumberselect" value="{{luggagelist}}" range="{{luggagelist}}">
+            <Text class="text">{{luggagenumber}}</Text>
+          </picker>
+        </view>
+        
+        <view class="row" >
+          <view style="flex:1;align-items:center;display:flex;">
+            <image class="icon" src="../../../images/project.png"/>
+            <Text class="text">类型:</Text>
+          </view>
+          <radio-group style="margin-right:20rpx;" name="radio-group" bindchange="carselectType">
+            <label><radio class="text" style="margin:20rpx;" value="找车" checked="{{cheCheck}}"/>找车</label>
+            <label><radio class="text" style="margin:20rpx;" value="找人" checked="{{renCheck}}" />找人</label>
+          </radio-group>
+        </view>
+
+        <view class="row" >
+          <image class="icon" src="../../../images/wechat.png"/>
+          <view style="align-items:center;display:flex;">
+            <input bindinput="inputContact" placeholder="联系方式" value="{{contact}}"/>
+          </view>
+          
+        </view>
+
+
+          <view class="page-section">
+            <view class="textarea-wrp">
+              <textarea class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}" style="height: 7em" />
+            </view>
+          </view>
+        
+      
+        
+        <button class="submit" type="primary" plain="false" bindtap="carSubmit">Submit</button>

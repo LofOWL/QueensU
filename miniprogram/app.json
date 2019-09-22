@@ -2,7 +2,8 @@
   "pages": [
     "mainpages/index/index",
     "mainpages/createData/createData",
-    "mainpages/createData/excPage/excPage"
+    "mainpages/createData/excPage/excPage",
+    "mainpages/createData/carPage/carPage"
   ],
   "window": {
     "backgroundColor": "#ffffff",
