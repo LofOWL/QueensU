@@ -11,9 +11,9 @@
   ],
   "window": {
     "backgroundColor": "#ffffff",
-    "backgroundTextStyle": "dark",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "QueensU",
+    "navigationBarTitleText": "jeff change",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
