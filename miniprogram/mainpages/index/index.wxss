@@ -276,3 +276,8 @@ Page{
   display: inline-flex;
   justify-content: center;
 }
+
+
+Page{
+  background-color: white;
+}
