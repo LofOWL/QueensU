@@ -1,0 +1,89 @@
+  <view class="itemTemplate" wx:for="{{actList}}">
+
+        <view class="row" style="flex:1;" wx:if="{{item.date}}">
+          <view style="display:flex;align-items: center;flex:1;">
+            <image class="icon" src="../../../../../images/calendar.png"/>
+            <Text class="text" >活动日期:</Text>
+          </view>
+          
+          <text style="margin:20rpx;font-weight:bold;">{{item.date}}</text>
+        </view>
+
+        <view class="row" style="flex:1;" wx:if="{{item.club}}">
+          <view style="display:flex;align-items: center;flex:1;">
+            <image class="icon" src="../../../../../images/earth.png"/>
+            <Text class="text" >举办社团:</Text>
+          </view>
+          
+          <text style="margin:20rpx;font-weight:bold;">{{item.club}}</text>
+        </view>
+
+        <view class="row" style="flex:1;" wx:if="{{item.actName}}">
+          <view style="display:flex;align-items: center;flex:1;">
+            <image class="icon" src="../../../../../images/mess.png"/>
+            <Text class="text" >活动名字:</Text>
+          </view>
+          
+          <text style="margin:20rpx;font-weight:bold;">{{item.actName}}</text>
+        </view>
+
+        <view class="row" style="flex:1;" wx:if="{{item.location}}">
+          <view style="display:flex;align-items: center;flex:1;">
+            <image class="icon" src="../../../../../images/location.png"/>
+            <Text class="text" >地点:</Text>
+          </view>
+          
+          <text style="margin:20rpx;font-weight:bold;">{{item.location}}</text>
+        </view>
+
+        <view class="row" style="flex:1;" wx:if="{{item.starttime}}">
+          <view style="display:flex;align-items: center;flex:1;">
+            <image class="icon" src="../../../../../images/time.png"/>
+            <Text class="text" >开始时间:</Text>
+          </view>
+          
+          <text style="margin:20rpx;font-weight:bold;">{{item.starttime}}</text>
+        </view>
+
+        <view class="row" style="flex:1;" wx:if="{{item.endtime}}">
+          <view style="display:flex;align-items: center;flex:1;">
+            <image class="icon" src="../../../../../images/time.png"/>
+            <Text class="text" >结束时间:</Text>
+          </view>
+
+          <text style="margin:20rpx;font-weight:bold;">{{item.endtime}}</text>
+        </view>
+
+         <view class="row" style="flex:1;" wx:if="{{item.prices}}">
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon" src="../../../../../images/Dollar.png"/>
+                <Text class="text">费用:</Text>
+              </view>
+              
+              <text style="margin:20rpx;font-weight:bold;">{{item.prices}}</text>
+          </view>
+
+        <view style="margin:20rpx;" wx:if="{{item.about}}">
+          <text style="font-weight:bold;">活动介绍:</text>
+        </view>
+
+        <view class="con-page-section" wx:if="{{item.about}}">
+          <text class="item-car-text">{{item.about}}</text>
+        </view>
+
+        <view class="row" style="flex:1;" wx:if="{{item.contact}}">
+        <view style="display:flex;align-items: center;flex:1;">
+          <image class="icon" src="../../../../../images/wechat.png"/>
+          <Text class="text">微信:</Text>
+        </view>
+        
+        <text style="margin:20rpx;font-weight:bold;">{{item.contact}}</text>
+      </view>
+
+        
+
+
+
+         
+
+  </view>

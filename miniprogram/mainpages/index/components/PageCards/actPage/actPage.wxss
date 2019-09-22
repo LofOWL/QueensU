@@ -1,0 +1,98 @@
+/* mainpages/PageCards/carPage/carPage.wxss */
+.itemTemplate {
+  width: 95vw;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+
+
+
+.carBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+ 
+ 
+.item-left {
+   flex: 1; 
+   align-items:center;
+   font-weight: bold;
+   flex-direction: row;
+}
+ 
+.item-right {
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+}
+
+.row{
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.usr-count{
+  margin-top: 10rpx;
+  margin-right: 20rpx;
+  font-size: 45rpx;
+  font-weight: bold;
+}
+
+.icon-car{
+  margin-left: 20rpx;
+  margin-right: 10rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.text{
+  font-weight: bold;
+}
+
+.wordContainer{
+    writing-mode:vertical-rl;
+    border-top-left-radius: 20rpx;
+    border-bottom-left-radius: 20rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.carTypeWord{
+  color: white;
+  font-weight: bold;
+}
+
+.con-page-section{
+  background-color: gainsboro;
+  height: fit-content;
+  margin: 20rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.item-car-text{
+  font-weight: bold;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+.icon{
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.item{
+  font-size: 50rpx;
+  font-weight: bold;
+  margin: 20rpx auto 0;
+}

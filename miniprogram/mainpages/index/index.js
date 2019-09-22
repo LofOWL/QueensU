@@ -17,6 +17,27 @@ function getToday(){
   return [year, month, day].map(formatNumber).join('-')
 }
 
+function getActInfo(athis) {
+  const db = wx.cloud.database()
+  const _ = db.command
+  db.collection('ActData').orderBy("date", "acs").get({
+    success: res => {
+      console.log(res.data)
+      athis.setData({
+        actlist: res.data
+      })
+      wx.stopPullDownRefresh()
+    },
+    fail: err => {
+      wx.showToast({
+        icon: 'none',
+        title: '查询记录失败'
+      })
+      wx.stopPullDownRefresh()
+    }
+  })
+}
+
 function getGoodSearch(athis,agoods,aexcType){
   
   const db = wx.cloud.database()
@@ -298,7 +319,7 @@ Page({
     }
   },
   data: {
-    topNavi: ["拼车","二手","公告栏"],
+    topNavi: ["拼车","二手","公告栏","活动"],
     finish: false,
     personal: true,
     //car data
@@ -332,7 +353,9 @@ Page({
     page: 1,
     result: '',
     avatarUrl: "",
-    userInfo: ""
+    userInfo: "",
+    // act page
+    actlist: []
   },
   onPullDownRefresh: function(){
     this.onLoad()
@@ -344,6 +367,7 @@ Page({
     this.setData({
       finish: false
     })
+    getActInfo(this)
     getCarInfo(this)
     getCarTime(this)
     getExcInfo(this)
@@ -516,6 +540,11 @@ Page({
       case "公告栏":
         this.setData({
           page: 3
+        })
+        break
+      case "活动":
+        this.setData({
+          page: 4
         })
         break
     }

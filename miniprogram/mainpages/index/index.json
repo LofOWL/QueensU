@@ -6,7 +6,8 @@
     "excSearch": "../components/TopSearch/excPage/excPage",
     "excCard" : "../components/PageCards/excPage/excPage",
     "carSearch": "../components/TopSearch/carPage/carPage",
-    "carCard": "../components/PageCards/carPage/carPage"
+    "carCard": "../components/PageCards/carPage/carPage",
+    "actCard": "../components/PageCards/actPage/actPage"
   },
   "window":{
     "enablePullDownRefresh": true

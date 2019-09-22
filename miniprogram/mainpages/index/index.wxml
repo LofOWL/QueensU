@@ -213,8 +213,15 @@
   </view> -->
 
 
+<!-- Act Page -->
+  <actCard
+  style="display:flex;"
+  wx:if="{{page == 4}}"
+  actlist="{{actlist}}"
+  >
 
 
+  </actCard>
 
 
   <!-- <text class="itemTemplate" wx:if="{{page == 3 && quelist.length == 20}}">max quelist</text> -->
