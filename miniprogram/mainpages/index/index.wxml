@@ -6,7 +6,9 @@
 
   <loading hidden="{{personal}}">进入个人主页</loading>
 
-  <button class="userinfo-avatar" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}})"/>
+  <button class="userinfo-avatar" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}});background-color: {{avatarUrl != '' ? 'transparent' : 'black' }}"/>
+
+  <view wx:if="{{checkUser}}" bindgetuserinfo="onGetUserInfo" >点击授权</view>
 
   <!-- top naviagtor page -->
     <scroll-view class="scroll_w" scroll-x >

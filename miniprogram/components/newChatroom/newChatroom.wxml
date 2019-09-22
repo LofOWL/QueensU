@@ -10,6 +10,10 @@
     class="body" 
     style="border-top-left-radius: 30rpx;border-top-right-radius: 30rpx;"
     scroll-y 
+    scroll-with-animation="{{scrollWithAnimation}}"
+    scroll-top="{{scrollTop}}" 
+    scroll-into-view="{{scrollToMessage}}"
+    bindscrolltoupper="onScrollToUpper"
   >
     <view 
       wx:for="{{chats}}"
