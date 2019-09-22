@@ -4,9 +4,9 @@
       <view class="que-container">
           <text class="que-text">{{item.question}}</text>
           <view class="button-container" >
-            <image class="icon-que" src="../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
+            <image class="icon-que" src="../../../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
             <text class="total-text">{{item.total}}</text>
-            <image class="icon-que" src="../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
+            <image class="icon-que" src="../../../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
           </view>
       </view>
 

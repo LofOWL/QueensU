@@ -1,12 +1,12 @@
 {
   "component": true,
   "usingComponents": {
-    "queSearch": "../TopSearch/quePage/quePage",
-    "queCard": "../PageCards/quePage/quePage",
-    "excSearch": "../TopSearch/excPage/excPage",
-    "excCard" : "../PageCards/excPage/excPage",
-    "carSearch": "../TopSearch/carPage/carPage",
-    "carCard": "../PageCards/carPage/carPage"
+    "queSearch": "../components/TopSearch/quePage/quePage",
+    "queCard": "../components/PageCards/quePage/quePage",
+    "excSearch": "../components/TopSearch/excPage/excPage",
+    "excCard" : "../components/PageCards/excPage/excPage",
+    "carSearch": "../components/TopSearch/carPage/carPage",
+    "carCard": "../components/PageCards/carPage/carPage"
   },
   "window":{
     "enablePullDownRefresh": true

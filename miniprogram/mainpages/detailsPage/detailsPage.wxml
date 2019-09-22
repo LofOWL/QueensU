@@ -25,7 +25,7 @@
   </scroll-view>
 
   <scroll-view class="itemTemplate" wx:for="{{exclist}}" wx:if="{{type == 2}}">
-      <navigator url="../contactPage/contactPage?id={{item._id}}&prices={{item.prices}}&details={{item.details}}&contact={{item.contact}}&types={{2}}" hover-class="none">
+      <navigator url="../contactPage/contactPage?id={{item._id}}&prices={{item.prices}}&details={{item.details}}&contact={{item.contact}}&imageList={{item.imageList}}&types={{2}}" hover-class="none">
             <view class="row">
               <image class="icon" src="../../images/calendar.png"/>
               <text class="item" >{{item.createDate}}</text>

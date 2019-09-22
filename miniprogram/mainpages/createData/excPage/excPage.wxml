@@ -1,0 +1,50 @@
+
+      <view class="good-row">
+          <view class="con-page-section">
+            <input class="item-left" bindinput="inputGoods" placeholder="物品" value="{{goods}}"/>
+          </view>
+
+          <view class="con-page-section">
+            <input class="item-right" bindinput="inputPrices" type="number" placeholder="价格" value="{{prices}}"/>
+          </view> 
+        </view>
+
+      <view class="con-page-section">
+        <input class="input" bindinput="inputGoodsDetails" placeholder="介绍" value="{{goodsDetails}}"/>
+      </view>
+      
+      <view class="good-padding">
+        <radio-group name="radio-group" bindchange="excselectType">
+            <label><radio value="出售" checked="{{chuCheck}}"/>出售</label>
+            <label><radio value="寻找" checked="{{xunCheck}}"/>寻找</label>
+        </radio-group>
+      </view>
+      
+      <view class="imageContainer" wx:if="{{imageList.length != 0}}">
+        
+        <scroll-view style="white-space: nowrap;flex-direction:row;display:flex;" scroll-x>
+          <view style="display: inline-block;" wx:for="{{imageList}}">
+             <image class="image" src="{{item.path}}" mode="aspectFill" bindtap="chooseImages" />
+          </view>
+          
+        </scroll-view>
+      </view>
+
+      <image wx:if="{{imageList.length == 0}}" style="margin:20rpx;width:200rpx;height:200rpx;" src="../../../images/addImage.png" bindtap="chooseImages"/>
+      
+
+      <view class="page-section">
+            <view class="textarea-wrp">
+              <textarea class="input" bindinput="inputDetails" placeholder="信息备注" value="{{details}}" style="height: 7em" />
+            </view>
+      </view>
+      
+      <view class="con-page-section">
+        <input class="input" bindinput="inputContact" placeholder="联系方式" value="{{contact}}"/>
+      </view>
+     
+      <button class="submit" type="primary" plain="false" bindtap="excSubmit">Submit</button>
+
+      <view wx:for="{{fileIdarray}}">
+      {{item}}
+      </view>

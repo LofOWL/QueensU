@@ -44,8 +44,17 @@
 
 .itemTemplate {
   background-color: #fff;
-  margin: 20rpx auto 0;
   border-radius: 20rpx;
   box-shadow: 10rpx 10rpx 20rpx #999;
 }
 
+Page{
+  height: 100%;
+  width: 100%;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}

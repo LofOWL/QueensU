@@ -1,6 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-
   <loading hidden="{{finish}}">加载数据</loading>
 
   <loading hidden="{{finding}}">寻找数据</loading>

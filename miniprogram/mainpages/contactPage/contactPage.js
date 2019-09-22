@@ -5,6 +5,7 @@ Page({
     avatarUrl: './user-unlogin.png',
     userInfo: null,
     logged: false,
+    imageload: true,
     takeSession: false,
     requestResult: '',
     // chatRoomEnvId: 'release-f8415a',
@@ -17,6 +18,9 @@ Page({
     details: "",
     contact: "",
 
+    //goods information
+    imageList: [],
+
     // functions for used in chatroom components
     onGetUserInfo: null,
     getOpenID: null,
@@ -27,12 +31,21 @@ Page({
     console.log(options.prices)
     console.log(options.details)
     console.log(options.contact)
+    console.log(options.imageList)
+    if (options.imageList != 0){
+      this.setData({
+        imageload: false
+      })
+    }
+    var imageList = options.imageList.split(",")
+    console.log(imageList)
     this.setData({
       chatRoomGroupId: options.id,
       prices: options.prices,
       details: options.details,
       contact: options.contact,
-      types: options.types
+      types: options.types,
+      imageList: imageList
     })
     // 获取用户信息
     wx.getSetting({
@@ -97,4 +110,27 @@ Page({
       path: '/pages/im/room/room',
     }
   },
+
+  imageLoad: function(e){
+    console.log(e)
+    this.setData({
+      imageload: true
+    })
+  },
+  onViewImage: function(e){
+    var current = e.target.dataset.src;
+    this.setData({
+      imageload: false
+    })
+    console.log(current)
+    wx.previewImage({
+      current: current,
+      urls: this.data.imageList
+    })
+
+    this.setData({
+      imageload: true
+    })
+
+  }
 })

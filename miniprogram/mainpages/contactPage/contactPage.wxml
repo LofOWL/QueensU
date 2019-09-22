@@ -1,13 +1,27 @@
 <view class="container">
-      <view style="width:100%;height:30%">
-        <scroll-view class="itemTemplate" scroll-y style="width:96%;height:90%">
+      <view style="width:100%;height:35%">
+        <scroll-view scroll-x style="white-space: nowrap;width:100%;height:100%;">
+          <loading hidden="{{imageload}}">加载图片</loading>
+          <view style="width:100%;height:100%;display: inline-block;" wx:for="{{imageList}}">
+              <image class="itemTemplate" style="margin: 20rpx;width:95%;height:90%;display: block;" src="{{item}}" mode="aspectFill" data-src="{{item}}" bindtap="onViewImage" bindload="imageLoad"/>
+            </view>
          
-          <view class="row" wx:if="{{types==2}}">
+          <!-- <view class="row" wx:if="{{types==2}}">
               <image class="icon" src="../../images/Dollar.png"/>
               <text class="item">{{prices}}</text>
-          </view>
+          </view> -->
 
-          <view class="con-page-section">
+          <!-- <view wx:for="{{imageList}}">
+            <image src="{{item}}"/>
+          </view> -->
+
+          <!-- <scroll-view style="white-space: nowrap;flex-direction:row;display:flex;" scroll-x>
+            <view style="display: inline-block;" wx:for="{{imageList}}">
+              <image style="width:50%;height:50%" src="{{item}}"  />
+            </view>
+          </scroll-view> -->
+
+          <!-- <view class="con-page-section">
               <text class="item-car-text">{{details}}</text>
           </view>
 
@@ -16,12 +30,12 @@
               <view class="con-page-section">
                 <Text class="item-car-text">{{contact}}</Text>
               </view>
-            </view>
+            </view> -->
          </scroll-view>
       </view>
     
       <newChatroom
-        style="width: 100%; height: 70%;"
+        style="width: 100%; height: 65%;"
         envId="{{chatRoomEnvId}}"
         collection="{{chatRoomCollection}}"
         groupId="{{chatRoomGroupId}}"

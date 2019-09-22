@@ -13,7 +13,7 @@
       
       <view class="carBottom">
             <button class="item-left-find" type="primary" plain="false" bindtap="onFind" data-type="2">Find</button>
-            <navigator url="../createData/createData?goods={{goods}}&excType={{excType}}&type={{2}}" hover-class="none">
+            <navigator url="../createData/excPage/excPage?goods={{goods}}&excType={{excType}}&type={{2}}" hover-class="none">
               <button class="item-right-add" type="primary" plain="false">Add</button>
             </navigator>  
       </view>

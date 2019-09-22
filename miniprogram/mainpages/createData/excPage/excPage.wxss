@@ -1,0 +1,79 @@
+/* miniprogram/mainpages/createData/excPage/excPage.wxss */
+Page{
+  background-color: white;
+}
+
+.page-section{
+  background-color: gainsboro;
+  height: fit-content;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.con-page-section{
+  background-color: gainsboro;
+  height: 90rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+}
+
+.input{
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+}
+
+.item-left {
+   flex: 1; 
+   align-items:center;
+   flex-direction: row;
+   margin-left: 20rpx;
+   padding-top: 20rpx;
+}
+ 
+.item-right {
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+}
+
+.good-padding{
+  padding-left: 20rpx;
+}
+
+.good-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.submit{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+
+.imageContainer{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.image{
+  width:300rpx;
+  height:300rpx;
+  margin: 20rpx;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}

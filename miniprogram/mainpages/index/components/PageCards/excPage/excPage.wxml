@@ -3,18 +3,18 @@
       <view class='itemTemplate'>
 
             <view class="row">
-              <image class="icon-car" src="../../../images/goods.png"/>
+              <image class="icon-car" src="../../../../../images/goods.png"/>
               <text class='item-car'>{{item.goods}}</text>
             </view>
 
             <view class="carBottom">
                 <view class='item-left'>
-                  <image class="icon-car" src="../../../images/project.png"/>
+                  <image class="icon-car" src="../../../../../images/project.png"/>
                   <text>{{item.excType}}</text>
                 </view>
 
                 <view class="item-right">
-                    <image class="icon-car" src="../../../images/user.png"/>
+                    <image class="icon-car" src="../../../../../images/user.png"/>
                     <text class="usr-count">{{item.count}}</text>
                 </view>
             </view>

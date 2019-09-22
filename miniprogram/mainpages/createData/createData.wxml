@@ -31,6 +31,12 @@
         <button class="submit" type="primary" plain="false" bindtap="carSubmit">Submit</button>
     </view>
 
+    <excQuestion
+    wx:if="{{type==2}}"
+    style="flex-direction:column;display:flex;"
+    >
+
+    </excQuestion>
 
     <view wx:if="{{type == 2}}">
       <text style="margin-left:20rpx">物品({{itemcount}}):</text>
