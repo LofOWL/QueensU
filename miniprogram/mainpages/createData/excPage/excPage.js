@@ -60,6 +60,9 @@ function goodsDataCollection(athis) {
           success: res => {
             console.log("cloud result")
             console.log(res)
+            athis.setData({
+              upload: true
+            })
             wx.navigateBack()
             
           },
@@ -105,6 +108,19 @@ function uploadFiles(name,filePath,length,index,athis){
   })
 }
 
+function getConInfo(athis) {
+  const db = wx.cloud.database()
+  db.collection("UserContact").where({
+    _openid: getApp().globalData.openid
+  }).get({
+    success: res => {
+      athis.setData({
+        contact: res.data[0].con
+      })
+    }
+  })
+}
+
 Page({
   data: {
     excPage: 1,
@@ -121,7 +137,8 @@ Page({
     contact: "",
     createDate: "",
     imageList: [],
-    fileIdarray: []
+    fileIdarray: [],
+    upload: true
   },
 
   onLoad: function (options) {
@@ -135,7 +152,7 @@ Page({
         xunCheck: true
       })
     }
-
+    getConInfo(this)
     var date = new Date()
     var year = date.getFullYear()
     var endyear = date.getFullYear() + 3
@@ -181,13 +198,23 @@ Page({
     })
   },
   excSubmit: function () {
-    for (var i in this.data.imageList) {
-      console.log(i)
-      console.log(this.data.imageList[i])
-      var a = `${Math.random()}_${Date.now()}_${this.data.imageList[i].size}`
-      console.log(a)
-      uploadFiles(`${Math.random()}_${Date.now()}_${this.data.imageList[i].size}`,this.data.imageList[i].path,this.data.imageList.length,i,this)
+    this.setData({
+      upload: false
+    })
+    if (this.data.imageList != 0 ){
+      for (var i in this.data.imageList) {
+        console.log(i)
+        console.log(this.data.imageList[i])
+        var a = `${Math.random()}_${Date.now()}_${this.data.imageList[i].size}`
+        console.log(a)
+        uploadFiles(`${Math.random()}_${Date.now()}_${this.data.imageList[i].size}`, this.data.imageList[i].path, this.data.imageList.length, i, this)
+      }
+    }else{
+      excDataToDatabase(this.data)
+      goodsDataCollection(this)
     }
+
+
   },
   chooseImages: function (){
     wx.chooseImage({

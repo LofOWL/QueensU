@@ -1,4 +1,4 @@
-
+<loading hidden="{{upload}}">上传数据</loading>
       <view class="good-row">
           <view class="con-page-section">
             <input class="item-left" bindinput="inputGoods" placeholder="物品" value="{{goods}}"/>
