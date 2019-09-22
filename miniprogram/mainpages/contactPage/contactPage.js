@@ -37,14 +37,11 @@ Page({
         imageload: false
       })
     }
+    console.log(options.imageList)
     var imageList = options.imageList.split(",")
     console.log(imageList)
     this.setData({
       chatRoomGroupId: options.id,
-      prices: options.prices,
-      details: options.details,
-      contact: options.contact,
-      types: options.types,
       imageList: imageList
     })
     // 获取用户信息

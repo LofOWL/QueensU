@@ -36,6 +36,10 @@ function getGoodSearch(athis,agoods,aexcType){
         exclist: res.data,
         result: JSON.stringify(res.data, null, 2)
       })
+      wx.showToast({
+        icon: 'none',
+        title: '下拉刷新返回'
+      })
       wx.stopPullDownRefresh()
     },
     fail: err => {
@@ -63,6 +67,10 @@ function getCarSearch(athis,carType,cfrom,cto,date){
         finding: true,
         carlist: res.data,
         result: JSON.stringify(res.data, null, 2)
+      })
+      wx.showToast({
+        icon: 'none',
+        title: '下拉刷新返回'
       })
       wx.stopPullDownRefresh()
     },

@@ -1,13 +1,74 @@
   <view class="itemTemplate" wx:for="{{carlist}}">
-      <navigator url="../detailsPage/detailsPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
+      <navigator url="../detailsPage/carPage/carPage?date={{item.date}}&from={{item.from}}&&to={{item.to}}&carType={{item.carType}}&type={{1}}">
+
+          <view class="row" style="height:260rpx;">
+
+            <view class="wordContainer" style="height:260rpx;background-color: {{item.carType == '找车' ? 'red' : 'blue' }}">
+                <text class="carTypeWord" >{{item.carType}}</text>
+            </view>
+
+            <view style="flex:1;dispaly: flex;height:100%;justify-content: center;">
+
+                <view class="row" style="flex:1;">
+                  <view style="display:flex;align-items: center;flex:1;">
+                    <image class="icon-car" src="../../../../../images/calendar.png"/>
+                    <Text class="text">出发时间:</Text>
+                  </view>
+                  
+                  <text style="margin:20rpx;font-weight:bold;">{{item.date}}</text>
+                </view>
+
+                  <view class="row" style="flex:1;">
+                    <view style="display:flex;align-items: center;flex:1;">
+                      <image class="icon-car" src="../../../../../images/location.png"/>
+                      <Text class="text">方向:</Text>
+                    </view>
+                    <text style="margin:20rpx;font-weight:bold;">{{item.from}} -> {{item.to}}</text>
+                  </view>
+
+                  
+                  <view class="row" style="flex:1;">
+                    <view style="display:flex;align-items: center;flex:1;">
+                      <image class="icon-car" src="../../../../../images/user.png"/>
+                      <Text class="text">统计:</Text>
+                    </view>
+                    <text style="margin:20rpx;font-weight:bold;">{{item.count}}</text>
+                  </view>
+
+         
+
+                  <!-- <view class="carBottom">
+                      <view class='item-left'>
+                        <image class="icon-car" src="../../../../../images/project.png"/>
+                        <text class="item-car">{{item.carType}}</text>
+                      </view>
+
+                      <view class="item-right">
+                          <image class="icon-car" src="../../../../../images/user.png"/>
+                          <text class="usr-count">{{item.count}}</text>
+                      </view>
+                  </view> -->
+
+            </view>
+
+
+          </view>
+
+            <!-- <view class="row" >
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon-car" src="../../../../../images/calendar.png"/>
+                <Text class="text">出发时间:</Text>
+              </view>
+              
+              <text class='item-car' style="margin:20rpx;">{{item.date}}</text>
+            </view>
 
             <view class="row">
-              <image class="icon-car" src="../../../../../images/calendar.png"/>
-              <text class='item-car'>{{item.date}}</text>
-            </view>
-            <view class="row">
-              <image class="icon-car" src="../../../../../images/location.png"/>
-              <text class="item-car">{{item.from}} - {{item.to}}</text>
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon-car" src="../../../../../images/location.png"/>
+                <Text class="text">方向:</Text>
+              </view>
+              <text class="item-car" style="margin-right:20rpx;">{{item.from}} -> {{item.to}}</text>
             </view>
 
             <view class="carBottom">
@@ -20,7 +81,8 @@
                     <image class="icon-car" src="../../../../../images/user.png"/>
                     <text class="usr-count">{{item.count}}</text>
                 </view>
-            </view>
+            </view> -->
+
 
       </navigator>
   </view>

@@ -1,21 +1,28 @@
   <view wx:for="{{exclist}}">
-    <navigator url="../detailsPage/detailsPage?goods={{item.goods}}&excType={{item.excType}}&type={{2}}">
+    <navigator url="../detailsPage/excPage/excPage?goods={{item.goods}}&excType={{item.excType}}&type={{2}}">
       <view class='itemTemplate'>
-
-            <view class="row">
-              <image class="icon-car" src="../../../../../images/goods.png"/>
-              <text class='item-car'>{{item.goods}}</text>
-            </view>
-
-            <view class="carBottom">
-                <view class='item-left'>
-                  <image class="icon-car" src="../../../../../images/project.png"/>
-                  <text>{{item.excType}}</text>
+            <view class="row" style="height:170rpx;">
+                <view class="wordContainer" style="height:170rpx;background-color: {{item.excType == '出售' ? 'red' : 'blue' }}">
+                    <text class="carTypeWord" >{{item.excType}}</text>
                 </view>
 
-                <view class="item-right">
-                    <image class="icon-car" src="../../../../../images/user.png"/>
-                    <text class="usr-count">{{item.count}}</text>
+                <view style="flex:1;dispaly: flex;height:100%;justify-content: center;">
+                    <view class="row" style="flex:1;">
+                      <view style="display:flex;align-items: center;flex:1;">
+                        <image class="icon-car" src="../../../../../images/goods.png"/>
+                        <Text class="text">物品:</Text>
+                      </view>
+                      
+                      <text style="margin:20rpx;font-weight:bold;">{{item.goods}}</text>
+                    </view>
+
+                    <view class="row" style="flex:1;">
+                    <view style="display:flex;align-items: center;flex:1;">
+                      <image class="icon-car" src="../../../../../images/user.png"/>
+                      <Text class="text">统计:</Text>
+                    </view>
+                    <text style="margin:20rpx;font-weight:bold;">{{item.count}}</text>
+                  </view>
                 </view>
             </view>
       </view>

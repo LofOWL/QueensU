@@ -1,0 +1,54 @@
+/* miniprogram/mainpages/detailsPage/carPage/carPage.wxss */
+
+.icon{
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.item{
+  font-size: 50rpx;
+  font-weight: bold;
+  margin: 20rpx auto 0;
+}
+
+.itemTemplate {
+  width: 95vw;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+
+.row{
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.con-page-section{
+  background-color: gainsboro;
+  height: fit-content;
+  margin: 20rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.item-car-text{
+  font-weight: bold;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+.goToChatroom{
+  margin: 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  background-color: blue;
+}

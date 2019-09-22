@@ -1,0 +1,63 @@
+  <loading hidden="{{loading}}">加载数据</loading>
+<scroll-view class="itemTemplate" wx:for="{{exclist}}" >
+      <navigator url="../../contactPage/contactPage?id={{item._id}}&prices={{item.prices}}&details={{item.details}}&contact={{item.contact}}&imageList={{item.imageList}}&types={{2}}" hover-class="none">
+
+            <view class="row" style="flex:1;">
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon" src="../../../images/calendar.png"/>
+                <Text class="text">创建时间:</Text>
+              </view>
+              
+              <text style="margin:20rpx;font-weight:bold;">{{item.createDate}}</text>
+            </view>
+
+            <view class="row" style="flex:1;" wx:if="{{item.prices}}">
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon" src="../../../images/Dollar.png"/>
+                <Text class="text">价格:</Text>
+              </view>
+              
+              <text style="margin:20rpx;font-weight:bold;">{{item.prices}}</text>
+            </view>
+            
+            <view class="row" style="flex:1;" wx:if="{{item.imageList != ''}}">
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon" src="../../../images/image.png"/>
+                <Text class="text">图片:</Text>
+              </view>
+              
+              <text style="margin:20rpx;font-weight:bold;">{{item.imageCount}}</text>
+            </view>
+
+            <view class="row" style="flex:1;" wx:if="{{item.contact}}">
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon" src="../../../images/wechat.png"/>
+                <Text class="text">微信:</Text>
+              </view>
+              
+              <text style="margin:20rpx;font-weight:bold;">{{item.contact}}</text>
+            </view>
+
+            <view style="margin-left:20rpx;" wx:if="{{item.details}}">
+              <text >物品介绍:</text> 
+            </view>
+        
+            <view class="con-page-section" wx:if="{{item.details}}">
+                <text class="item-car-text">{{item.gooddetails}}</text>
+            </view>
+
+            <view style="margin-left:20rpx;" wx:if="{{item.details}}">
+                <text >信息备注:</text>
+            </view>
+            
+            <view class="con-page-section" wx:if="{{item.details}}">
+                <text class="item-car-text">{{item.details}}</text>
+            </view>
+
+            <view class="goToChatroom">
+              <Text style="margin: 20rpx;font-weight:bold;color:white;"> 聊天室 </Text>
+            </view>
+
+      </navigator>
+
+  </scroll-view>

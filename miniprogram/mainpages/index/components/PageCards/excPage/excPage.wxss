@@ -34,9 +34,8 @@
 }
 
 .icon-car{
-  margin-top: 20rpx;
-  margin-right: 20rpx;
   margin-left: 20rpx;
+  margin-right: 20rpx;
   width: 20px;
   height: 20px;
 }
@@ -45,6 +44,30 @@
   margin-top: 10rpx;
   margin-right: 20rpx;
   font-size: 45rpx;
+  font-weight: bold;
+}
+
+.wordContainer{
+    writing-mode:vertical-rl;
+    border-top-left-radius: 20rpx;
+    border-bottom-left-radius: 20rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.carTypeWord{
+  color: white;
+  font-weight: bold;
+}
+
+.row{
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.text{
   font-weight: bold;
 }
 

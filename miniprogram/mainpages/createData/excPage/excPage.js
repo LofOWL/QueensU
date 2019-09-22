@@ -15,7 +15,8 @@ function excDataToDatabase(data) {
       details: data.details,
       contact: data.contact,
       createDate: data.createDate,
-      imageList: data.fileIdarray
+      imageList: data.fileIdarray,
+      imageCount: data.fileIdarray.length
     },
     success: res => {
       console.log("get into excData")
@@ -89,12 +90,16 @@ function goodsDataCollection(athis) {
   })
 }
 
-function uploadFiles(name,filePath,length,index,athis){
+function uploadFiles(alist,length,index,athis){
+  var filePath = alist[index].path
+  var name = `${Math.random()}_${Date.now()}_${alist[index].size}`
   console.log("get in uploadFiles")
   wx.cloud.uploadFile({
     cloudPath: `excPictures/${name}.png`,
     filePath: filePath,
     success: res => {
+      console.log(name)
+      console.log("succes upload")
       athis.data.fileIdarray.push(res.fileID)
       if (length-1 == index){
         console.log(athis.data.fileIdarray)
@@ -103,7 +108,13 @@ function uploadFiles(name,filePath,length,index,athis){
       }
     },
     fail: e => {
+      console.log(name)
+      console.log("fail upload")
       this.showError('发送图片失败', e)
+    },
+    complete: e =>{
+      index ++;
+      uploadFiles(alist,length,index,athis)
     }
   })
 }
@@ -202,13 +213,7 @@ Page({
       upload: false
     })
     if (this.data.imageList != 0 ){
-      for (var i in this.data.imageList) {
-        console.log(i)
-        console.log(this.data.imageList[i])
-        var a = `${Math.random()}_${Date.now()}_${this.data.imageList[i].size}`
-        console.log(a)
-        uploadFiles(`${Math.random()}_${Date.now()}_${this.data.imageList[i].size}`, this.data.imageList[i].path, this.data.imageList.length, i, this)
-      }
+      uploadFiles(this.data.imageList, this.data.imageList.length, 0, this)
     }else{
       excDataToDatabase(this.data)
       goodsDataCollection(this)
@@ -219,6 +224,7 @@ Page({
   chooseImages: function (){
     wx.chooseImage({
       count: 3,
+      sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: async res =>{
         console.log(res)

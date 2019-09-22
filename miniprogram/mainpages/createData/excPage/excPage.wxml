@@ -5,7 +5,7 @@
           </view>
 
           <view class="con-page-section">
-            <input class="item-right" bindinput="inputPrices" type="number" placeholder="价格" value="{{prices}}"/>
+            <input class="item-right" bindinput="inputPrices" type="digit" placeholder="价格" value="{{prices}}"/>
           </view> 
         </view>
 
