@@ -215,7 +215,7 @@
 
 <!-- Act Page -->
   <actCard
-  style="display:flex;"
+  style="flex-direction:column;display:flex;"
   wx:if="{{page == 4}}"
   actlist="{{actlist}}"
   >

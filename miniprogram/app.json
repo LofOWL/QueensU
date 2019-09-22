@@ -6,7 +6,8 @@
     "mainpages/createData/carPage/carPage",
     "mainpages/detailsPage/carPage/carPage",
     "mainpages/detailsPage/excPage/excPage",
-    "mainpages/index/components/PageCards/actPage/actPage"
+    "mainpages/index/components/PageCards/actPage/actPage",
+    "maingpages/contactPage/contactPage"
   ],
   "window": {
     "backgroundColor": "#ffffff",
