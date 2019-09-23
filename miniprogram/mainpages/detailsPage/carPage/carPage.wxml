@@ -51,7 +51,6 @@
       
       <view class="goToChatroom">
         <Text style="margin: 20rpx;font-weight:bold;color:white;"> 聊天室 </Text>
-
       </view>
       
 
