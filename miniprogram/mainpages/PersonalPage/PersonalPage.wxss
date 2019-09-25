@@ -44,7 +44,7 @@
 }
 .icon-car{
   margin-top: 20rpx;
-  margin-right: 20rpx;
+  
   margin-left: 20rpx;
   width: 20px;
   height: 20px;
