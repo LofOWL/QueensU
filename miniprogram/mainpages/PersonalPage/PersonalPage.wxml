@@ -27,8 +27,8 @@
 
   <view wx:for="{{personalcarList}}">
     <view class="itemTemplate">
-        <view class="row" style="flex:1;">
-          <view style="display:flex;align-items: center;flex:1;">
+      <view class="row" style="flex:1;">
+        <view style="display:flex;align-items: center;flex:1;">
           <image class="icon" src="../../images/calendar.png"/>
           <Text class="text">创建时间:</Text>
         </view>
@@ -41,10 +41,7 @@
           <Text class="text">人数:</Text>
         </view>
         <text style="margin:20rpx;font-weight:bold;">{{item.peoplenumber}}</text>
-    
       </view>
-
-    
 
       <view class="row" style="flex:1;">
         <view style="display:flex;align-items: center;flex:1;">
@@ -59,11 +56,10 @@
           <image class="icon" src="../../images/wechat.png"/>
           <Text class="text">微信:</Text>
         </view>
-        
         <text style="margin:20rpx;font-weight:bold;">{{item.contact}}</text>
-      
       </view>
-       <view style="margin-left:20rpx;" wx:if="{{item.details}}">
+
+      <view style="margin-left:20rpx;" wx:if="{{item.details}}">
           <text>信息备注:</text>
       </view>
 
