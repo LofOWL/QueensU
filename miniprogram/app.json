@@ -13,7 +13,9 @@
     "backgroundColor": "#ffffff",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTitleText": "????",
+
+    "navigationBarTitleText": "*****",
+
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },

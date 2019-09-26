@@ -3,10 +3,12 @@
   <!-- user information -->
 
   <view class="itemTemplate">
-    <view class="row" data-statu="start" bindtap="editUserInformation">
-      <image class="icon-car" src="../../images/con.png"/>
-      <text class="item-car">{{userCon}}</text>
-    </view>
+      <view class="row" style="flex:1;" data-statu="start" bindtap="editUserInformation">
+        <view style="display:flex;align-items: center;flex:1;">
+          <image class="icon-car" src="../../images/con.png"/>
+         </view>
+        <text class="item-car" style="margin:20rpx;font-weight:bold;">{{userCon}}</text>
+      </view>      
   </view>
 
   <!-- change user information -->
@@ -25,16 +27,46 @@
 
   <view wx:for="{{personalcarList}}">
     <view class="itemTemplate">
-
-        <view class="row">
-          <image class="icon-car" src="../../images/calendar.png"/>
-          <text class='item-car'>{{item.createDate}}</text>
+      <view class="row" style="flex:1;">
+        <view style="display:flex;align-items: center;flex:1;">
+          <image class="icon" src="../../images/calendar.png"/>
+          <Text class="text">创建时间:</Text>
         </view>
+        <text style="margin:20rpx;font-weight:bold;">{{item.createDate}}</text>
+      </view>
 
-        <view class="row">
-              <image class="icon-car" src="../../images/location.png"/>
-              <text class="item-car">{{item.from}} - {{item.to}}</text>
+      <view class="row" style="flex:1;">
+        <view style="display:flex;align-items: center;flex:1;">
+          <image class="icon" src="../../images/user.png"/>
+          <Text class="text">人数:</Text>
         </view>
+        <text style="margin:20rpx;font-weight:bold;">{{item.peoplenumber}}</text>
+      </view>
+
+      <view class="row" style="flex:1;">
+        <view style="display:flex;align-items: center;flex:1;">
+          <image class="icon" src="../../images/luggage.png"/>
+          <Text class="text">行李数:</Text>
+        </view>
+        <text style="margin:20rpx;font-weight:bold;">{{item.luggagenumber}}</text>
+      </view>
+
+      <view class="row" style="flex:1;">
+        <view style="display:flex;align-items: center;flex:1;">
+          <image class="icon" src="../../images/wechat.png"/>
+          <Text class="text">微信:</Text>
+        </view>
+        <text style="margin:20rpx;font-weight:bold;">{{item.contact}}</text>
+      </view>
+
+      <view style="margin-left:20rpx;" wx:if="{{item.details}}">
+          <text>信息备注:</text>
+      </view>
+
+      <view class="con-page-section" wx:if="{{item.details}}">
+          <text class="item-car-text">{{item.details}}</text>
+      </view>
+
 
         <!-- <view class="row">
               <image class="icon-car" src="../../images/mess.png"/>
@@ -53,7 +85,7 @@
         </view> -->
 
         
-        <button class="buttom" data-name="CarData" data-id="{{item._id}}" data-date="{{item.date}}" data-from="{{item.from}}" data-to="{{item.to}}" data-carType="{{item.carType}}" bindtap="onRemove" type="primary" plain="false">删除</button>
+        <button class="buttom" data-name="CarData" data-id="{{item._id}}" data-date="{{item.date}}" data-from="{{item.from}}" data-to="{{item.to}}" data-carType="{{item.carType}}" bindtap="onRemove" plain="false">删除</button>
 
     </view>
   </view>
@@ -62,26 +94,61 @@
   <view wx:for="{{personalexcList}}">
         <view class="itemTemplate">
 
-              <view class="row">
-                <image class="icon-car" src="../../images/calendar.png"/>
-                <text class='item-car'>{{item.createDate}}</text>
+            <view class="row" style="flex:1;">
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon" src="../../images/calendar.png"/>
+                <Text class="text">创建时间:</Text>
               </view>
+              
+              <text style="margin:20rpx;font-weight:bold;">{{item.createDate}}</text>
+            </view>
 
-              <view class="row">
-                <image class="icon-car" src="../../images/goods.png"/>
-                <text class='item-car'>{{item.goods}}</text>
-               </view>
+            <view class="row" style="flex:1;" wx:if="{{item.prices}}">
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon" src="../../images/Dollar.png"/>
+                <Text class="text">价格:</Text>
+              </view>
+              
+              <text style="margin:20rpx;font-weight:bold;">{{item.prices}}</text>
+            </view>
+            
+            <view class="row" style="flex:1;" wx:if="{{item.imageList != ''}}">
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon" src="../../images/image.png"/>
+                <Text class="text">图片:</Text>
+              </view>
+              
+              <text style="margin:20rpx;font-weight:bold;">{{item.imageCount}}</text>
+            </view>
 
-               <view class="row">
-                      <image class="icon-car" src="../../images/mess.png"/>
-                      <view class="con-page-section">
-                        <text class="item-car-text">{{item.gooddetails}}</text>
-                      </view>
-                      
-                </view>
+            <view class="row" style="flex:1;" wx:if="{{item.contact}}">
+              <view style="display:flex;align-items: center;flex:1;">
+                <image class="icon" src="../../images/wechat.png"/>
+                <Text class="text">微信:</Text>
+              </view>
+              
+              <text style="margin:20rpx;font-weight:bold;">{{item.contact}}</text>
+            </view>
+
+            <view style="margin-left:20rpx;" wx:if="{{item.details}}">
+              <text >物品介绍:</text> 
+            </view>
+        
+            <view class="con-page-section" wx:if="{{item.details}}">
+                <text class="item-car-text">{{item.gooddetails}}</text>
+            </view>
+
+            <view style="margin-left:20rpx;" wx:if="{{item.details}}">
+                <text >信息备注:</text>
+            </view>
+            
+            <view class="con-page-section" wx:if="{{item.details}}">
+                <text class="item-car-text">{{item.details}}</text>
+            </view>
 
 
-              <button class="buttom" data-name="GoodsData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" type="primary" plain="false">删除</button>
+
+              <button class="buttom" data-name="GoodsData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" plain="false">删除</button>
 
         </view>
   </view>
@@ -97,7 +164,7 @@
                 </view>
 
 
-              <button class="buttom" data-name="QueData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" type="primary" plain="false">删除</button>
+              <button class="buttom" data-name="QueData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" plain="false">删除</button>
     </view>
   </view>
 
