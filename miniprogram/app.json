@@ -15,7 +15,10 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
 
+
     "navigationBarTitleText": "QueensU",
+
+
 
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true

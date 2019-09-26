@@ -34,7 +34,6 @@
         </view>
         <text style="margin:20rpx;font-weight:bold;">{{item.createDate}}</text>
       </view>
-<<<<<<< HEAD
 
       <view class="row" style="flex:1;">
         <view style="display:flex;align-items: center;flex:1;">
@@ -42,32 +41,12 @@
           <Text class="text">人数:</Text>
         </view>
         <text style="margin:20rpx;font-weight:bold;">{{item.peoplenumber}}</text>
+
       </view>
 
       <view class="row" style="flex:1;">
         <view style="display:flex;align-items: center;flex:1;">
-          <image class="icon" src="../../images/luggage.png"/>
-          <Text class="text">行李数:</Text>
-        </view>
-        <text style="margin:20rpx;font-weight:bold;">{{item.luggagenumber}}</text>
-=======
 
-      <view class="row" style="flex:1;">
-        <view style="display:flex;align-items: center;flex:1;">
-          <image class="icon" src="../../images/user.png"/>
-          <Text class="text">人数:</Text>
-        </view>
-        <text style="margin:20rpx;font-weight:bold;">{{item.peoplenumber}}</text>
->>>>>>> sunny
-      </view>
-
-      <view class="row" style="flex:1;">
-        <view style="display:flex;align-items: center;flex:1;">
-<<<<<<< HEAD
-          <image class="icon" src="../../images/wechat.png"/>
-          <Text class="text">微信:</Text>
-        </view>
-=======
           <image class="icon" src="../../images/luggage.png"/>
           <Text class="text">行李数:</Text>
         </view>
@@ -79,7 +58,7 @@
           <image class="icon" src="../../images/wechat.png"/>
           <Text class="text">微信:</Text>
         </view>
->>>>>>> sunny
+
         <text style="margin:20rpx;font-weight:bold;">{{item.contact}}</text>
       </view>
 
@@ -131,7 +110,7 @@
               <view style="display:flex;align-items: center;flex:1;">
                 <image class="icon" src="../../images/Dollar.png"/>
                 <Text class="text">价格:</Text>
-<<<<<<< HEAD
+
               </view>
               
               <text style="margin:20rpx;font-weight:bold;">{{item.prices}}</text>
@@ -152,28 +131,7 @@
                 <Text class="text">微信:</Text>
               </view>
               
-=======
-              </view>
-              
-              <text style="margin:20rpx;font-weight:bold;">{{item.prices}}</text>
-            </view>
-            
-            <view class="row" style="flex:1;" wx:if="{{item.imageList != ''}}">
-              <view style="display:flex;align-items: center;flex:1;">
-                <image class="icon" src="../../images/image.png"/>
-                <Text class="text">图片:</Text>
-              </view>
-              
-              <text style="margin:20rpx;font-weight:bold;">{{item.imageCount}}</text>
-            </view>
 
-            <view class="row" style="flex:1;" wx:if="{{item.contact}}">
-              <view style="display:flex;align-items: center;flex:1;">
-                <image class="icon" src="../../images/wechat.png"/>
-                <Text class="text">微信:</Text>
-              </view>
-              
->>>>>>> sunny
               <text style="margin:20rpx;font-weight:bold;">{{item.contact}}</text>
             </view>
 
@@ -202,15 +160,7 @@
 
   <view wx:for="{{peronsalqueList}}">
     <view class="itemTemplate">
-<<<<<<< HEAD
-               <view class="row">
-                      <image class="icon-car" src="../../images/mess.png"/>
-                      <view class="con-page-section">
-                        <text class="item-car-text">{{item.question}}</text>
-                      </view>
-                      
-                </view>
-=======
+
             <view style="margin-left:20rpx;" >
                 <text >评论:</text>
             </view>
@@ -220,7 +170,7 @@
             </view>
             
                 
->>>>>>> sunny
+
 
 
               <button class="buttom" data-name="QueData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" plain="false">删除</button>
