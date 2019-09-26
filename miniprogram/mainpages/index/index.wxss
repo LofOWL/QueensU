@@ -279,12 +279,12 @@ Page{
   justify-content: center;
 }
 
-<<<<<<< HEAD
+
 
 Page{
   background-color: white;
 }
-=======
+
 .userCard {
   width: 95vw;
   height: fit-content;
@@ -296,4 +296,4 @@ Page{
   border-radius: 20rpx;
   box-shadow: 10rpx 10rpx 20rpx #999;
 }
->>>>>>> jeff
+
