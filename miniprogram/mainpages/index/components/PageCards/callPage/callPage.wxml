@@ -1,0 +1,43 @@
+  <loading hidden="{{queUpdate}}">上传数据</loading>
+<view class= "queCard">
+  <scroll-view class="itemTemplate" wx:for="{{calllist}}" lower-threshold="200">
+
+      <view class="que-container" wx:if="{{index == 0}}" style="border-radius:20rpx;background-color:yellow;">
+          <text class="que-text">{{item.name}}</text>
+          <view class="button-container" >
+            <image class="icon-que" src="../../../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
+            <text class="total-text">{{item.total}}</text>
+            <image class="icon-que" src="../../../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
+          </view>
+      </view>
+
+      <view class="que-container" wx:if="{{index == 1}}" style="border-radius:20rpx;background-color: blue;">
+          <text class="que-text">{{item.name}}</text>
+          <view class="button-container" >
+            <image class="icon-que" src="../../../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
+            <text class="total-text">{{item.total}}</text>
+            <image class="icon-que" src="../../../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
+          </view>
+      </view>
+
+      <view class="que-container" wx:if="{{index == 2}}" style="border-radius:20rpx;background-color: red;">
+          <text class="que-text">{{item.name}}</text>
+          <view class="button-container" >
+            <image class="icon-que" src="../../../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
+            <text class="total-text">{{item.total}}</text>
+            <image class="icon-que" src="../../../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
+          </view>
+      </view>
+
+       <view class="que-container" wx:if="{{index >= 3}}">
+          <text class="que-text">{{item.name}}</text>
+          <view class="button-container" >
+            <image class="icon-que" src="../../../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
+            <text class="total-text">{{item.total}}</text>
+            <image class="icon-que" src="../../../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
+          </view>
+      </view>
+
+  </scroll-view>
+
+  </view>

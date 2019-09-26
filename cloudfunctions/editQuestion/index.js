@@ -4,7 +4,7 @@ cloud.init()
 const db = cloud.database()
 exports.main = async (event, context) => {
 
-  return await db.collection('QueData').where({
+  return await db.collection(event.database).where({
     _id: event.id
   }).update({
     data: {

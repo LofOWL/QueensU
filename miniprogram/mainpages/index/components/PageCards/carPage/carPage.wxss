@@ -67,3 +67,12 @@
   color: white;
   font-weight: bold;
 }
+
+.carPage{
+  flex:1;
+  dispaly: flex;
+  height:100%;
+  justify-content: center;
+  border-top-right-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}

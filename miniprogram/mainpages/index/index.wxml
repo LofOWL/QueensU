@@ -6,9 +6,14 @@
 
   <loading hidden="{{personal}}">进入个人主页</loading>
 
-  <button class="userinfo-avatar" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" bindtap="onGetOpenid" style="background-image: url({{avatarUrl}});background-color: {{avatarUrl != '' ? 'transparent' : 'black' }}"/>
+  <view class="userCard" style="margin:20rpx;">
 
-  <view wx:if="{{checkUser}}" bindgetuserinfo="onGetUserInfo" >点击授权</view>
+    <button class="userinfo-avatar" style="left: 10rpx;" style="background-image: url({{avatarUrl}});background-color: {{avatarUrl != '' ? 'transparent' : 'black' }}"/>
+
+      <text style="justify-content: center;" bindgetuserinfo="onGetUserInfo" bindtap="onGetOpenid" >历史记录</text>
+
+      <button wx:if="{{showLog}}" open-type="getUserInfo"   bindgetuserinfo="onGetUserInfo" >点击授权</button>
+  </view>
 
   <!-- top naviagtor page -->
     <scroll-view class="scroll_w" scroll-x >
@@ -212,11 +217,19 @@
           </view>
   </view> -->
 
+  <callCard
+    style="flex-direction:column;display:flex;"
+    wx:if="{{page == 4}}"
+    calllist="{{calllist}}"
+    bindcompclick="onCompClick">
+
+  </callCard>
+
 
 <!-- Act Page -->
   <actCard
   style="flex-direction:column;display:flex;"
-  wx:if="{{page == 4}}"
+  wx:if="{{page == 5}}"
   actlist="{{actlist}}"
   >
 
