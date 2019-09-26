@@ -14,13 +14,11 @@
     "backgroundColor": "#ffffff",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
-<<<<<<< HEAD
-    "navigationBarTitleText": "*****",
-=======
+
 
     "navigationBarTitleText": "QueensU",
 
->>>>>>> develop
+
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
