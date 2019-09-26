@@ -71,6 +71,8 @@ Page{
 /* itemTemplate */
 .itemTemplate {
   width: 95vw;
+  flex-direction: row;
+  display: flex;
   background-color: #fff;
   margin: 20rpx auto 0;
   border-radius: 20rpx;
@@ -277,7 +279,19 @@ Page{
   justify-content: center;
 }
 
-
 Page{
   background-color: white;
 }
+
+.userCard {
+  width: 95vw;
+  height: fit-content;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+
