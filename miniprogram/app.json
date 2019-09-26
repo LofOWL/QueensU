@@ -7,7 +7,8 @@
     "mainpages/detailsPage/carPage/carPage",
     "mainpages/detailsPage/excPage/excPage",
     "mainpages/index/components/PageCards/actPage/actPage",
-    "mainpages/contactPage/contactPage"
+    "mainpages/contactPage/contactPage",
+    "mainpages/index/components/PageCards/callPage/callPage"
   ],
   "window": {
     "backgroundColor": "#ffffff",

@@ -224,6 +224,30 @@ function getQueInfo(athis){
   })
 }
 
+function getCallInfo(athis) {
+  console.log("get into getCallInfo")
+  console.log(athis.data.quelist.length)
+  const db = wx.cloud.database()
+  db.collection('CallData').orderBy("total", "desc").get({
+    success: res => {
+      console.log("get into call")
+      console.log(res.data)
+      athis.setData({
+        calllist: res.data,
+      })
+      wx.stopPullDownRefresh()
+    },
+    fail: err => {
+      console.log("get into fail")
+      wx.showToast({
+        icon: 'none',
+        title: '查询记录失败'
+      })
+      wx.stopPullDownRefresh()
+    }
+  })
+}
+
 function queDataToDatabase(athis) {
   const db = wx.cloud.database()
   db.collection('QueData').add({
@@ -319,7 +343,7 @@ Page({
     }
   },
   data: {
-    topNavi: ["拼车","二手","公告栏","活动"],
+    topNavi: ["拼车","二手","吐槽","+1","活动"],
     finish: false,
     personal: true,
     //car data
@@ -354,8 +378,11 @@ Page({
     result: '',
     avatarUrl: "",
     userInfo: "",
+    // call page
+    calllist: [],
     // act page
-    actlist: []
+    actlist: [],
+    showLog: false
   },
   onPullDownRefresh: function(){
     this.onLoad()
@@ -370,6 +397,7 @@ Page({
     getActInfo(this)
     getCarInfo(this)
     getCarTime(this)
+    getCallInfo(this)
     getExcInfo(this)
     getQueInfo(this)
 
@@ -388,7 +416,9 @@ Page({
             }
           })
         }else{
-          
+          this.setData({
+            showLog: true
+          })
         }
       }
     })
@@ -468,8 +498,10 @@ Page({
     })
   },
   onGetUserInfo: function (e) {
+    console.log("get into")
     if (!this.logged && e.detail.userInfo) {
       this.setData({
+        showLog: false,
         logged: true,
         avatarUrl: e.detail.userInfo.avatarUrl,
         userInfo: e.detail.userInfo
@@ -537,14 +569,19 @@ Page({
           page: 2
         })
         break
-      case "公告栏":
+      case "吐槽":
         this.setData({
           page: 3
         })
         break
-      case "活动":
+      case "+1":
         this.setData({
           page: 4
+        })
+      break
+      case "活动":
+        this.setData({
+          page: 5
         })
         break
     }

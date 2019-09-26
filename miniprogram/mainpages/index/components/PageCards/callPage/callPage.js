@@ -1,16 +1,16 @@
 function getQueInfo(athis) {
   const db = wx.cloud.database()
-  db.collection('QueData').orderBy("total", "desc").get({
+  db.collection('CallData').orderBy("total", "desc").get({
     success: res => {
       athis.setData({
-        quelist: res.data,
+        calllist: res.data,
         queUpdate: true
       })
       wx.showToast({
         icon: 'none',
         title: '上传成功'
       })
-      
+
     },
     fail: err => {
       wx.showToast({
@@ -27,22 +27,20 @@ Component({
    * Component properties
    */
   properties: {
-    quelist: Array
+    calllist: Array
   },
-  
+
   /**
    * Component initial data
    */
   data: {
-    quelist: [],
+    calllist: [],
     queUpdate: true,
   },
   lifetimes: {
-    attached: function(){
-      console.log("$$$$$$$$$$ quePage touch")
-      console.log(this.properties.quelist)
+    attached: function () {
       this.setData({
-        quelist: this.properties.quelist
+        calllist: this.properties.calllist
       })
     }
   },
@@ -77,10 +75,10 @@ Component({
       })
       console.log(e.currentTarget.dataset.type)
       console.log(e.currentTarget.dataset.id)
-      
+
       const db = wx.cloud.database()
       const _ = db.command
-      db.collection('QueData').where({
+      db.collection('CallData').where({
         _id: e.currentTarget.dataset.id
       }).get({
         success: res => {
@@ -93,15 +91,15 @@ Component({
               wx.cloud.callFunction({
                 name: 'editQuestion',
                 data: {
+                  database: "CallData",
                   id: e.currentTarget.dataset.id,
-                  database: "QueData",
                   up: up + 1,
                   total: up + 1 - down
                 },
                 success: res => {
                   // refresh
                   getQueInfo(this)
-                  
+
                 },
                 fail: err => {
                   console.log("err")
@@ -117,14 +115,14 @@ Component({
                 name: 'editQuestion',
                 data: {
                   id: e.currentTarget.dataset.id,
-                  database: "QueData",
+                  database: "CallData",
                   down: down + 1,
                   total: up - down - 1
                 },
                 success: res => {
                   //refresh
                   getQueInfo(this)
-                
+
                 },
                 fail: err => {
                   console.log("err")
