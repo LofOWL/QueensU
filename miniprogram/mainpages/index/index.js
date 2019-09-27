@@ -343,7 +343,7 @@ Page({
     }
   },
   data: {
-    topNavi: ["拼车","二手","吐槽","+1","活动"],
+    topNavi: ["拼车","二手","吐槽","打call","活动"],
     finish: false,
     personal: true,
     //car data
@@ -574,7 +574,7 @@ Page({
           page: 3
         })
         break
-      case "+1":
+      case "打call":
         this.setData({
           page: 4
         })
