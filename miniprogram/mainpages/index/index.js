@@ -381,7 +381,8 @@ function compare(athis,list,index,result,string){
         athis.setData({
           updateList: result,
           updateString: string,
-          updateCount: result.length
+          updateCount: result.length,
+          getUpdateinfo: false
         })
         console.log("finish update")
         console.log(athis.data.updateList)
@@ -476,7 +477,8 @@ Page({
     queCount: 0,
     updateCount: 0,
     updateList: [],
-    updateString: ""
+    updateString: "",
+    getUpdateinfo: true
   },
   onPullDownRefresh: function(){
     this.onLoad()

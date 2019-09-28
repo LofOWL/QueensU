@@ -48,7 +48,8 @@
       <view style="background:grey;height:50rpx;width:5rpx;"/>
       <text>{{updatelist}}</text>
       <navigator url="../PersonalPage/Pages/updatePage/updatePage?a={{updateCount}}&list={{updateString}}" hover-class="none" style="flex-direction:column;flex-grow:1;margin:20rpx;display:flex;justify-content:center;align-items:center;">
-        <text style="font-weight:bold;">{{updateCount}}</text>
+        <text wx:if="{{!getUpdateinfo}}" style="font-weight:bold;">{{updateCount}}</text>
+        <image wx:if="{{getUpdateinfo}}" style="height:50rpx;width:50rpx;" src="../../images/loading.gif"/>
         <text style="font-weight:bold;">消息</text>
       </navigator>
       
