@@ -42,3 +42,17 @@
   font-weight: bold;
   margin: 20rpx 20rpx 20rpx 20rpx;
 }
+
+.row{
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.icon-car{
+  margin-left: 20rpx;
+  margin-right: 10rpx;
+  width: 20px;
+  height: 20px;
+}

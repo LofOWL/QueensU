@@ -1,0 +1,128 @@
+.row{
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.buttom{
+  margin: 20rpx;
+  font-size: 40rpx;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  height:fit-content;
+  background-color: blue;
+}
+
+
+/* itemTemplate */
+/*
+.itemTemplate {
+  width: 95vw;
+  height: fit-content;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}*/
+
+.icon{
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.itemTemplate {
+  width: 95vw;
+  padding-bottom: 20rpx;
+  background-color: #fff;
+  margin: 20rpx auto 0;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 20rpx #999;
+}
+.icon-car{
+  margin-top: 20rpx;
+  
+  margin-left: 20rpx;
+  width: 20px;
+  height: 20px;
+}
+
+.item-car{
+  font-size: 50rpx;
+  font-weight: bold;
+  margin: 20rpx auto 0;
+}
+
+
+.con-page-section{
+  background-color: gainsboro;
+  height: fit-content;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+}
+
+.item-car-text{
+  margin: 10rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+
+/* input user information */
+
+.drawer_box {
+  width: 650rpx;
+  height: fit-content;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 1001;
+  background: #FAFAFA;
+  margin: -150px 50rpx 0 50rpx;
+  border-radius: 10px;
+}
+
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.page-section{
+  background-color: gainsboro;
+  height: fit-content;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.input{
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+}
+
+.submitButton{
+  justify-content: center;
+  width: 200rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+}
+

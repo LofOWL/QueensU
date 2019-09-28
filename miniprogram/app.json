@@ -8,21 +8,17 @@
     "mainpages/detailsPage/excPage/excPage",
     "mainpages/index/components/PageCards/actPage/actPage",
     "mainpages/contactPage/contactPage",
-    "mainpages/index/components/PageCards/callPage/callPage"
+    "mainpages/index/components/PageCards/callPage/callPage",
+    "mainpages/PersonalPage/Pages/carPage/carPage",
+    "mainpages/PersonalPage/Pages/excPage/excPage",
+    "mainpages/PersonalPage/Pages/quePage/quePage",
+    "mainpages/PersonalPage/Pages/updatePage/updatePage"
   ],
   "window": {
     "backgroundColor": "#ffffff",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
-
-
-
     "navigationBarTitleText": "QueensU",
-
-
-
-
-
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },

@@ -23,10 +23,7 @@
 }
 
 .que-text{
-  width: 80vw;
   margin: 20rpx 20rpx 20rpx 20rpx;
-  word-break: keep-all;
-  word-wrap: break-word;
 }
 
 .icon-que{
@@ -38,6 +35,7 @@
 .button-container{
   display:flex;
   height: fit-content;
+  right:10rpx;
   margin-top: 20rpx;
   margin-bottom:20rpx;
   flex-direction:column;

@@ -57,9 +57,7 @@
   background-color: balck;
 }
 
-Page{
-  background-color: white;
-}
+
 
 .que-text{
   width: 80vw;
@@ -165,25 +163,36 @@ Page{
 
 .scroll_w{
   width: 100%;
-  height: 100rpx;
+  height: 160rpx;
   white-space: nowrap;
 }
 
 .topContainer{
   width:200rpx;
-  height:90rpx;
+  height:100rpx;
   display: inline-block;
 }
 
 .top-item{
   width: 160rpx;
-  height: 90rpx;
+  height: 100rpx;
   margin-left: 20rpx;
   background-color:white;
   border-radius: 20rpx;
   box-shadow: 5rpx 5rpx 10rpx #999;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.top-item-2{
+  flex-direction: column;
+  margin:20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20rpx;
+  box-shadow: 5rpx 5rpx 10rpx #999;
 }
 
 .top-text{
@@ -286,12 +295,27 @@ Page{
 .userCard {
   width: 95vw;
   height: fit-content;
-  flex-direction: row;
+  flex-direction: column;
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #fff;
   margin: 20rpx auto 0;
   border-radius: 20rpx;
-  box-shadow: 10rpx 10rpx 20rpx #999;
+  border-width: 4rpx 4rpx 0 0;
+  border: 10rpx;
+  border-color: black;
+  box-shadow: 10rpx 5rpx 20rpx #999;
+  /* box-shadow: 10rpx 10rpx 20rpx #999;  */
+}
+
+.circle {
+    z-index: -1;
+    position: absolute;
+    background-color:blue;
+    width: 100%;
+    height: 100px;
+    border-bottom-left-radius: 100rpx;
+    border-bottom-right-radius: 100rpx;
 }
 
