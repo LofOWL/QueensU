@@ -1,0 +1,7 @@
+    <view wx:for="{{updateList}}">
+      <navigator url="../../../contactPage/contactPage?id={{item}}&&imageList={{}}&types={{1}}" hover-class="none" wx:if="{{item != ''}}">
+        <view class="goToChatroom">
+          <Text style="margin: 20rpx;font-weight:bold;color:white;"> 聊天室 </Text>
+        </view>
+      </navigator>
+    </view>
