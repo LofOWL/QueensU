@@ -1,0 +1,18 @@
+  <view wx:for="{{peronsalqueList}}">
+    <view class="itemTemplate">
+
+            <view style="margin-left:20rpx;" >
+                <text >评论:</text>
+            </view>
+                     
+            <view class="con-page-section">
+              <text class="item-car-text">{{item.question}}</text>
+            </view>
+            
+                
+
+
+
+              <button class="buttom" data-name="QueData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" plain="false">删除</button>
+    </view>
+  </view>

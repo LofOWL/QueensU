@@ -1,0 +1,8 @@
+.goToChatroom{
+  margin: 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  background-color: blue;
+}

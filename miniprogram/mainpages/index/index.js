@@ -317,6 +317,93 @@ function getNextInfor(athis,name,index){
 }
 
 
+function getStatic(athis){
+  const db = wx.cloud.database()
+  db.collection('CarData').where({
+    _openid: app.globalData.openid
+  }).count({
+    success: function (res) {
+      athis.setData({
+        carCount: res.total
+      })
+    }
+  })
+
+  db.collection('GoodsData').where({
+    _openid: app.globalData.openid
+  }).count({
+    success: function (res) {
+      athis.setData({
+        excCount: res.total
+      })
+    }
+  })
+
+  db.collection('QueData').where({
+    _openid: app.globalData.openid
+  }).count({
+    success: function (res) {
+      athis.setData({
+        queCount: res.total
+      })
+    }
+  })
+}
+
+function getUpdateInfo(athis){
+  const db = wx.cloud.database()
+  db.collection("UserInfoUpdate").where({
+    _openid: app.globalData.openid
+  }).get({
+    success: res=>{
+      console.log("update info")
+      console.log(res.data[0].updateList)
+      var result = []
+      var string = ""
+      compare(athis,res.data[0].updateList,0,result,string)
+    }
+  })
+}
+
+function compare(athis,list,index,result,string){
+  const db = wx.cloud.database()
+  db.collection("chatroom").where({
+    groupId: list[index].groupId
+  }).count({
+    success: res =>{
+      var noUpdate = res.total == list[index].count
+      if (list.length-1 == index){
+        console.log("done")
+        if (!noUpdate){
+          result.push(list[index].groupId)
+          string = string + list[index].groupId 
+        }
+        athis.setData({
+          updateList: result,
+          updateString: string,
+          updateCount: result.length
+        })
+        console.log("finish update")
+        console.log(athis.data.updateList)
+        console.log(string)
+        console.log(result)
+      }else{
+        if (noUpdate) {
+          index++
+          compare(athis,list, index, result,string)
+        } else {
+          result.push(list[index].groupId)
+          string = string + list[index].groupId + "@"
+          index ++
+          compare(athis,list, index, result,string)
+        }
+      }
+      
+    }
+  })
+}
+
+
 Page({
   onCompClick(e) {
     switch(e.detail.type){
@@ -382,7 +469,14 @@ Page({
     calllist: [],
     // act page
     actlist: [],
-    showLog: false
+    showLog: false,
+    // static
+    carCount: 0,
+    excCount: 0,
+    queCount: 0,
+    updateCount: 0,
+    updateList: [],
+    updateString: ""
   },
   onPullDownRefresh: function(){
     this.onLoad()
@@ -394,12 +488,26 @@ Page({
     this.setData({
       finish: false
     })
-    getActInfo(this)
-    getCarInfo(this)
-    getCarTime(this)
-    getCallInfo(this)
-    getExcInfo(this)
-    getQueInfo(this)
+    //get openid
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        getStatic(this)
+        getUpdateInfo(this)
+        getActInfo(this)
+        getCarInfo(this)
+        getCarTime(this)
+        getCallInfo(this)
+        getExcInfo(this)
+        getQueInfo(this)
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })
 
     // 获取用户信息
     wx.getSetting({
@@ -420,19 +528,6 @@ Page({
             showLog: true
           })
         }
-      }
-    })
-
-    //get openid
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
       }
     })
     

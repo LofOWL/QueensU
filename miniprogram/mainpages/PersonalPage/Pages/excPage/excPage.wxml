@@ -1,9 +1,9 @@
-  <loading hidden="{{loading}}">加载数据</loading>
-<scroll-view class="itemTemplate" wx:for="{{exclist}}" >
+  <view wx:for="{{personalexcList}}">
+        <view class="itemTemplate">
 
             <view class="row" style="flex:1;">
               <view style="display:flex;align-items: center;flex:1;">
-                <image class="icon" src="../../../images/calendar.png"/>
+                <image class="icon" src="../../../../images/calendar.png"/>
                 <Text class="text">创建时间:</Text>
               </view>
               
@@ -12,8 +12,9 @@
 
             <view class="row" style="flex:1;" wx:if="{{item.prices}}">
               <view style="display:flex;align-items: center;flex:1;">
-                <image class="icon" src="../../../images/Dollar.png"/>
+                <image class="icon" src="../../../../images/Dollar.png"/>
                 <Text class="text">价格:</Text>
+
               </view>
               
               <text style="margin:20rpx;font-weight:bold;">{{item.prices}}</text>
@@ -21,7 +22,7 @@
             
             <view class="row" style="flex:1;" wx:if="{{item.imageList != ''}}">
               <view style="display:flex;align-items: center;flex:1;">
-                <image class="icon" src="../../../images/image.png"/>
+                <image class="icon" src="../../../../images/image.png"/>
                 <Text class="text">图片:</Text>
               </view>
               
@@ -30,11 +31,11 @@
 
             <view class="row" style="flex:1;" wx:if="{{item.contact}}">
               <view style="display:flex;align-items: center;flex:1;">
-                <image class="icon" src="../../../images/wechat.png"/>
+                <image class="icon" src="../../../../images/wechat.png"/>
                 <Text class="text">微信:</Text>
               </view>
+              
 
-              <text style="margin:20rpx;font-weight:bold;color:blue;" data-contact="{{item.contact}}" bindtap="copy">复制</text>
               <text style="margin:20rpx;font-weight:bold;">{{item.contact}}</text>
             </view>
 
@@ -54,10 +55,9 @@
                 <text class="item-car-text">{{item.details}}</text>
             </view>
 
-            <navigator url="../../contactPage/contactPage?id={{item._id}}&prices={{item.prices}}&details={{item.details}}&contact={{item.contact}}&imageList={{item.imageList}}&types={{2}}" hover-class="none">
-              <view class="goToChatroom">
-                <Text style="margin: 20rpx;font-weight:bold;color:white;"> 聊天室 </Text>
-              </view>
-            </navigator>
 
-  </scroll-view>
+
+              <button class="buttom" data-name="GoodsData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" plain="false">删除</button>
+
+        </view>
+  </view>

@@ -4,6 +4,78 @@ const SETDATA_SCROLL_TO_BOTTOM = {
   scrollWithAnimation: true,
 }
 
+function update(openid,groupid,count){
+  console.log("get in update")
+  console.log(openid)
+  console.log(groupid)
+  console.log(count)
+  const db = wx.cloud.database()
+  db.collection('UserInfoUpdate').where({
+    _openid: openid
+  }).get({
+    success: res => {
+      console.log("get in success")
+      var isExist = res.data.length != "0";
+      console.log(isExist)
+      console.log(res.data)
+
+      // update or create database
+      if (isExist) {
+        var oldlist = res.data[0].updateList
+
+        var notTouch = true;
+        for( var i in oldlist){
+          if (oldlist[i].groupId == groupid){
+            console.log("touch")
+            oldlist[i] = {
+              groupId: groupid,
+              count: count
+            }
+            notTouch = false;
+          }
+        }
+        if (notTouch){
+          oldlist.push({
+            groupId: groupid,
+            count: count
+          })
+        }
+        
+        db.collection('UserInfoUpdate').doc(res.data[0]._id).update({
+          data:{
+            updateList: oldlist
+          },
+          success: res =>{
+            console.log(res)
+            console.log("update done")
+          }
+        })
+        
+      } else {
+        console.log("get on create")
+        var list = []
+        list.push({
+          groupId: groupid,
+          count: count
+        })
+        console.log(list)
+        db.collection('UserInfoUpdate').add({
+          data: {
+            updateList: list
+          },
+          success: res => {
+            // wx.navigateBack()
+            console.log("push to UserINfoUpdate")
+          },
+          fail: res =>{
+            console.log("fail")
+          }
+        })
+      }
+    }
+  })
+}
+
 Component({
   properties: {
     envId: String,
@@ -26,6 +98,39 @@ Component({
     scrollTop: 0,
     scrollToMessage: '',
     hasKeyboard: false,
+  },
+
+  lifetimes: {
+    detached: function () {
+      console.log("get leave chatroom")
+      console.log(this.data.openId)
+      console.log(this.properties.groupId)
+      var id = this.data.openId
+      var groupid = this.properties.groupId
+      const db = wx.cloud.database()
+      db.collection('chatroom').where({
+        groupId: groupid
+      }).count({
+        success: function (res) {
+          console.log("count the group")
+          console.log(res.total)
+          console.log(id)
+          var count = res.total
+          db.collection('chatroom').where({
+            _openid: id,
+            groupId: groupid
+          }).count({
+            success: function (res){
+              console.log("check user")
+              console.log(res.total)
+              if (res.total != 0){
+                update(id,groupid,count)
+              }
+            }
+          })
+        }
+      })
+    },
   },
 
   methods: {
