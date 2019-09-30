@@ -3,7 +3,7 @@
 
           <view class="row" style="height:260rpx;">
 
-            <view class="wordContainer" style="height:260rpx;background-color: {{item.carType == '找车' ? 'red' : 'blue' }}">
+            <view class="wordContainer" style="height:260rpx;background-color: {{item.carType == '找车' ? '#7c9ab6' : '#d7ecf1' }}">
                 <text class="carTypeWord" >{{item.carType}}</text>
             </view>
 

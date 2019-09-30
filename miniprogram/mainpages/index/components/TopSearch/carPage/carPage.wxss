@@ -1,6 +1,8 @@
 /* itemTemplate */
 .itemTemplate {
   width: 95vw;
+  display: flex;
+  flex-direction: row;
   background-color: #fff;
   margin: 20rpx auto 0;
   border-radius: 20rpx;
@@ -22,7 +24,7 @@
 
 .carBottom {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -32,7 +34,6 @@
    height: fit-content;
    align-items:center;
    font-weight: bold;
-   margin: 20rpx 20rpx 20rpx 20rpx
 }
  
 .item-right-add {
@@ -40,14 +41,12 @@
   height: fit-content;
   align-items: center;
   font-weight: bold;
-  margin: 20rpx 20rpx 20rpx 20rpx;
 }
 
 .row{
   flex-direction:row;
-  justify-content: center;
-  align-items: center;
   display: flex;
+  align-items: center;
 }
 
 .icon-car{

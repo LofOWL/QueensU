@@ -1,37 +1,49 @@
-  <loading hidden="{{queUpdate}}">上传数据</loading>
+  <loading hidden="{{queUpdate}}">更新排行榜</loading>
 <view class= "queCard">
   <scroll-view class="itemTemplate" wx:for="{{calllist}}" lower-threshold="200">
 
-      <view class="que-container" wx:if="{{index == 0}}" style="border-radius:20rpx;background-color:yellow;">
+      <view class="que-container" wx:if="{{index == 0}}" style="border-radius:20rpx;background-color:#ecc761;">
           <view style="display:flex;justify-content: center;align-items: center;flex:1;">
-            <text class="que-text" style="font-weight:bold;color:black;font-size: 190rpx;">{{item.name}}</text>
+            <text class="que-text" style="font-weight:bold;color:black;font-size: 180rpx;">{{item.name}}</text>
           </view>      
           <view class="button-container" >
-            <image class="icon-que" src="../../../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
-            <text class="total-text">{{item.total}}</text>
-            <image class="icon-que" src="../../../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
+            <image class="icon-que" src="../../../../../images/upIcon.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
+            <!-- <text bindtap="queEdit" data-type="up" data-id="{{item._id}}">顶一下</text> -->
+            <view class="total-text-container" >
+              <text class="total-text">{{item.total}}</text>
+            </view>
+            <!-- <text bindtap="queEdit" data-type="down" data-id="{{item._id}}">踩一下</text> -->
+            <image class="icon-que" src="../../../../../images/downDele.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
           </view>
       </view>
 
-      <view class="que-container" wx:if="{{index == 1}}" style="border-radius:20rpx;background-color: blue;">
-          <view style="display:flex;justify-content: center;align-items: center;flex:1;">
-            <text class="que-text" style="font-weight:bold;color:white;font-size: 180rpx;">{{item.name}}</text>
-          </view>    
-          <view class="button-container" >
-            <image class="icon-que" src="../../../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
-            <text class="total-text">{{item.total}}</text>
-            <image class="icon-que" src="../../../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
-          </view>
-      </view>
-
-      <view class="que-container" wx:if="{{index == 2}}" style="border-radius:20rpx;background-color: red;">
+      <view class="que-container" wx:if="{{index == 1}}" style="border-radius:20rpx;background-color: #8299b3;">
           <view style="display:flex;justify-content: center;align-items: center;flex:1;">
             <text class="que-text" style="font-weight:bold;color:white;font-size: 170rpx;">{{item.name}}</text>
+          </view>    
+          <view class="button-container" >
+            <image class="icon-que" src="../../../../../images/upIcon.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
+            <!-- <text bindtap="queEdit" data-type="up" data-id="{{item._id}}">顶一下</text> -->
+            <view class="total-text-container" >
+              <text class="total-text">{{item.total}}</text>
+            </view>
+            <!-- <text bindtap="queEdit" data-type="down" data-id="{{item._id}}">踩一下</text> -->
+            <image class="icon-que" src="../../../../../images/downDele.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
+          </view>
+      </view>
+
+      <view class="que-container" wx:if="{{index == 2}}" style="border-radius:20rpx;background-color: #661009;">
+          <view style="display:flex;justify-content: center;align-items: center;flex:1;">
+            <text class="que-text" style="font-weight:bold;color:white;font-size: 160rpx;">{{item.name}}</text>
           </view> 
           <view class="button-container" >
-            <image class="icon-que" src="../../../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
-            <text class="total-text">{{item.total}}</text>
-            <image class="icon-que" src="../../../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
+            <image class="icon-que" src="../../../../../images/upIcon.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
+            <!-- <text bindtap="queEdit" data-type="up" data-id="{{item._id}}">顶一下</text> -->
+            <view class="total-text-container" >
+              <text class="total-text">{{item.total}}</text>
+            </view>
+            <!-- <text bindtap="queEdit" data-type="down" data-id="{{item._id}}">踩一下</text> -->
+            <image class="icon-que" src="../../../../../images/downDele.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
           </view>
       </view>
 
@@ -40,9 +52,13 @@
             <text class="que-text" style="font-weight:bold;font-size: {{200-15*index}}rpx;">{{item.name}}</text>
           </view> 
           <view class="button-container" >
-            <image class="icon-que" src="../../../../../images/up.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
-            <text class="total-text">{{item.total}}</text>
-            <image class="icon-que" src="../../../../../images/down.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
+            <image class="icon-que" src="../../../../../images/upIcon.png" bindtap="queEdit" data-type="up" data-id="{{item._id}}"/>
+            <!-- <text bindtap="queEdit" data-type="up" data-id="{{item._id}}">顶一下</text> -->
+            <view class="total-text-container" >
+              <text class="total-text">{{item.total}}</text>
+            </view>
+            <!-- <text bindtap="queEdit" data-type="down" data-id="{{item._id}}">踩一下</text> -->
+            <image class="icon-que" src="../../../../../images/downDele.png" bindtap="queEdit" data-type="down" data-id="{{item._id}}"/>
           </view>
       </view>
 

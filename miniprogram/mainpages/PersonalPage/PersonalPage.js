@@ -209,6 +209,7 @@ Page({
     })
     getAll(this)
   },
+  
   editUserInformation: function(e){
     var check = e.currentTarget.dataset.statu;
     console.log(check)

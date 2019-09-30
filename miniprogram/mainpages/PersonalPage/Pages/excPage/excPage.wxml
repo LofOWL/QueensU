@@ -1,4 +1,8 @@
+  <loading hidden="{{finish}}">加载数据</loading>
+  <loading hidden="{{adelete}}">删除数据</loading>
   <view wx:for="{{personalexcList}}">
+      
+
         <view class="itemTemplate">
 
             <view class="row" style="flex:1;">
@@ -55,8 +59,7 @@
                 <text class="item-car-text">{{item.details}}</text>
             </view>
 
-
-
+            <text>{{item.excType}}</text>
               <button class="buttom" data-name="GoodsData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" plain="false">删除</button>
 
         </view>

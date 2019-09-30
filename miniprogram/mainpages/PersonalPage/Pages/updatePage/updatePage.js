@@ -5,7 +5,8 @@ Page({
    * Page initial data
    */
   data: {
-    updateList: []
+    updateList: [],
+    finish: false
   },
 
   /**
@@ -16,7 +17,8 @@ Page({
     console.log(options.list)
     console.log(options.list.split("@"))
     this.setData({
-      updateList: options.list.split("@")
+      updateList: options.list.split("@"),
+      finish: true
     })
   },
 

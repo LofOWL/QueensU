@@ -4,5 +4,5 @@
   display: flex;
   justify-content: center;
   height: fit-content;
-  background-color: blue;
+  background-color: #c3d1e1;
 }

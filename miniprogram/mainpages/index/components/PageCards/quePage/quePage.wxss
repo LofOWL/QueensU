@@ -8,7 +8,7 @@
 }
 
 .itemTemplate {
-  width: 95vw;
+  width: 90vw;
   background-color: #fff;
   margin: 20rpx auto 0;
   border-radius: 20rpx;
@@ -30,9 +30,8 @@
 }
 
 .icon-que{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 10rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .button-container{
@@ -45,10 +44,23 @@
   align-items: center;
 }
 
+.total-text-container{
+  width: 60rpx;
+  padding: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .total-text{
   font-weight: bold;
-  margin: 20rpx 20rpx 20rpx 20rpx;
-  padding-right: 10rpx;
-  word-break: keep-all;
-  word-wrap: break-word;
+}
+
+.icon-cover{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 20rpx;
+  display: flex;
+  font-weight: bold;
+  background-color: red;
 }

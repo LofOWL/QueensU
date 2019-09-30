@@ -7,6 +7,6 @@
         </view>
   </view>
 
-  <button class="item-right-add" type="primary" plain="false" bindtap="queSubmit">Add</button>
+  <view class="item-right-add" bindtap="queSubmit">Add</view>
 </view>
 

@@ -8,7 +8,7 @@ function getQueInfo(athis) {
       })
       wx.showToast({
         icon: 'none',
-        title: '上传成功'
+        title: '更新成功'
       })
       
     },

@@ -50,5 +50,10 @@
   display: flex;
   justify-content: center;
   height: fit-content;
-  background-color: blue;
+  background-color: #8299b3;
+}
+
+.copyCar{
+  border-radius: 20rpx;
+  background-color: #8299b3;
 }

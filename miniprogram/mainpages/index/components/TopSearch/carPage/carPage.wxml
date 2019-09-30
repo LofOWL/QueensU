@@ -1,42 +1,45 @@
   <view class="itemTemplate">
 
-        <view class="row" style="flex:1;margin:20rpx;">
-                  <view style="display:flex;align-items: center;flex:1;">
-                    <image class="icon-car" src="../../../../../images/calendar.png"/>
-                    <Text class="text">出发时间:</Text>
-                  </view>
-                  
-                  <picker class="row" mode="date" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
-                        <Text class="text" >{{date}}</Text>
-                  </picker>
-                </view>
-        
-        <view class="row" style="flex:1;margin:20rpx;">
-                    <view style="display:flex;align-items: center;flex:1;">
-                      <image class="icon-car" src="../../../../../images/location.png"/>
-                      <Text class="text">方向:</Text>
-                    </view>
-                     <picker class="row" mode="multiSelector" bindchange="carselectLocation" bindcolumnchange="To do later" value="{{mulloc}}" range="{{mulloc}}">
-          <Text class="text" >{{cfrom}} -> {{cto}}</Text>
-        </picker>
-          </view>
+    <view style="flex-direction:column;flex:1;display:flex;">
 
-      
-        <view class="row" style="flex:1;margin:20rpx;">
-                    <view style="display:flex;align-items: center;flex:1;">
-                      <image class="icon-car" src="../../../../../images/project.png"/>
-                      <Text class="text">类型:</Text>
-                    </view>
-                    <radio-group name="radio-group" bindchange="carselectType">
-          <label><radio class="text" value="找车" checked="true"/>找车</label>
-          <label><radio class="text" value="找人"/>找人</label>
-        </radio-group>
-          </view>
+
+      <view style="display:flex;flex-direction:row;align-items: center;margin-top:20rpx;margin-bottom:20rpx;">
+        <image class="icon-car" src="../../../../../images/calendar.png"/>
+        <picker class="row" mode="date" value="{{date}}" start="{{nowDate}}" end="{{endDate}}" bindchange="carselectDate">
+            <Text class="text" >{{date}}</Text>
+        </picker>
+      </view>
+
+      <view style="display:flex;flex-direction:row;align-items: center;margin-top:20rpx;margin-bottom:20rpx">
+          <image class="icon-car" src="../../../../../images/location.png"/>
+          <picker class="row" mode="multiSelector" bindchange="carselectLocation" bindcolumnchange="To do later" value="{{mulloc}}" range="{{mulloc}}">
+          <Text class="text" >{{cfrom}} -> {{cto}}</Text>
+                      </picker>
+      </view>
+        
+      <view style="display:flex;flex-direction:row;align-items: center;margin-top:20rpx;margin-bottom:20rpx">
+          <image class="icon-car" src="../../../../../images/project.png"/>
+          <radio-group name="radio-group" bindchange="carselectType">
+            <label><radio class="text" color="#7c9ab6" value="找车" checked="true"/>找车</label>
+            <label><radio class="text" color="#7c9ab6" value="找人"/>找人</label>
+          </radio-group>
+      </view>
+
+
+    </view>
+
+
         
         <view class="carBottom">
-            <button class="item-left-find" type="primary" plain="false" bindtap="onFind" data-type="1">搜索</button>
-            <navigator url="../createData/carPage/carPage?date={{date}}&from={{cfrom}}&to={{cto}}&carType={{carType}}&type={{1}}" hover-class="none">
-              <button class="item-right-add" type="primary" plain="false">添加</button>
+            <!-- <button class="item-left-find" type="primary" plain="false" bindtap="onFind" data-type="1">搜索</button> -->
+            <view style="flex:1;display:flex;justify-content: center;align-items: center;margin:20rpx;">
+            <image bindtap="onFind" data-type="1" style="width:80rpx;height:80rpx;" src="../../../../../images/search.png"/>
+            </view>
+            
+            <navigator style="flex:1;display:flex;justify-content: center;align-items: center;margin:20rpx;" url="../createData/carPage/carPage?date={{date}}&from={{cfrom}}&to={{cto}}&carType={{carType}}&type={{1}}" hover-class="none">
+              <image style="width:80rpx;height:80rpx;" src="../../../../../images/addButton.png"/>
             </navigator>
+
         </view>
+
   </view>

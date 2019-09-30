@@ -4,7 +4,83 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
-function excDataToDatabase(data) {
+function update(openid, groupid, count, athis) {
+  console.log("get in update")
+  console.log(openid)
+  console.log(groupid)
+  console.log(count)
+  const db = wx.cloud.database()
+  db.collection('UserInfoUpdate').where({
+    _openid: openid
+  }).get({
+    success: res => {
+      console.log("get in success")
+      var isExist = res.data.length != "0";
+      console.log(isExist)
+      console.log(res.data)
+
+      // update or create database
+      if (isExist) {
+        var oldlist = res.data[0].updateList
+
+        var notTouch = true;
+        for (var i in oldlist) {
+          if (oldlist[i].groupId == groupid) {
+            console.log("touch")
+            oldlist[i] = {
+              groupId: groupid,
+              count: count
+            }
+            notTouch = false;
+          }
+        }
+        if (notTouch) {
+          oldlist.push({
+            groupId: groupid,
+            count: count
+          })
+        }
+
+        db.collection('UserInfoUpdate').doc(res.data[0]._id).update({
+          data: {
+            updateList: oldlist
+          },
+          success: res => {
+            console.log(res)
+            console.log("update done")
+          }
+        })
+
+      } else {
+        console.log("get on create")
+        var list = []
+        list.push({
+          groupId: groupid,
+          count: count
+        })
+        console.log(list)
+        db.collection('UserInfoUpdate').add({
+          data: {
+            updateList: list
+          },
+          success: res => {
+            // wx.navigateBack()
+            console.log("push to UserINfoUpdate")
+          },
+          fail: res => {
+            console.log("fail")
+          }
+        })
+      }
+    },
+    complete: res => {
+      console.log("get int complete &&&&")
+      goodsDataCollection(athis)
+    }
+  })
+}
+
+function excDataToDatabase(data,athis) {
   const db = wx.cloud.database()
   db.collection('GoodsData').add({
     data: {
@@ -24,6 +100,7 @@ function excDataToDatabase(data) {
         icon: "none",
         title: '上传成功'
       })
+      update(getApp().globalData.openid, res._id, 0, athis)
     },
     fail: err => {
       wx.showToast({
@@ -35,6 +112,7 @@ function excDataToDatabase(data) {
 }
 
 function goodsDataCollection(athis) {
+  console.log("get in goodsDatacollection")
   var isExist = true;
 
   const db = wx.cloud.database()
@@ -103,8 +181,7 @@ function uploadFiles(alist,length,index,athis){
       athis.data.fileIdarray.push(res.fileID)
       if (length-1 == index){
         console.log(athis.data.fileIdarray)
-        excDataToDatabase(athis.data)
-        goodsDataCollection(athis)
+        excDataToDatabase(athis.data,athis)
       }
     },
     fail: e => {
@@ -215,8 +292,7 @@ Page({
     if (this.data.imageList != 0 ){
       uploadFiles(this.data.imageList, this.data.imageList.length, 0, this)
     }else{
-      excDataToDatabase(this.data)
-      goodsDataCollection(this)
+      excDataToDatabase(this.data,this)
     }
 
 

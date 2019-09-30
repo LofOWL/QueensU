@@ -1,20 +1,28 @@
 <view class="itemTemplate">
       
-      <view class="good-con-page-section">
-            <input class="good-text" bindinput="inputGoods" placeholder="物品" value="{{goods}}"/>
-      </view>
 
-      <view class="good-padding">
-        <radio-group name="radio-group" bindchange="excselectType">
-            <label><radio value="出售" checked="true"/>出售</label>
-            <label><radio value="寻找"/>寻找</label>
-        </radio-group>
+      <view style="flex-direction:column;flex:1;">
+          <view class="good-con-page-section">
+                      <input class="good-text" bindinput="inputGoods" placeholder="物品" value="{{goods}}"/>
+                </view>
+
+                <view class="good-padding">
+                  <radio-group name="radio-group" bindchange="excselectType">
+                      <label><radio value="出售" color="#7c9ab6" checked="true"/>出售</label>
+                      <label><radio value="寻找" color="#7c9ab6" />寻找</label>
+                  </radio-group>
+                </view>
       </view>
       
+      
       <view class="carBottom">
-            <button class="item-left-find" type="primary" plain="false" bindtap="onFind" data-type="2">搜索</button>
-            <navigator url="../createData/excPage/excPage?goods={{goods}}&excType={{excType}}&type={{2}}" hover-class="none">
-              <button class="item-right-add" type="primary" plain="false">添加</button>
-            </navigator>  
-      </view>
+            <view style="flex:1;display:flex;justify-content: center;align-items: center;margin:20rpx;">
+            <image bindtap="onFind" data-type="1" style="width:80rpx;height:80rpx;" src="../../../../../images/search.png"/>
+            </view>
+            
+            <navigator style="flex:1;display:flex;justify-content: center;align-items: center;margin:20rpx;" url="../createData/excPage/excPage?goods={{goods}}&excType={{excType}}&type={{2}}" hover-class="none">
+              <image style="width:80rpx;height:80rpx;" src="../../../../../images/addButton.png"/>
+            </navigator>
+
+        </view>
   </view>

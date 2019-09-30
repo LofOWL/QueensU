@@ -1,4 +1,6 @@
   <view class="container">
+  <loading hidden="{{finish}}">加载数据</loading>
+  <loading hidden="{{adelete}}">删除数据</loading>
   <view wx:for="{{personalcarList}}">
     <view class="itemTemplate">
       <view class="row" style="flex:1;">

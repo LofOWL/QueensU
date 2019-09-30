@@ -2,7 +2,7 @@
     <navigator url="../detailsPage/excPage/excPage?goods={{item.goods}}&excType={{item.excType}}&type={{2}}">
       <view class='itemTemplate'>
             <view class="row" style="height:170rpx;">
-                <view class="wordContainer" style="height:170rpx;background-color: {{item.excType == '出售' ? 'red' : 'blue' }}">
+                <view class="wordContainer" style="height:170rpx;background-color: {{item.excType == '出售' ? '#7c9ab6' : '#d7ecf1' }}">
                     <text class="carTypeWord" >{{item.excType}}</text>
                 </view>
 

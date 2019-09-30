@@ -8,6 +8,59 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function userConDatabase(athis) {
+  const db = wx.cloud.database()
+  db.collection("UserContact").where({
+    _openid: app.globalData.openid
+  }).get({
+    success: res => {
+      if (res.data.length == 0) {
+        db.collection("UserContact").add({
+          data: {
+            con: athis.data.userCon
+          },
+          success: res => {
+            wx.showToast({
+              title: '创建成功',
+            })
+          }
+        })
+      } else {
+        console.log(athis.data.userConid)
+        console.log(athis.data.userCon)
+        db.collection("UserContact").doc(athis.data.userConid).update({
+          data: {
+            con: athis.data.userCon
+          },
+          success: res => {
+            console.log(res)
+            wx.showToast({
+              title: '更新成功',
+            })
+          }
+        })
+      }
+    }
+  })
+}
+
+function getWeChat(athis){
+  console.log("get in get wechat")
+  const db = wx.cloud.database()
+  db.collection("UserContact").where({
+    _openid: app.globalData.openid
+  }).get({
+    success: res => {
+      console.log("^^^^^^^^^")
+      console.log(res)
+      athis.setData({
+        userConid: res.data[0]._id,
+        userCon: res.data[0].con
+      })
+    }
+  })
+}
+
 function getToday(){
   var date = new Date()
   var year = date.getFullYear()
@@ -472,15 +525,25 @@ Page({
     actlist: [],
     showLog: false,
     // static
-    carCount: 0,
-    excCount: 0,
-    queCount: 0,
+    carCount: -1,
+    excCount: -1,
+    queCount: -1,
     updateCount: 0,
     updateList: [],
     updateString: "",
-    getUpdateinfo: true
+    getUpdateinfo: true,
+    // wechat
+    userConid: "",
+    userCon: ""
+
   },
   onPullDownRefresh: function(){
+    this.setData({
+      carCount: -1,
+      excCount: -1,
+      queCount: -1,
+      getUpdateinfo: true
+    })
     this.onLoad()
   },
   onShow: function(){
@@ -497,6 +560,7 @@ Page({
       success: res => {
         console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
+        getWeChat(this)
         getStatic(this)
         getUpdateInfo(this)
         getActInfo(this)
@@ -518,6 +582,7 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              console.log("%%%%%%%%%%%")
               console.log(res)
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
@@ -885,5 +950,29 @@ Page({
     })
     queDataToDatabase(this)
   },
-
+  // wechat 
+  editUserInformation: function (e) {
+    var check = e.currentTarget.dataset.statu;
+    console.log(check)
+    if (check == "start") {
+      this.setData({
+        showModalStatus: true
+      })
+    } else if (check == "close") {
+      this.setData({
+        showModalStatus: false
+      })
+    } else {
+      userConDatabase(this)
+      this.setData({
+        showModalStatus: false
+      })
+    }
+  },
+  changeCon: function (e) {
+    this.setData({
+      userCon: e.detail.value
+    })
+  },
+  
 })

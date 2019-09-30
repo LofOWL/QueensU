@@ -163,26 +163,29 @@
 
 .scroll_w{
   width: 100%;
-  height: 160rpx;
+  height: 140rpx;
   white-space: nowrap;
 }
 
 .topContainer{
-  width:200rpx;
+  width:205rpx;
   height:100rpx;
   display: inline-block;
 }
 
 .top-item{
-  width: 160rpx;
-  height: 100rpx;
-  margin-left: 20rpx;
-  background-color:white;
-  border-radius: 20rpx;
-  box-shadow: 5rpx 5rpx 10rpx #999;
+  flex-direction: column;
   display: flex;
+  width: fit-content;
   justify-content: center;
   align-items: center;
+  margin-left:20rpx;
+}
+
+.top-item-item{
+  margin-right:10rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
 }
 
 .top-item-2{
@@ -309,6 +312,18 @@ Page{
   /* box-shadow: 10rpx 10rpx 20rpx #999;  */
 }
 
+.userCard-2 {
+  height: fit-content;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
 .circle {
     z-index: -1;
     position: absolute;
@@ -317,5 +332,62 @@ Page{
     height: 100px;
     border-bottom-left-radius: 100rpx;
     border-bottom-right-radius: 100rpx;
+}
+
+/* user add */
+
+.drawer_box {
+  width: 650rpx;
+  height: fit-content;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 1001;
+  background: #FAFAFA;
+  margin: -150px 50rpx 0 50rpx;
+  border-radius: 10px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.page-section{
+  background-color: gainsboro;
+  display: flex;
+  align-items: center;
+  padding:20rpx;
+  height: fit-content;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.submitButton{
+  justify-content: center;
+  width: 200rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+  border-radius: 20rpx;
+  background-color: #c3d1e1;
+  color: #8299b3;
+  display: flex;
+  align-items: center;
+  margin: 20rpx;
 }
 

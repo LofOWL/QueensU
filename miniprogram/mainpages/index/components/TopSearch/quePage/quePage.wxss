@@ -19,9 +19,14 @@
 .item-right-add {
   position: relative;
   height: fit-content;
+  display: flex;
+  justify-content: center;
   align-items: center;
   font-weight: bold;
   margin: 20rpx 20rpx 20rpx 20rpx;
+  background-color: #c3d1e1;
+  color: #8299b3;
+  border-radius: 20rpx;
 }
 
 .itemTemplate {

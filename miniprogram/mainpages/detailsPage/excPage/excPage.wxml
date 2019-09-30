@@ -34,7 +34,9 @@
                 <Text class="text">微信:</Text>
               </view>
 
-              <text style="margin:20rpx;font-weight:bold;color:blue;" data-contact="{{item.contact}}" bindtap="copy">复制</text>
+              <view class="copyCar">
+                  <text style="margin:20rpx;font-weight:bold;color:#c3d1e1;" data-contact="{{item.contact}}" bindtap="copy">复制</text>
+              </view>
               <text style="margin:20rpx;font-weight:bold;">{{item.contact}}</text>
             </view>
 
@@ -56,7 +58,7 @@
 
             <navigator url="../../contactPage/contactPage?id={{item._id}}&prices={{item.prices}}&details={{item.details}}&contact={{item.contact}}&imageList={{item.imageList}}&types={{2}}" hover-class="none">
               <view class="goToChatroom">
-                <Text style="margin: 20rpx;font-weight:bold;color:white;"> 聊天室 </Text>
+                <Text style="margin: 20rpx;font-weight:bold;color:#c3d1e1;"> 聊天室 </Text>
               </view>
             </navigator>
 

@@ -8,50 +8,79 @@
 
   <!-- <view class="circle"/> -->
 
-  <view class="userCard" style="margin:20rpx;">
+  <view class="userCard-2" >
 
     <view style="fix-direction: row;display: flex;justify-content: center;align-items: center;width:95vw;">
       <view style="flex:1;display: flex;">
           <button class="userinfo-avatar" style="background-image: url({{avatarUrl}});background-color: {{avatarUrl != '' ? 'transparent' : 'black' }};"/>
+          <text style="font-weight:bold;">{{userInfo.rawData.nickName}}</text>
       </view>
       
 
-            <text wx:if="{{!showLog}}" style="color:grey;justify-content: center;margin-right:20rpx;" bindgetuserinfo="onGetUserInfo" bindtap="onGetOpenid" >历史记录></text>
+            <!-- <text wx:if="{{!showLog}}" style="color:grey;justify-content: center;margin-right:20rpx;" bindgetuserinfo="onGetUserInfo" bindtap="onGetOpenid" >个人页面></text> -->
 
-            <button wx:if="{{showLog}}" open-type="getUserInfo"   bindgetuserinfo="onGetUserInfo" >点击授权</button>
+        <image wx:if="{{!showLog}}" class="icon-car" src="../../images/wechat.png"/>
+        <text wx:if="{{!showLog}}" class="item-car" style="font-weight:bold;overflow: hidden;text-overflow:ellipsis;">{{userCon}}</text>
+        <image wx:if="{{!showLog}}" class="icon-car" data-statu="start" bindtap="editUserInformation" src="../../images/edit.png"/>
 
+            <button wx:if="{{showLog}}" open-type="getUserInfo"   bindgetuserinfo="onGetUserInfo" >点击确认(本人是皇后学生)</button>
+
+    </view >
+
+    <!-- edit wechat -->
+
+
+    <view class="drawer_screen" bindtap="editUserInformation" data-statu="close" wx:if="{{showModalStatus}}"></view>
+
+  <view class="drawer_box" wx:if="{{showModalStatus}}">
+       <view class="page-section">
+              <input bindinput="changeCon" maxlength="20" placeholder="微信号" value="{{userCon}}" auto-focus="true" style="height: 2em" />
+          </view>
+       <view class="submitButton" data-statu="submit" bindtap="editUserInformation">Update</view>
+      </view>
+
+    <view style="display:flex;align-items: center;width:95vw;">
+        <text style="font-weight:bold;">个人数据:</text>
     </view>
-
+    
+    <!-- information row -->
      <view style="width:95vw;fix-direction: row;display: flex;justify-content: center;align-items: center;" wx:if="{{!showLog}}" >
+
+     <view style="background:grey;height:50rpx;width:5rpx;"/>
       
       <navigator url="../PersonalPage/Pages/carPage/carPage" hover-class="none" style="flex-direction:column;flex-grow:1;margin:20rpx;display:flex;justify-content:center;align-items:center;">
 
-          <text style="font-weight:bold;">{{carCount}}</text>
-          <text style="font-weight:bold;">出行</text>
+          <text style="color:#8a8a8a;font-weight:bold;" wx:if="{{carCount != -1}}">{{carCount}}</text>
+          <image wx:if="{{carCount == -1}}" style="height:50rpx;width:50rpx;" src="../../images/loading.gif"/>
+          <text style="color:#8a8a8a;">出行</text>
 
       </navigator>
 
       <view style="background:grey;height:50rpx;width:5rpx;"/>
 
       <navigator url="../PersonalPage/Pages/excPage/excPage" hover-class="none" style="flex-direction:column;flex-grow:1;margin:20rpx;display:flex;justify-content:center;align-items:center;">
-        <text style="font-weight:bold;">{{excCount}}</text>
-        <text style="font-weight:bold;">二手</text>
+        <text style="color:#8a8a8a;font-weight:bold;" wx:if="{{excCount != -1}}">{{excCount}}</text>
+        <image wx:if="{{excCount == -1}}" style="height:50rpx;width:50rpx;" src="../../images/loading.gif"/>
+        <text style="color:#8a8a8a;">二手</text>
       </navigator>
 
       <view style="background:grey;height:50rpx;width:5rpx;"/>
 
       <navigator url="../PersonalPage/Pages/quePage/quePage" hover-class="none" style="flex-direction:column;flex-grow:1;margin:20rpx;display:flex;justify-content:center;align-items:center;">
-        <text style="font-weight:bold;">{{queCount}}</text>
-        <text style="font-weight:bold;">吐槽</text>
+        <text style="color:#8a8a8a;font-weight:bold;" wx:if="{{queCount != -1}}">{{queCount}}</text>
+        <image wx:if="{{queCount == -1}}" style="height:50rpx;width:50rpx;" src="../../images/loading.gif"/>
+        <text style="color:#8a8a8a;">吐槽</text>
       </navigator>
 
       <view style="background:grey;height:50rpx;width:5rpx;"/>
       <text>{{updatelist}}</text>
       <navigator url="../PersonalPage/Pages/updatePage/updatePage?a={{updateCount}}&list={{updateString}}" hover-class="none" style="flex-direction:column;flex-grow:1;margin:20rpx;display:flex;justify-content:center;align-items:center;">
-        <text wx:if="{{!getUpdateinfo}}" style="font-weight:bold;">{{updateCount}}</text>
+        <text wx:if="{{!getUpdateinfo}}" style="color:#8a8a8a;font-weight:bold;">{{updateCount}}</text>
         <image wx:if="{{getUpdateinfo}}" style="height:50rpx;width:50rpx;" src="../../images/loading.gif"/>
-        <text style="font-weight:bold;">消息</text>
+        <text style="color:#8a8a8a;">消息</text>
       </navigator>
+
+      <view style="background:grey;height:50rpx;width:5rpx;"/>
       
     </view>
 
@@ -61,21 +90,23 @@
 
 
   <!-- top naviagtor page -->
-    <scroll-view class="scroll_w" scroll-x >
+    <scroll-view class="scroll_w"  scroll-x >
       <view class="topContainer" wx:for="{{topNavi}}">
-          <view class="top-item-2" bindtap="topOntap" data-item="{{item}}">
-            <image wx:if="{{index==3}}" style="height:60rpx;width:60rpx;margin:10rpx;" src="../../images/rankindex.png"/>
+          <view class="top-item" bindtap="topOntap" data-item="{{item}}">
+            <image wx:if="{{index==3}}" style="height:60rpx;width:60rpx;" src="../../images/rankindex.png"/>
             
-            <image wx:if="{{index==1}}" style="height:60rpx;width:60rpx;margin:10rpx;" src="../../images/excindex.png"/>
-            <image wx:if="{{index==0}}" style="height:60rpx;width:60rpx;margin:10rpx;" src="../../images/carindex.png"/>
-            <image wx:if="{{index==4}}" style="height:60rpx;width:60rpx;margin:10rpx;" src="../../images/actindex.png"/>
-            <image wx:if="{{index==2}}" style="height:60rpx;width:60rpx;margin:10rpx;" src="../../images/queindex.png"/>
+            <image wx:if="{{index==1}}" style="height:60rpx;width:60rpx;" src="../../images/excindex.png"/>
+            <image wx:if="{{index==0}}" style="height:60rpx;width:60rpx;" src="../../images/carindex.png"/>
+            <image wx:if="{{index==4}}" style="height:60rpx;width:60rpx;" src="../../images/actindex.png"/>
+            <image wx:if="{{index==2}}" style="height:60rpx;width:60rpx;" src="../../images/queindex.png"/>
             <!-- <text class="top-text">{{item}}</text> -->
-            <text >{{item}}</text>
+            <text style="color:#8a8a8a;">{{item}}</text>
           </view>
       </view>
     </scroll-view> 
   
+  <view style="background:#7c9ab6;height:5rpx;width:95vw;"/>
+
   <!-- Car Page -->
   <carSearch
   style="display:flex;"

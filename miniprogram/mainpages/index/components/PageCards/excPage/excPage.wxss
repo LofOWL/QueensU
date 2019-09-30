@@ -1,7 +1,7 @@
 /* mainpages/PageCards/excPage/excPage.wxss */
 
 .itemTemplate {
-  width: 95vw;
+  width: 90vw;
   background-color: #fff;
   margin: 20rpx auto 0;
   border-radius: 20rpx;

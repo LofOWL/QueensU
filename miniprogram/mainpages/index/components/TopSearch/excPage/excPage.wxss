@@ -4,6 +4,8 @@
   background-color: #fff;
   margin: 20rpx auto 0;
   border-radius: 20rpx;
+  flex-direction: row;
+  display: flex;
   box-shadow: 10rpx 10rpx 20rpx #999;
 }
 
@@ -27,7 +29,7 @@
 
 .carBottom {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -49,5 +51,5 @@
 }
 
 .good-padding{
-  margin-left: 20rpx;
+  margin: 30rpx;
 }
