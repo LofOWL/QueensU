@@ -23,9 +23,31 @@
         <text wx:if="{{!showLog}}" class="item-car" style="font-weight:bold;overflow: hidden;text-overflow:ellipsis;">{{userCon}}</text>
         <image wx:if="{{!showLog}}" class="icon-car" data-statu="start" bindtap="editUserInformation" src="../../images/edit.png"/>
 
-            <button wx:if="{{showLog}}" open-type="getUserInfo"   bindgetuserinfo="onGetUserInfo" >点击确认(本人是皇后学生)</button>
+            <button wx:if="{{showLog}}" data-statu="loginstart" bindtap="loginIn" style="font-weight:bold;">登入</button>
+
 
     </view >
+    <!-- que wechat -->
+
+    <view class="drawer_screen" bindtap="loginIn" data-statu="loginclose" wx:if="{{showLogin}}"></view>
+
+    <view class="que_drawer_box" wx:if="{{showLogin}}">
+       <scroll-view class="card" scroll-y style="margin:20rpx;height:600rpx;width:80vw;">
+
+          <view class="card" >
+            <text style="margin:20rpx;">致皇后学生</text>
+            <text style="margin:20rpx;">1. 学生有责任去核对信息发布的真实性,平台不承担任何法律责任</text>
+            <text style="margin:20rpx;">2. 为减轻服务器压力，不要随便创建无用信息</text>
+            <text style="margin:20rpx;">3. 拼车，二手，吐槽的每人发布上线分别是20个</text>
+            <text style="margin:20rpx;">4. 过期信息可以去个人统计下，点击对应数字进入进行删除</text>
+            <text style="margin:20rpx;">5. 右下角两个按钮是用来上下翻页的</text>
+          </view>
+
+        </scroll-view>
+
+        <text style="font-weight:bold;margin:20rpx;">本平台仅为方便皇后学生，不承担任何法律责任</text>
+        <button wx:if="{{showLog}}" open-type="getUserInfo"   bindgetuserinfo="onGetUserInfo" style="font-weight:bold;margin:20rpx;" type="primary">同意条例</button>
+    </view>
 
     <!-- edit wechat -->
 
@@ -40,7 +62,7 @@
       </view>
 
     <view style="display:flex;align-items: center;width:95vw;">
-        <text style="font-weight:bold;">个人数据:</text>
+        <text wx:if="{{!showLog}}" style="font-weight:bold;">个人数据:</text>
     </view>
     
     <!-- information row -->
@@ -176,11 +198,22 @@
 
   </actCard>
 
+  <view wx:if="{{page >= 1 && page<=3}}" bindtap="toChangePage" id="toPre" >
+      <image class="toPrePage" src="../../images/toPre.png"></image>
+  </view>
+
+  <view wx:if="{{page >= 1 && page<=3}}" bindtap = "toChangePage" id="toNext" >
+      <image class="toNextPage" src="../../images/toNext.png"></image>
+  </view>
+
 
   <!-- <text class="itemTemplate" wx:if="{{page == 3 && quelist.length == 20}}">max quelist</text> -->
 
   <!-- Gap -->
-  <view class="buttomGap">
+  <view wx:if="{{page >= 1 && page<=3}}" class="buttomGap">
+  </view>
+
+  <view wx:if="{{page==4}}" class="buttomGap4">
   </view>
   
   <!-- Lower buttons page -->

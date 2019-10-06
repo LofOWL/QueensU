@@ -8,10 +8,12 @@
     "carSearch": "../components/TopSearch/carPage/carPage",
     "carCard": "../components/PageCards/carPage/carPage",
     "callCard": "../components/PageCards/callPage/callPage",
-    "actCard": "../components/PageCards/actPage/actPage"
+    "actCard": "../components/PageCards/actPage/actPage",
+    "loginPage": "../components/loginPage/loginPage"
   },
   "window":{
     "enablePullDownRefresh": true
+
   }
 }
 

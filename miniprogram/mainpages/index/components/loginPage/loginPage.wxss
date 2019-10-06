@@ -1,0 +1,14 @@
+/* mainpages/index/components/loginPage/loginPage.wxss */
+Component{
+  width: 100%;
+  height: 100%;
+}
+.card{
+  border-radius: 20rpx;
+  background-color: gainsboro;
+  flex-direction:column;
+  display:flex;
+  margin:20rpx;
+  align-items: center;
+  justify-content: center;
+}

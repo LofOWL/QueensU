@@ -14,6 +14,22 @@
               <text style="margin:20rpx;font-weight:bold;">{{item.createDate}}</text>
             </view>
 
+            <view class="row" style="flex:1;">
+                <view style="display:flex;align-items: center;flex:1;">
+                  <image class="icon" src="../../../../images/goods.png"/>
+                  <Text class="text">物品:</Text>
+                </view>
+                <text style="margin:20rpx;font-weight:bold;">{{item.goods}}</text>
+              </view>
+
+              <view class="row" style="flex:1;">
+                <view style="display:flex;align-items: center;flex:1;">
+                  <image class="icon" src="../../../../images/project.png"/>
+                  <Text class="text">类型:</Text>
+                </view>
+                <text style="margin:20rpx;font-weight:bold;">{{item.excType}}</text>
+              </view>
+
             <view class="row" style="flex:1;" wx:if="{{item.prices}}">
               <view style="display:flex;align-items: center;flex:1;">
                 <image class="icon" src="../../../../images/Dollar.png"/>
@@ -59,7 +75,6 @@
                 <text class="item-car-text">{{item.details}}</text>
             </view>
 
-            <text>{{item.excType}}</text>
               <button class="buttom" data-name="GoodsData" data-id="{{item._id}}" data-goods="{{item.goods}}" data-excType="{{item.excType}}" bindtap="onRemove" plain="false">删除</button>
 
         </view>

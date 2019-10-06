@@ -11,6 +11,24 @@
         <text style="margin:20rpx;font-weight:bold;">{{item.createDate}}</text>
       </view>
 
+      
+
+      <view class="row" style="flex:1;">
+        <view style="display:flex;align-items: center;flex:1;">
+          <image class="icon" src="../../../../images/location.png"/>
+          <Text class="text">方向:</Text>
+        </view>
+        <text style="margin:20rpx;font-weight:bold;">{{item.from}} -> {{item.to}}</text>
+      </view>      
+
+      <view class="row" style="flex:1;">
+        <view style="display:flex;align-items: center;flex:1;">
+          <image class="icon" src="../../../../images/project.png"/>
+          <Text class="text">类型:</Text>
+        </view>
+        <text style="margin:20rpx;font-weight:bold;">{{item.carType}}</text>
+      </view>
+
       <view class="row" style="flex:1;">
         <view style="display:flex;align-items: center;flex:1;">
           <image class="icon" src="../../../../images/user.png"/>
@@ -28,6 +46,8 @@
         </view>
         <text style="margin:20rpx;font-weight:bold;">{{item.luggagenumber}}</text>
       </view>
+
+      
 
       <view class="row" style="flex:1;">
         <view style="display:flex;align-items: center;flex:1;">

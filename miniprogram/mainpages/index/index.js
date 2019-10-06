@@ -534,7 +534,9 @@ Page({
     getUpdateinfo: true,
     // wechat
     userConid: "",
-    userCon: ""
+    userCon: "",
+    //login
+    showLogin: false
 
   },
   onPullDownRefresh: function(){
@@ -550,6 +552,7 @@ Page({
     this.onLoad()
   },
   onLoad: function(){
+    wx.showShareMenu()
     this.setData({
       finish: false
     })
@@ -665,6 +668,7 @@ Page({
       this.setData({
         showLog: false,
         logged: true,
+        showLogin: false,
         avatarUrl: e.detail.userInfo.avatarUrl,
         userInfo: e.detail.userInfo
       })
@@ -891,6 +895,11 @@ Page({
               finish: false
             })
             getNextInfor(this, "CarDataCollect", this.data.carIndex)
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '已经是最后页'
+            })
           }
         }else if (type == "toPre"){
           if (this.data.carIndex != 0){
@@ -899,6 +908,11 @@ Page({
               finish: false
             })
             getNextInfor(this, "CarDataCollect", this.data.carIndex)
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '已经是第一页'
+            })
           }
         }
         break
@@ -911,6 +925,11 @@ Page({
               finish: false
             })
             getNextInfor(this, "GoodsData", this.data.excIndex)
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '已经是最后页'
+            })
           }
         }else if(type == "toPre"){
           if (this.data.excIndex != 0){
@@ -919,6 +938,11 @@ Page({
               finish: false
             })
             getNextInfor(this, "GoodsData", this.data.excIndex)
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '已经是第一页'
+            })
           }
         }
         break
@@ -931,6 +955,11 @@ Page({
               finish: false
             })
             getNextInfor(this, "QueData", this.data.queIndex)
+          }else{
+            wx.showToast({
+              icon: 'none',
+              title: '已经是最后页'
+            })
           }
         }else if (type =="toPre"){
           if (this.data.queIndex != 0){
@@ -939,6 +968,11 @@ Page({
               finish: false
             })
             getNextInfor(this,"QueData",this.data.queIndex)
+          }else{
+            wx.showToast({
+              icon: 'none',
+              title: '已经是第一页'
+            })
           }
         }
         break
@@ -951,6 +985,23 @@ Page({
     queDataToDatabase(this)
   },
   // wechat 
+  loginIn: function(e){
+    var check = e.currentTarget.dataset.statu;
+    console.log(check)
+    if (check == "loginstart"){
+      this.setData({
+        showLogin: true
+      })
+    } else if (check == "loginclose"){
+      this.setData({
+        showLogin: false
+      })
+    } else{
+      this.setData({
+        showLogin: false
+      })
+    }
+  },
   editUserInformation: function (e) {
     var check = e.currentTarget.dataset.statu;
     console.log(check)

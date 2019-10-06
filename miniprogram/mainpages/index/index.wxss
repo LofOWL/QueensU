@@ -24,7 +24,9 @@
   width: 35px;
   height: 35px;
   bottom:0vh;
-  right: 165px;
+  /* right: 165px; */
+  
+  right: 60px;
 }
 
 .toNextPage{
@@ -34,7 +36,8 @@
   width: 35px;
   height: 35px;
   bottom:0vh;
-  right: 115px;
+  /* right: 115px; */
+  right: 10px;
 }
 
 .icon-car{
@@ -53,7 +56,7 @@
 }
 
 .buttomGap{
-  height: 20rpx;
+  height: 80rpx;
   background-color: balck;
 }
 
@@ -391,3 +394,37 @@ Page{
   margin: 20rpx;
 }
 
+/* question car */
+
+
+.que_drawer_box {
+  width: 650rpx;
+  height: fit-content;
+  overflow: hidden;
+  position: fixed;
+  top: 40%;
+  left: 0;
+  z-index: 1001;
+  background: #FAFAFA;
+  margin: -150px 50rpx 0 50rpx;
+  border-radius: 10px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card{
+  border-radius: 20rpx;
+  background-color: gainsboro;
+  flex-direction:column;
+  display:flex;
+  margin:20rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttomGap4{
+  height: 20rpx;
+  background-color: balck;
+}

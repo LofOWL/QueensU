@@ -1,0 +1,14 @@
+
+
+<scroll-view class="card" scroll-y>
+
+  <view class="card">
+    <text style="margin:20rpx;">致皇后学生</text>
+    <text style="margin:20rpx;">1. 学生有责任去核对信息发布的真实性</text>
+    <text style="margin:20rpx;">2. 为减轻服务器要不要随便创建无用信息</text>
+    <text style="margin:20rpx;">3. 拼车，二手，吐槽的每人发布上线是分别20个</text>
+    <text style="margin:20rpx;">4. 吐槽页面一周清理一次每周限额20个</text>
+    <text style="margin:20rpx;">5. 个人统计下面的数字是都可以点的</text>
+  </view>
+
+</scroll-view>
